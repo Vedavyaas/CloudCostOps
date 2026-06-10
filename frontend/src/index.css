@@ -1,0 +1,222 @@
+/* ============================================
+   CloudCostOps — macOS Tahoe Light Glass
+   White liquid glass · Vibrancy · Spatial depth
+   ============================================ */
+
+:root {
+  /* ── Light Tahoe Background ── */
+  --bg-primary:    #e8eef8;
+  --bg-secondary:  #dde5f4;
+  --bg-deep:       #d0d9ee;
+
+  /* ── White Liquid Glass surfaces ── */
+  --glass-ultra:   rgba(255, 255, 255, 0.35);
+  --glass-light:   rgba(255, 255, 255, 0.55);
+  --glass-medium:  rgba(255, 255, 255, 0.70);
+  --glass-heavy:   rgba(255, 255, 255, 0.85);
+  --glass-card:    rgba(255, 255, 255, 0.62);
+  --glass-panel:   rgba(255, 255, 255, 0.50);
+
+  /* ── Tahoe Vibrancy Accents ── */
+  --tahoe-blue:      #2563eb;
+  --tahoe-indigo:    #4f46e5;
+  --tahoe-violet:    #7c3aed;
+  --tahoe-cyan:      #0891b2;
+  --tahoe-mint:      #059669;
+  --tahoe-rose:      #e11d48;
+  --tahoe-amber:     #d97706;
+
+  /* ── Accent System ── */
+  --accent-primary:   #4f46e5;
+  --accent-secondary: #0891b2;
+  --accent-tertiary:  #e11d48;
+  --accent-green:     #059669;
+  --accent-orange:    #d97706;
+
+  /* ── Gradient System ── */
+  --gradient-primary:    linear-gradient(135deg, #4f46e5 0%, #0891b2 100%);
+  --gradient-vibrancy:   linear-gradient(135deg, #7c3aed 0%, #4f46e5 40%, #0891b2 100%);
+  --gradient-card:       linear-gradient(145deg, rgba(79,70,229,0.08) 0%, rgba(8,145,178,0.05) 100%);
+  --gradient-glass-rim:  linear-gradient(145deg, rgba(255,255,255,0.90) 0%, rgba(255,255,255,0.20) 100%);
+  --gradient-aurora:     radial-gradient(ellipse 90% 60% at 50% 0%, rgba(139,92,246,0.25) 0%, transparent 65%);
+  --gradient-glow:       radial-gradient(ellipse at center, rgba(79,70,229,0.15) 0%, transparent 65%);
+
+  /* ── Typography ── */
+  --font-primary: -apple-system, 'Inter', BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-mono:    'JetBrains Mono', 'SF Mono', ui-monospace, monospace;
+
+  /* ── Text (dark on light glass) ── */
+  --text-primary:   rgba(15, 20, 40, 0.92);
+  --text-secondary: rgba(50, 65, 100, 0.72);
+  --text-muted:     rgba(90, 110, 150, 0.60);
+  --text-accent:    #4f46e5;
+
+  /* ── Borders / Glass Rims ── */
+  --border-glass:    rgba(255, 255, 255, 0.70);
+  --border-glass-hi: rgba(255, 255, 255, 0.90);
+  --border-subtle:   rgba(79, 70, 229, 0.18);
+  --border-active:   rgba(79, 70, 229, 0.50);
+  --border-rim:      rgba(255, 255, 255, 0.80);
+
+  /* ── Blur levels ── */
+  --blur-sm:  blur(12px);
+  --blur-md:  blur(24px);
+  --blur-lg:  blur(40px);
+  --blur-xl:  blur(60px);
+
+  /* ── Shadows (soft, Apple-style) ── */
+  --shadow-sm:    0 2px 8px rgba(30, 40, 80, 0.08), 0 0 0 0.5px rgba(255,255,255,0.80) inset;
+  --shadow-md:    0 8px 28px rgba(30, 40, 80, 0.12), 0 2px 6px rgba(30,40,80,0.06), 0 0 0 0.5px rgba(255,255,255,0.75) inset;
+  --shadow-lg:    0 20px 60px rgba(30, 40, 80, 0.18), 0 4px 16px rgba(30,40,80,0.10), 0 0 0 0.5px rgba(255,255,255,0.70) inset;
+  --shadow-glow:      0 0 40px rgba(79, 70, 229, 0.18), 0 12px 40px rgba(30,40,80,0.14);
+  --shadow-glow-cyan: 0 0 40px rgba(8, 145, 178, 0.15), 0 12px 40px rgba(30,40,80,0.12);
+  --shadow-glow-mint: 0 0 40px rgba(5, 150, 105, 0.15), 0 12px 40px rgba(30,40,80,0.12);
+
+  /* ── Radii ── */
+  --radius-xs:   6px;
+  --radius-sm:   10px;
+  --radius-md:   14px;
+  --radius-lg:   20px;
+  --radius-xl:   28px;
+  --radius-2xl:  36px;
+  --radius-full: 9999px;
+
+  /* ── Transitions ── */
+  --transition-fast:   0.12s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:   0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  --spring:            0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============================================
+   Reset & Base
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root { min-height: 100vh; }
+
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: var(--font-primary); }
+input, textarea, select { font-family: var(--font-primary); }
+
+/* ============================================
+   Tahoe White Liquid Glass Card Utility
+   ============================================ */
+.glass-card {
+  background: var(--glass-card);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+/* Top-edge specular rim — bright white highlight */
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 12px; right: 12px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,1.0), transparent);
+  border-radius: var(--radius-full);
+  pointer-events: none;
+}
+
+/* ============================================
+   Gradient Text
+   ============================================ */
+.gradient-text {
+  background: var(--gradient-vibrancy);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   Tahoe Background — Colorful Atmospheric Orbs
+   behind the white glass
+   ============================================ */
+.bg-orb {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+}
+
+.bg-orb-1 {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.40) 0%, rgba(99,102,241,0.25) 40%, transparent 70%);
+  filter: blur(70px);
+  top: -250px;
+  left: -200px;
+  animation: orb-drift-1 16s ease-in-out infinite;
+}
+
+.bg-orb-2 {
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.35) 0%, rgba(8,145,178,0.20) 40%, transparent 70%);
+  filter: blur(65px);
+  bottom: -180px;
+  right: -160px;
+  animation: orb-drift-2 20s ease-in-out infinite;
+}
+
+.bg-orb-3 {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.22) 0%, rgba(245,158,11,0.15) 50%, transparent 70%);
+  filter: blur(55px);
+  top: 45%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+  animation: orb-drift-3 24s ease-in-out infinite;
+}
+
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(50px, 40px) scale(1.07); }
+  66%       { transform: translate(-30px, 60px) scale(0.95); }
+}
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%       { transform: translate(-60px, -40px) scale(1.08); }
+  75%       { transform: translate(30px, -60px) scale(0.96); }
+}
+@keyframes orb-drift-3 {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+  50%       { transform: translate(-50%, -50%) scale(1.20); opacity: 1; }
+}
+
+/* ============================================
+   Scrollbar — Tahoe light style
+   ============================================ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(79, 70, 229, 0.18);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(79, 70, 229, 0.38);
+}

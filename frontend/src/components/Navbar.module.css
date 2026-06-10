@@ -1,0 +1,176 @@
+/* ── Tahoe Navbar — White frosted glass bar ── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  height: 58px;
+  background: rgba(255, 255, 255, 0.60);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.90),
+    0 4px 20px rgba(30, 40, 80, 0.08);
+}
+
+/* Bottom separator with slight shadow  */
+.nav::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(79,70,229,0.12), transparent);
+  pointer-events: none;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoIcon {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.80);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow:
+    0 2px 10px rgba(79,70,229,0.20),
+    inset 0 1px 0 rgba(255,255,255,1.0);
+}
+
+.logoText {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  background: var(--gradient-vibrancy);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.logoSub {
+  display: block;
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 5px 13px 5px 6px;
+  background: rgba(255, 255, 255, 0.70);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 2px 8px rgba(30,40,80,0.08),
+    inset 0 1px 0 rgba(255,255,255,1.0);
+  transition: all var(--transition-normal);
+}
+
+.userInfo:hover {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 14px rgba(30,40,80,0.12), inset 0 1px 0 rgba(255,255,255,1.0);
+}
+
+.avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--gradient-vibrancy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(79,70,229,0.35);
+}
+
+.userDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.userName {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.userCompany {
+  font-size: 10px;
+  color: var(--text-muted);
+  line-height: 1;
+}
+
+.badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+
+.badgeAdmin {
+  background: rgba(79, 70, 229, 0.10);
+  color: #4f46e5;
+  border: 1px solid rgba(79, 70, 229, 0.22);
+}
+
+.badgeAnalyst {
+  background: rgba(8, 145, 178, 0.10);
+  color: #0891b2;
+  border: 1px solid rgba(8, 145, 178, 0.22);
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 13px;
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(255,255,255,0.85);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 6px rgba(30,40,80,0.07), inset 0 1px 0 rgba(255,255,255,0.90);
+}
+
+.logoutBtn:hover {
+  background: rgba(225, 29, 72, 0.07);
+  border-color: rgba(225, 29, 72, 0.25);
+  color: #e11d48;
+  box-shadow: 0 4px 14px rgba(225,29,72,0.10), inset 0 1px 0 rgba(255,255,255,0.80);
+}

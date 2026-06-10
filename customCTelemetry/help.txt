@@ -1,0 +1,5 @@
+install the librdkafka library
+
+brew install librdkafka
+
+compilation to compile the c file : gcc kafkaProducer.c -o kafkaProducer -I/opt/homebrew/include -L/opt/homebrew/lib -lrdkafka

@@ -1,0 +1,92 @@
+/* ── Tahoe Input — White frosted glass field ── */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  position: absolute;
+  left: 12px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  transition: color var(--transition-fast);
+}
+
+.input {
+  width: 100%;
+  padding: 11px 14px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-family: var(--font-primary);
+  transition: all var(--transition-normal);
+  outline: none;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow:
+    0 2px 6px rgba(30, 40, 80, 0.06),
+    inset 0 1px 0 rgba(255,255,255,0.95),
+    inset 0 -1px 0 rgba(30,40,80,0.04);
+  -webkit-font-smoothing: antialiased;
+}
+
+.input.withIcon { padding-left: 38px; }
+
+.input::placeholder { color: var(--text-muted); }
+
+.input:hover {
+  border-color: rgba(255, 255, 255, 0.98);
+  background: rgba(255, 255, 255, 0.80);
+  box-shadow:
+    0 4px 10px rgba(30,40,80,0.09),
+    inset 0 1px 0 rgba(255,255,255,1.0);
+}
+
+.input:focus {
+  border-color: rgba(79, 70, 229, 0.45);
+  background: rgba(255, 255, 255, 0.90);
+  box-shadow:
+    0 0 0 3px rgba(79, 70, 229, 0.12),
+    0 4px 12px rgba(30,40,80,0.08),
+    inset 0 1px 0 rgba(255,255,255,1.0);
+}
+
+.inputWrapper:focus-within .icon {
+  color: #4f46e5;
+}
+
+/* Error state */
+.hasError .input {
+  border-color: rgba(225, 29, 72, 0.42);
+}
+.hasError .input:focus {
+  box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.12), 0 4px 12px rgba(30,40,80,0.08);
+}
+
+.errorMsg {
+  font-size: 11px;
+  color: #e11d48;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+}

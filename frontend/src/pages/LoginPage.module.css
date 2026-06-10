@@ -1,0 +1,187 @@
+/* ── Tahoe Login — White liquid glass card ── */
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 24px;
+  overflow: hidden;
+}
+
+/* Subtle mesh */
+.grid {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(79, 70, 229, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 70, 229, 0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse 65% 65% at 50% 50%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 65% 65% at 50% 50%, black 30%, transparent 100%);
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  animation: tahoe-enter 0.55s cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+
+@keyframes tahoe-enter {
+  from { opacity: 0; transform: translateY(30px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Logo mark — white glass capsule */
+.logoMark {
+  width: 62px;
+  height: 62px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.98);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 8px 32px rgba(79, 70, 229, 0.22),
+    0 2px 8px rgba(30,40,80,0.10),
+    inset 0 1px 0 rgba(255,255,255,1.0),
+    inset 0 -1px 0 rgba(30,40,80,0.05);
+  transition: transform var(--spring), box-shadow var(--transition-normal);
+}
+.logoMark:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow:
+    0 14px 44px rgba(79, 70, 229, 0.30),
+    0 4px 12px rgba(30,40,80,0.12),
+    inset 0 1px 0 rgba(255,255,255,1.0);
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  max-width: 300px;
+  letter-spacing: -0.005em;
+}
+
+/* ── Main white glass card ── */
+.card {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  /* White liquid glass */
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.90);
+  border-radius: var(--radius-xl);
+  box-shadow:
+    0 24px 70px rgba(30, 40, 80, 0.16),
+    0 6px 20px rgba(30,40,80,0.08),
+    inset 0 1px 0 rgba(255,255,255,1.0),
+    inset 0 -1px 0 rgba(30,40,80,0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Bright top rim highlight */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 10px; right: 10px;
+  height: 1px;
+  background: rgba(255, 255, 255, 1.0);
+  border-radius: var(--radius-full);
+  pointer-events: none;
+}
+
+/* Faint inner color wash */
+.card::after {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  height: 90px;
+  background: radial-gradient(ellipse, rgba(99,102,241,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.passwordField { position: relative; }
+
+.togglePass {
+  position: absolute;
+  right: 12px;
+  top: 33px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color var(--transition-fast);
+  z-index: 2;
+}
+.togglePass:hover { color: var(--text-secondary); }
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(30, 40, 80, 0.07);
+  position: relative;
+  z-index: 1;
+}
+
+.footerText { font-size: 13px; color: var(--text-muted); }
+
+.footerLink {
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--gradient-vibrancy);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: opacity var(--transition-fast);
+  letter-spacing: -0.01em;
+}
+.footerLink:hover { opacity: 0.75; }
