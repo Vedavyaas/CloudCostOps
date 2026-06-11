@@ -21,12 +21,6 @@ public class AnalyticsController {
         this.analysisService = analysisService;
     }
 
-    /**
-     * GET /get/analytics/summary
-     *
-     * Optional cost-weight query params (fall back to defaults when omitted):
-     *   ?cpuCost=0.05&memCost=0.01&diskCost=0.008&netCost=0.002
-     */
     @GetMapping("/get/analytics/summary")
     @PreAuthorize("hasAuthority('SCOPE_ROLE_ANALYST')")
     public ResponseEntity<CompanyAnalyticsDto> getCompanyAnalyticsSummary(

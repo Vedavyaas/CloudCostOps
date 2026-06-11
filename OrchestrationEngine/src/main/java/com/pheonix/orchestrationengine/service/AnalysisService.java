@@ -37,6 +37,86 @@ public class AnalysisService {
         return computeAnalytics(companyName, allMetrics, weights);
     }
 
+    /**
+     * Returns analytics scoped to a specific calendar month (e.g. "2026-04").
+     *
+     * Root fix: computeAnalytics() always uses ZonedDateTime.now() to classify
+     * "current month" vs "previous month" — so passing April records gives
+     * currentMonthCost=0 in June.  We bypass this by:
+     *   1. Running full-dataset analytics to get monthlySnapshots (accurate per-month $ totals).
+     *   2. Extracting targetMonth cost and prevMonth cost from those snapshots.
+     *   3. Running computeAnalytics on ONLY the target-month records to get accurate
+     *      utilisation averages (CPU%, mem%, cost-breakdown%) for that month.
+     *   4. Overriding currentMonthCost / previousMonthCost with the real snapshot values.
+     */
+    public CompanyAnalyticsDto getCompanyAnalyticsForMonth(
+            String companyName, String targetMonthKey, CostWeightsDto weights) {
+
+        if (weights == null) weights = new CostWeightsDto();
+
+        List<CloudMetricEntity> allMetrics =
+                cloudMetricRepository.findAllByCompanyInfoEntity_CompanyName(companyName);
+
+        String prevMonthKey = derivePrevMonthKey(targetMonthKey);
+
+        // ── 1. Full-dataset analytics → accurate per-month cost totals ────────
+        CompanyAnalyticsDto fullDto = computeAnalytics(companyName, allMetrics, weights);
+
+        double targetMonthCost = 0.0;
+        double prevMonthCost   = 0.0;
+        if (fullDto.getMonthlySnapshots() != null) {
+            for (CompanyAnalyticsDto.MonthlySnapshot snap : fullDto.getMonthlySnapshots()) {
+                if (targetMonthKey.equals(snap.getMonth())) targetMonthCost = snap.getCost();
+                if (prevMonthKey  .equals(snap.getMonth())) prevMonthCost   = snap.getCost();
+            }
+        }
+
+        // ── 2. Filter records to the target month only ────────────────────────
+        List<CloudMetricEntity> monthRecords = allMetrics.stream()
+                .filter(m -> m.getCloudAuditMetricEntity() != null)
+                .filter(m -> {
+                    ZonedDateTime ts = m.getLocalDateTime() != null
+                            ? m.getLocalDateTime().atZone(UTC)
+                            : ZonedDateTime.now(UTC);
+                    return targetMonthKey.equals(ts.format(MONTH_FMT));
+                })
+                .collect(Collectors.toList());
+
+        // ── 3. Compute utilisation averages from target-month records only ────
+        CompanyAnalyticsDto monthDto = computeAnalytics(companyName, monthRecords, weights);
+
+        // ── 4. Override costs with real snapshot values ───────────────────────
+        // computeAnalytics uses "today's" calendar month for currentMonthCost,
+        // which is wrong for any historical month.  Patch it here.
+        monthDto.setCurrentMonthCost(targetMonthCost);
+        monthDto.setPreviousMonthCost(prevMonthCost);
+
+        double mom = prevMonthCost > 0
+                ? ((targetMonthCost - prevMonthCost) / prevMonthCost) * 100.0
+                : 0.0;
+        monthDto.setMonthOverMonthChangePercent(mom);
+
+        // Expose full history so frontend charts still work
+        monthDto.setMonthlySnapshots(fullDto.getMonthlySnapshots());
+
+        return monthDto;
+    }
+
+    /** Derives the "yyyy-MM" key for the month before the given key. */
+    private String derivePrevMonthKey(String monthKey) {
+        try {
+            // monthKey is "yyyy-MM"
+            String[] parts = monthKey.split("-");
+            int year  = Integer.parseInt(parts[0]);
+            int month = Integer.parseInt(parts[1]);
+            month--;
+            if (month == 0) { month = 12; year--; }
+            return String.format("%04d-%02d", year, month);
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
     public List<CompanyAnalyticsDto> getAgentComparisonAnalytics(String companyName, CostWeightsDto weights) {
         if (weights == null) weights = new CostWeightsDto();
 

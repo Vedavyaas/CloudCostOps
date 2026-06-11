@@ -354,11 +354,13 @@ function AnalystAnalyticsLink() {
       </div>
       <h3 className={styles.emptyTitle}>Analytics Dashboard</h3>
       <p className={styles.emptyDesc}>
-        View aggregated cost and performance analytics for your company, or compare performance across agents.
+        View aggregated cost and performance analytics, compare agents, or upload a CSV to audit your budget against live system data.
       </p>
       <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '16px' }}>
+
+        {/* Company Analytics */}
         <Link to="/analytics" style={{
-          display: 'inline-block',
+          display: 'inline-flex', alignItems: 'center', gap: '7px',
           background: 'rgba(79, 70, 229, 0.1)',
           color: '#818cf8',
           padding: '10px 20px',
@@ -366,21 +368,22 @@ function AnalystAnalyticsLink() {
           textDecoration: 'none',
           fontWeight: '600',
           border: '1px solid rgba(79, 70, 229, 0.2)',
-          transition: 'all 0.2s'
+          transition: 'all 0.2s',
+          fontSize: '13px',
         }}
-        onMouseOver={(e) => {
-          e.target.style.background = 'rgba(79, 70, 229, 0.2)'
-          e.target.style.color = '#fff'
-        }}
-        onMouseOut={(e) => {
-          e.target.style.background = 'rgba(79, 70, 229, 0.1)'
-          e.target.style.color = '#818cf8'
-        }}
+        onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(79,70,229,0.2)'; e.currentTarget.style.color = '#fff' }}
+        onMouseOut={(e)  => { e.currentTarget.style.background = 'rgba(79,70,229,0.1)'; e.currentTarget.style.color = '#818cf8' }}
         >
-          Company Analytics &rarr;
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2z"/>
+            <path d="M15 5v14a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2h-2a2 2 0 00-2 2z"/>
+          </svg>
+          Company Analytics
         </Link>
+
+        {/* Agent Comparison */}
         <Link to="/agents-compare" style={{
-          display: 'inline-block',
+          display: 'inline-flex', alignItems: 'center', gap: '7px',
           background: 'rgba(16, 185, 129, 0.1)',
           color: '#34d399',
           padding: '10px 20px',
@@ -388,19 +391,45 @@ function AnalystAnalyticsLink() {
           textDecoration: 'none',
           fontWeight: '600',
           border: '1px solid rgba(16, 185, 129, 0.2)',
-          transition: 'all 0.2s'
+          transition: 'all 0.2s',
+          fontSize: '13px',
         }}
-        onMouseOver={(e) => {
-          e.target.style.background = 'rgba(16, 185, 129, 0.2)'
-          e.target.style.color = '#fff'
-        }}
-        onMouseOut={(e) => {
-          e.target.style.background = 'rgba(16, 185, 129, 0.1)'
-          e.target.style.color = '#34d399'
-        }}
+        onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(16,185,129,0.2)'; e.currentTarget.style.color = '#fff' }}
+        onMouseOut={(e)  => { e.currentTarget.style.background = 'rgba(16,185,129,0.1)'; e.currentTarget.style.color = '#34d399' }}
         >
-          Agent Comparison &rarr;
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/>
+            <path d="M13 6h3a2 2 0 012 2v7"/><line x1="6" y1="9" x2="6" y2="21"/>
+          </svg>
+          Agent Comparison
         </Link>
+
+        {/* Budget vs Audit — new */}
+        <Link to="/budget-compare" style={{
+          display: 'inline-flex', alignItems: 'center', gap: '7px',
+          background: 'rgba(217, 119, 6, 0.1)',
+          color: '#f59e0b',
+          padding: '10px 20px',
+          borderRadius: '8px',
+          textDecoration: 'none',
+          fontWeight: '600',
+          border: '1px solid rgba(217, 119, 6, 0.25)',
+          transition: 'all 0.2s',
+          fontSize: '13px',
+        }}
+        onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(217,119,6,0.2)'; e.currentTarget.style.color = '#fff' }}
+        onMouseOut={(e)  => { e.currentTarget.style.background = 'rgba(217,119,6,0.1)'; e.currentTarget.style.color = '#f59e0b' }}
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+          Budget vs Audit
+        </Link>
+
       </div>
     </div>
   )

@@ -41,3 +41,31 @@ export async function getCompanyAnalyticsSummary(weights = {}) {
 
   return res.json();
 }
+
+/**
+ * Upload a CSV budget report + chosen month to the backend.
+ * The backend parses the CSV, fetches live audit data, computes all
+ * variances, and returns a ready-to-render BudgetComparisonResultDto.
+ *
+ * @param {File}   csvFile     - the .csv File object from the file input
+ * @param {string} reportMonth - e.g. "2026-06"
+ * @returns {Promise<object>}  - BudgetComparisonResultDto JSON
+ */
+export async function compareBudgetWithAudit(csvFile, reportMonth) {
+  const form = new FormData();
+  form.append('file', csvFile);
+  form.append('month', reportMonth);
+
+  const res = await fetch(`${BASE_URL}/ORCHESTRATIONENGINE/get/analytics/budget-comparison`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${getToken()}` }, // no Content-Type — browser sets multipart boundary
+    body: form,
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(text || 'Budget comparison request failed');
+  }
+
+  return res.json();
+}

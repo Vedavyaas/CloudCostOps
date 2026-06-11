@@ -5,6 +5,7 @@ import CreateCompanyPage from './pages/CreateCompanyPage'
 import DashboardPage from './pages/DashboardPage'
 import AnalyticsPage from './pages/AnalyticsPage'
 import AgentComparisonPage from './pages/AgentComparisonPage'
+import BudgetComparisonPage from './pages/BudgetComparisonPage'
 
 /* ─── Protected Route ─────────────────────────────────────────────── */
 // Redirects to /login if not authenticated; shows spinner while loading
@@ -96,6 +97,14 @@ function AppRoutes() {
         element={
           <ProtectedRoute>
             <AgentComparisonPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/budget-compare"
+        element={
+          <ProtectedRoute>
+            <BudgetComparisonPage />
           </ProtectedRoute>
         }
       />

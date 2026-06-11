@@ -1,0 +1,7 @@
+Service Category / Cost Center,Budget Allocated,Actual Spend,Prior Month Spend,MoM Variance ($),MoM Variance (%)
+Compute / Virtual Machines,12000,13450.75,11800,1650.75,13.99
+Memory / RAM,4500,4120.50,4300,-179.50,-4.17
+Network / Egress & Bandwidth,3200,3875.00,2950,925.00,31.36
+Storage / Disk & Blob,2800,2640.25,2900,-259.75,-8.96
+Database / RDS,1500,1780.00,1420,360.00,25.35
+Application / CDN & Load Balancer,900,870.50,950,-79.50,-8.37
