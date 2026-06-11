@@ -13,5 +13,6 @@
     <module>APIGateway</module>
     <module>AuthenticationSystem</module>
     <module>Discovery</module>
+    <module>OrchestrationEngine</module>
   </modules>
 </project>

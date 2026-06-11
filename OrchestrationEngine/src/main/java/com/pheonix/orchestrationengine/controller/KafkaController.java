@@ -59,6 +59,7 @@ public class KafkaController {
     }
 
     /*
+    TOPIC NAME : cloud_metrics
     {
       "eventId": "1",
 
@@ -247,11 +248,11 @@ public class KafkaController {
      *
      * All analytics fields in this payload are PRE-CALCULATED by the upstream
      * audit producer / monitoring agent before being published to Kafka.
-     * This listener only deserialises the event and persists it — no recalculation
+     * This listener only deserializes the event and persists it — no recalculation
      * or derivation of values is performed here.
      *
      * Cost breakdowns (computeCostPercentage, memoryCostPercentage, etc.),
-     * utilisation scores (resourceUtilizationScore, queryEfficiencyScore, etc.),
+     * utilization scores (resourceUtilizationScore, queryEfficiencyScore, etc.),
      * anomaly scores, and capacity projections all originate from the producer side.
      *
      * Example payload:
