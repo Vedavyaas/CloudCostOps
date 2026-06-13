@@ -238,6 +238,13 @@ public class KafkaController {
             CloudMetricEntity saved = cloudMetricRepository.save(cloudMetricEntity);
             log.info("Successfully saved CloudMetricEntity with ID: {}", saved.getId());
 
+            CloudAuditMetricEntity existingAudit = cloudAuditMetricRepository.findByEventId(event.eventId());
+            if (existingAudit != null) {
+                saved.setCloudAuditMetricEntity(existingAudit);
+                cloudMetricRepository.save(saved);
+                log.info("Linked pre-existing audit metric for eventId={}", event.eventId());
+            }
+
         } catch (JsonProcessingException e) {
             log.error("Failed to parse Kafka message payload: {}", payload, e);
         }
@@ -246,8 +253,8 @@ public class KafkaController {
     /*
      * Topic: cloud_audit_metric
      *
-     * All analytics fields in this payload are PRE-CALCULATED by the upstream
-     * audit producer / monitoring agent before being published to Kafka.
+     * All analytics fields in this payload are produced by the audit-ml-service
+     * (or an upstream monitoring agent) before being published to Kafka.
      * This listener only deserializes the event and persists it — no recalculation
      * or derivation of values is performed here.
      *
@@ -372,8 +379,16 @@ public class KafkaController {
             CloudAuditMetricEntity saved = cloudAuditMetricRepository.save(entity);
 
             CloudMetricEntity cloudMetricEntity = cloudMetricRepository.findByEventId(event.eventId());
-
-            cloudMetricEntity.setCloudAuditMetricEntity(saved);
+            if (cloudMetricEntity != null) {
+                cloudMetricEntity.setCloudAuditMetricEntity(saved);
+                cloudMetricRepository.save(cloudMetricEntity);
+                log.info("Linked audit metric to CloudMetricEntity for eventId={}", event.eventId());
+            } else {
+                log.warn(
+                        "CloudMetricEntity not yet available for eventId={}; audit saved and will link when metric arrives",
+                        event.eventId()
+                );
+            }
             log.info("Successfully saved CloudAuditMetricEntity with ID: {}", saved.getId());
 
         } catch (JsonProcessingException e) {

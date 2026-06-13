@@ -37,3 +37,10 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Python (audit-ml-service) ###
+audit-ml-service/.venv/
+audit-ml-service/__pycache__/
+audit-ml-service/**/__pycache__/
+audit-ml-service/*.pyc
+audit-ml-service/models/*.joblib

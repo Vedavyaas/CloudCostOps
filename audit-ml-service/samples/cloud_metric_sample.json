@@ -1,0 +1,54 @@
+{
+  "eventId": "evt-sample-001",
+  "company": {
+    "companyName": "amazon"
+  },
+  "agent": {
+    "agentId": "prod-agent-1",
+    "hostname": "prod-server-01",
+    "ipAddress": "10.0.1.25"
+  },
+  "resource": {
+    "resourceType": "POSTGRESQL",
+    "resourceId": "db-prod-01",
+    "environment": "PRODUCTION",
+    "region": "ap-south-1",
+    "availabilityZone": "ap-south-1a"
+  },
+  "compute": {
+    "cpuUsagePercent": 42.7,
+    "cpuCores": 8,
+    "loadAverage1m": 1.8,
+    "loadAverage5m": 1.4,
+    "loadAverage15m": 1.2
+  },
+  "memory": {
+    "totalMB": 16384,
+    "usedMB": 9216,
+    "freeMB": 7168,
+    "usagePercent": 56.2
+  },
+  "network": {
+    "networkInMB": 245.76,
+    "networkOutMB": 512.0,
+    "activeConnections": 67
+  },
+  "disk": {
+    "diskReadMB": 128.4,
+    "diskWriteMB": 84.2,
+    "diskUsagePercent": 48.3,
+    "storageUsedGB": 380.5
+  },
+  "database": {
+    "activeConnections": 54,
+    "queriesPerSecond": 420,
+    "averageQueryTimeMs": 12.4,
+    "cacheHitRatio": 0.968,
+    "databaseSizeGB": 156.4
+  },
+  "application": {
+    "requestsPerMinute": 1850,
+    "errorRatePercent": 0.7,
+    "responseTimeMs": 120.0
+  }
+}
