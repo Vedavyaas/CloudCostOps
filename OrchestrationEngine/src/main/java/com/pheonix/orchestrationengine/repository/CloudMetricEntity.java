@@ -1,17 +1,16 @@
 package com.pheonix.orchestrationengine.repository;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.index.Indexed;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSecondaryPartitionKey;
+
 import java.time.Instant;
+import java.util.UUID;
 
-@Document(collection = "cloud_metrics")
+@DynamoDbBean
 public class CloudMetricEntity {
-    @Id
-    private String id;
-
-    @Indexed
     private String eventId;
+    private String companyName;
 
     private Instant localDateTime;
 
@@ -54,22 +53,28 @@ public class CloudMetricEntity {
         this.databaseInfoEntity = databaseInfoEntity;
         this.applicationInfoEntity = applicationInfoEntity;
         this.cloudAuditMetricEntity = null;
+        if (companyInfoEntity != null) {
+            this.companyName = companyInfoEntity.getCompanyName();
+        }
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
-    public String getId() {
-        return id;
-    }
-
+    @DynamoDbPartitionKey
     public String getEventId() {
         return eventId;
     }
 
     public void setEventId(String eventId) {
         this.eventId = eventId;
+    }
+
+    @DynamoDbSecondaryPartitionKey(indexNames = {"companyName-index"})
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
     public Instant getLocalDateTime() {
@@ -86,6 +91,9 @@ public class CloudMetricEntity {
 
     public void setCompanyInfoEntity(CompanyInfoEntity companyInfoEntity) {
         this.companyInfoEntity = companyInfoEntity;
+        if (companyInfoEntity != null) {
+            this.companyName = companyInfoEntity.getCompanyName();
+        }
     }
 
     public ComputeInfoEntity getComputeInfoEntity() {

@@ -40,7 +40,7 @@ def _create_consumer() -> KafkaConsumer:
         INPUT_TOPIC,
         bootstrap_servers=KAFKA_BOOTSTRAP.split(","),
         group_id=CONSUMER_GROUP,
-        auto_offset_reset="latest",
+        auto_offset_reset="earliest",
         enable_auto_commit=True,
         value_deserializer=lambda m: json.loads(m.decode("utf-8")),
         consumer_timeout_ms=1000,

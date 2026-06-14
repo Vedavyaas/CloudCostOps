@@ -1,5 +1,8 @@
 package com.pheonix.orchestrationengine.repository;
 
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+
+@DynamoDbBean
 public class ApplicationInfoEntity {
     private Long id;
 

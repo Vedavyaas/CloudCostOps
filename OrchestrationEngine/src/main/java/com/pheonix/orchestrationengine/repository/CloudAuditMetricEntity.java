@@ -1,16 +1,15 @@
 package com.pheonix.orchestrationengine.repository;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.index.Indexed;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSecondaryPartitionKey;
+
 import java.time.Instant;
+import java.util.UUID;
 
-@Document(collection = "cloud_audit_metrics")
+@DynamoDbBean
 public class CloudAuditMetricEntity {
-    @Id
     private String id;
-
-    @Indexed
     private String eventId;
 
     private Instant auditTimestamp;
@@ -162,9 +161,13 @@ public class CloudAuditMetricEntity {
     }
 
     public void setId(String id) { this.id = id; }
+    
+    @DynamoDbPartitionKey
     public String getId() { return id; }
 
+    @DynamoDbSecondaryPartitionKey(indexNames = {"eventId-index"})
     public String getEventId() { return eventId; }
+    
     public void setEventId(String eventId) { this.eventId = eventId; }
 
     public Instant getAuditTimestamp() { return auditTimestamp; }
