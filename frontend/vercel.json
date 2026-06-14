@@ -1,0 +1,24 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "http://13.203.197.115:6000/AUTHENTICATIONSYSTEM/api/$1"
+    },
+    {
+      "source": "/admin/(.*)",
+      "destination": "http://13.203.197.115:6000/AUTHENTICATIONSYSTEM/admin/$1"
+    },
+    {
+      "source": "/get/(.*)",
+      "destination": "http://13.203.197.115:6000/AUTHENTICATIONSYSTEM/get/$1"
+    },
+    {
+      "source": "/ORCHESTRATIONENGINE/(.*)",
+      "destination": "http://13.203.197.115:6000/ORCHESTRATIONENGINE/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
