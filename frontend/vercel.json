@@ -1,20 +1,24 @@
 {
   "rewrites": [
     {
+      "source": "/api/vercel_proxy",
+      "destination": "/api/vercel_proxy"
+    },
+    {
       "source": "/api/(.*)",
-      "destination": "http://13.204.66.166/AUTHENTICATIONSYSTEM/api/$1"
+      "destination": "/api/vercel_proxy"
     },
     {
       "source": "/admin/(.*)",
-      "destination": "http://13.204.66.166/AUTHENTICATIONSYSTEM/admin/$1"
+      "destination": "/api/vercel_proxy"
     },
     {
       "source": "/get/(.*)",
-      "destination": "http://13.204.66.166/AUTHENTICATIONSYSTEM/get/$1"
+      "destination": "/api/vercel_proxy"
     },
     {
       "source": "/ORCHESTRATIONENGINE/(.*)",
-      "destination": "http://13.204.66.166/ORCHESTRATIONENGINE/$1"
+      "destination": "/api/vercel_proxy"
     },
     {
       "source": "/(.*)",
