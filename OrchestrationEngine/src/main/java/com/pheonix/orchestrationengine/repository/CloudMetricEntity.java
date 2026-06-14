@@ -1,46 +1,29 @@
 package com.pheonix.orchestrationengine.repository;
 
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.index.Indexed;
 import java.time.Instant;
 
-@Entity
+@Document(collection = "cloud_metrics")
 public class CloudMetricEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String id;
 
+    @Indexed
     private String eventId;
 
     private Instant localDateTime;
 
-    @OneToOne(cascade = CascadeType.ALL)
     private CompanyInfoEntity companyInfoEntity;
-
-    @OneToOne(cascade = CascadeType.ALL)
     private ComputeInfoEntity computeInfoEntity;
-
-    @OneToOne(cascade = CascadeType.ALL)
     private AgentInfoEntity agentInfoEntity;
-
-    @OneToOne(cascade = CascadeType.ALL)
     private ResourceInfoEntity resourceInfoEntity;
-
-    @OneToOne(cascade = CascadeType.ALL)
     private MemoryInfoEntity memoryInfoEntity;
-
-    @OneToOne(cascade = CascadeType.ALL)
     private NetworkInfoEntity networkInfoEntity;
-
-    @OneToOne(cascade = CascadeType.ALL)
     private DiskInfoEntity diskInfoEntity;
-
-    @OneToOne(cascade = CascadeType.ALL)
     private DatabaseInfoEntity databaseInfoEntity;
-
-    @OneToOne(cascade = CascadeType.ALL)
     private ApplicationInfoEntity applicationInfoEntity;
-
-    @OneToOne(cascade = CascadeType.ALL)
     private CloudAuditMetricEntity cloudAuditMetricEntity;
 
     public CloudMetricEntity() {
@@ -73,11 +56,11 @@ public class CloudMetricEntity {
         this.cloudAuditMetricEntity = null;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 

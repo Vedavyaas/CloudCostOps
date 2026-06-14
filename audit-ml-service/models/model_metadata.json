@@ -71,7 +71,7 @@
     "overallAnomalyScore"
   ],
   "training_samples": 30000,
-  "test_mae": 110.6338096533167,
+  "test_mae": 110.63380965331572,
   "test_r2": 0.9719168951371582,
   "model_type": "RandomForestRegressor (MultiOutput)"
 }

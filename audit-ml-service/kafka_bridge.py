@@ -10,7 +10,6 @@ import time
 from typing import Any
 
 from kafka import KafkaConsumer, KafkaProducer
-from kafka.errors import NoBrokersAvailable
 
 from config import (
     CONSUMER_GROUP,
@@ -71,7 +70,7 @@ def run_bridge() -> None:
     try:
         consumer = _create_consumer()
         producer = _create_producer()
-    except NoBrokersAvailable as exc:
+    except Exception as exc:
         log.error("Kafka broker unavailable: %s", exc)
         sys.exit(1)
 

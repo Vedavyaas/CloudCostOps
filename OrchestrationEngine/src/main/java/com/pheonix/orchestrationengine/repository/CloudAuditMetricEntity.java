@@ -1,17 +1,16 @@
 package com.pheonix.orchestrationengine.repository;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.index.Indexed;
 import java.time.Instant;
 
-@Entity
+@Document(collection = "cloud_audit_metrics")
 public class CloudAuditMetricEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String id;
 
+    @Indexed
     private String eventId;
 
     private Instant auditTimestamp;
@@ -162,8 +161,8 @@ public class CloudAuditMetricEntity {
         this.overallAnomalyScore = overallAnomalyScore;
     }
 
-    public void setId(Long id) { this.id = id; }
-    public Long getId() { return id; }
+    public void setId(String id) { this.id = id; }
+    public String getId() { return id; }
 
     public String getEventId() { return eventId; }
     public void setEventId(String eventId) { this.eventId = eventId; }

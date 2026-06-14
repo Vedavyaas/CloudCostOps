@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 
@@ -19,42 +18,15 @@ public class KafkaController {
 
     private final ObjectMapper objectMapper;
     private final CloudMetricRepository cloudMetricRepository;
-    private final CompanyInfoRepository companyInfoRepository;
-    private final AgentInfoRepository agentInfoRepository;
-    private final ComputeInfoRepository computeInfoRepository;
-    private final ResourceInfoRepository resourceInfoRepository;
-    private final MemoryInfoRepository memoryInfoRepository;
-    private final NetworkInfoRepository networkInfoRepository;
-    private final DiskInfoRepository diskInfoRepository;
-    private final DatabaseInfoRepository databaseInfoRepository;
-    private final ApplicationInfoRepository applicationInfoRepository;
     private final CloudAuditMetricRepository cloudAuditMetricRepository;
 
     public KafkaController(
             ObjectMapper objectMapper,
             CloudMetricRepository cloudMetricRepository,
-            CompanyInfoRepository companyInfoRepository,
-            AgentInfoRepository agentInfoRepository,
-            ComputeInfoRepository computeInfoRepository,
-            ResourceInfoRepository resourceInfoRepository,
-            MemoryInfoRepository memoryInfoRepository,
-            NetworkInfoRepository networkInfoRepository,
-            DiskInfoRepository diskInfoRepository,
-            DatabaseInfoRepository databaseInfoRepository,
-            ApplicationInfoRepository applicationInfoRepository,
             CloudAuditMetricRepository cloudAuditMetricRepository
     ) {
         this.objectMapper = objectMapper;
         this.cloudMetricRepository = cloudMetricRepository;
-        this.companyInfoRepository = companyInfoRepository;
-        this.agentInfoRepository = agentInfoRepository;
-        this.computeInfoRepository = computeInfoRepository;
-        this.resourceInfoRepository = resourceInfoRepository;
-        this.memoryInfoRepository = memoryInfoRepository;
-        this.networkInfoRepository = networkInfoRepository;
-        this.diskInfoRepository = diskInfoRepository;
-        this.databaseInfoRepository = databaseInfoRepository;
-        this.applicationInfoRepository = applicationInfoRepository;
         this.cloudAuditMetricRepository = cloudAuditMetricRepository;
     }
 
@@ -125,119 +97,95 @@ public class KafkaController {
     }
     */
 
-    @Transactional
     @KafkaListener(topics = "cloud_metrics", groupId = "orc_group")
     public void listenCloudMetrics(String payload) {
         try {
             CloudMetricEvent event = objectMapper.readValue(payload, CloudMetricEvent.class);
             log.info("Successfully converted payload to CloudMetricEvent: {}", event);
 
+            // ── Idempotency: reuse existing record if DataSeeder already inserted it ──
+            CloudMetricEntity saved = cloudMetricRepository.findByEventId(event.eventId());
+            if (saved != null) {
+                log.info("CloudMetricEntity already exists for eventId={} — skipping duplicate insert", event.eventId());
+                // Still link audit if it arrived first and is not yet attached
+                if (saved.getCloudAuditMetricEntity() == null) {
+                    CloudAuditMetricEntity existingAudit = cloudAuditMetricRepository.findByEventId(event.eventId());
+                    if (existingAudit != null) {
+                        saved.setCloudAuditMetricEntity(existingAudit);
+                        cloudMetricRepository.save(saved);
+                        log.info("Linked pre-existing audit metric for eventId={}", event.eventId());
+                    }
+                }
+                return;
+            }
+
+            // ── New record: build and persist ────────────────────────────────────────
             Instant localDateTime = Instant.now();
 
             CompanyInfoEntity companyInfoEntity = null;
             if (event.company() != null) {
-                companyInfoEntity = companyInfoRepository.save(new CompanyInfoEntity(
-                        event.company().companyName()
-                ));
+                companyInfoEntity = new CompanyInfoEntity(event.company().companyName());
             }
-
             AgentInfoEntity agentInfoEntity = null;
             if (event.agent() != null) {
-                agentInfoEntity = agentInfoRepository.save(new AgentInfoEntity(
-                        event.agent().agentId(),
-                        event.agent().hostname(),
-                        event.agent().ipAddress()
-                ));
+                agentInfoEntity = new AgentInfoEntity(
+                        event.agent().agentId(), event.agent().hostname(), event.agent().ipAddress());
             }
-
             ComputeInfoEntity computeInfoEntity = null;
             if (event.compute() != null) {
-                computeInfoEntity = computeInfoRepository.save(new ComputeInfoEntity(
-                        event.compute().cpuUsagePercent(),
-                        event.compute().cpuCores(),
-                        event.compute().loadAverage1m(),
-                        event.compute().loadAverage5m(),
-                        event.compute().loadAverage15m()
-                ));
+                computeInfoEntity = new ComputeInfoEntity(
+                        event.compute().cpuUsagePercent(), event.compute().cpuCores(),
+                        event.compute().loadAverage1m(), event.compute().loadAverage5m(),
+                        event.compute().loadAverage15m());
             }
-
             ResourceInfoEntity resourceInfoEntity = null;
             if (event.resource() != null) {
-                resourceInfoEntity = resourceInfoRepository.save(new ResourceInfoEntity(
-                        event.resource().resourceType(),
-                        event.resource().resourceId(),
-                        event.resource().environment(),
-                        event.resource().region(),
-                        event.resource().availabilityZone()
-                ));
+                resourceInfoEntity = new ResourceInfoEntity(
+                        event.resource().resourceType(), event.resource().resourceId(),
+                        event.resource().environment(), event.resource().region(),
+                        event.resource().availabilityZone());
             }
-
             MemoryInfoEntity memoryInfoEntity = null;
             if (event.memory() != null) {
-                memoryInfoEntity = memoryInfoRepository.save(new MemoryInfoEntity(
-                        event.memory().totalMB(),
-                        event.memory().usedMB(),
-                        event.memory().freeMB(),
-                        event.memory().usagePercent()
-                ));
+                memoryInfoEntity = new MemoryInfoEntity(
+                        event.memory().totalMB(), event.memory().usedMB(),
+                        event.memory().freeMB(), event.memory().usagePercent());
             }
-
             NetworkInfoEntity networkInfoEntity = null;
             if (event.network() != null) {
-                networkInfoEntity = networkInfoRepository.save(new NetworkInfoEntity(
-                        event.network().networkInMB(),
-                        event.network().networkOutMB(),
-                        event.network().activeConnections()
-                ));
+                networkInfoEntity = new NetworkInfoEntity(
+                        event.network().networkInMB(), event.network().networkOutMB(),
+                        event.network().activeConnections());
             }
-
             DiskInfoEntity diskInfoEntity = null;
             if (event.disk() != null) {
-                diskInfoEntity = diskInfoRepository.save(new DiskInfoEntity(
-                        event.disk().diskReadMB(),
-                        event.disk().diskWriteMB(),
-                        event.disk().diskUsagePercent(),
-                        event.disk().storageUsedGB()
-                ));
+                diskInfoEntity = new DiskInfoEntity(
+                        event.disk().diskReadMB(), event.disk().diskWriteMB(),
+                        event.disk().diskUsagePercent(), event.disk().storageUsedGB());
             }
-
             DatabaseInfoEntity databaseInfoEntity = null;
             if (event.database() != null) {
-                databaseInfoEntity = databaseInfoRepository.save(new DatabaseInfoEntity(
-                        event.database().activeConnections(),
-                        event.database().queriesPerSecond(),
-                        event.database().averageQueryTimeMs(),
-                        event.database().cacheHitRatio(),
-                        event.database().databaseSizeGB()
-                ));
+                databaseInfoEntity = new DatabaseInfoEntity(
+                        event.database().activeConnections(), event.database().queriesPerSecond(),
+                        event.database().averageQueryTimeMs(), event.database().cacheHitRatio(),
+                        event.database().databaseSizeGB());
             }
-
             ApplicationInfoEntity applicationInfoEntity = null;
             if (event.application() != null) {
-                applicationInfoEntity = applicationInfoRepository.save(new ApplicationInfoEntity(
-                        event.application().requestsPerMinute(),
-                        event.application().errorRatePercent(),
-                        event.application().responseTimeMs()
-                ));
+                applicationInfoEntity = new ApplicationInfoEntity(
+                        event.application().requestsPerMinute(), event.application().errorRatePercent(),
+                        event.application().responseTimeMs());
             }
 
             CloudMetricEntity cloudMetricEntity = new CloudMetricEntity(
-                    event.eventId(),
-                    localDateTime,
-                    companyInfoEntity,
-                    computeInfoEntity,
-                    agentInfoEntity,
-                    resourceInfoEntity,
-                    memoryInfoEntity,
-                    networkInfoEntity,
-                    diskInfoEntity,
-                    databaseInfoEntity,
-                    applicationInfoEntity
-            );
+                    event.eventId(), localDateTime, companyInfoEntity, computeInfoEntity,
+                    agentInfoEntity, resourceInfoEntity, memoryInfoEntity, networkInfoEntity,
+                    diskInfoEntity, databaseInfoEntity, applicationInfoEntity);
 
-            CloudMetricEntity saved = cloudMetricRepository.save(cloudMetricEntity);
-            log.info("Successfully saved CloudMetricEntity with ID: {}", saved.getId());
+            saved = cloudMetricRepository.save(cloudMetricEntity);
+            log.info("Saved new CloudMetricEntity id={} eventId={}", saved.getId(), event.eventId());
 
+            // Link audit if it already arrived
             CloudAuditMetricEntity existingAudit = cloudAuditMetricRepository.findByEventId(event.eventId());
             if (existingAudit != null) {
                 saved.setCloudAuditMetricEntity(existingAudit);
@@ -310,8 +258,6 @@ public class KafkaController {
      * }
      */
 
-
-    @Transactional
     @KafkaListener(topics = "cloud_audit_metric", groupId = "orc_group")
     public void listenAuditMetric(String payload) {
         try {
@@ -378,6 +324,7 @@ public class KafkaController {
 
             CloudAuditMetricEntity saved = cloudAuditMetricRepository.save(entity);
 
+            // Link to CloudMetricEntity if it already arrived
             CloudMetricEntity cloudMetricEntity = cloudMetricRepository.findByEventId(event.eventId());
             if (cloudMetricEntity != null) {
                 cloudMetricEntity.setCloudAuditMetricEntity(saved);

@@ -23,13 +23,19 @@ public class DataSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        CompanyEntity company = new CompanyEntity("amazon");
-        UserEntity user = new UserEntity(company, "amazonAdmin", "admin@gmail.com", passwordEncoder.encode("123456"), Role.ADMIN);
+        if(companyRepository.count() == 0 && userRepository.count() == 0) {
+            CompanyEntity company = new CompanyEntity("amazon");
+            UserEntity user = new UserEntity(company, "amazonAdmin", "admin@gmail.com", passwordEncoder.encode("123456"), Role.ADMIN);
 
-        UserEntity user1 = new UserEntity(company, "amazonAnalyst", "analyst@gmail.com", passwordEncoder.encode("123456"), Role.ANALYST);
+            UserEntity user1 = new UserEntity(company, "amazonAnalyst", "analyst@gmail.com", passwordEncoder.encode("123456"), Role.ANALYST);
 
-        companyRepository.save(company);
-        userRepository.save(user1);
-        userRepository.save(user);
+            companyRepository.save(company);
+            userRepository.save(user1);
+            userRepository.save(user);
+
+            System.out.println(company);
+            System.out.println(user);
+            System.out.println(user1);
+        }
     }
 }

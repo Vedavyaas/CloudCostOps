@@ -5,15 +5,23 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
-import java.time.temporal.ChronoUnit;
+import java.time.YearMonth;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.UUID;
-import java.util.concurrent.*;
 
 @Component
 public class DataSeeder implements CommandLineRunner {
+
+    // ── Agent profiles [prod-agent-1, prod-agent-2, dev-agent-1, staging-agent] ──
+    private static final String[] AGENT_IDS  = {"prod-agent-1", "prod-agent-2", "dev-agent-1", "staging-agent"};
+    private static final double[] BASE_CPU   = {45.0,  62.0,  18.0,  32.0};
+    private static final double[] BASE_MEM   = {62.0,  74.0,  30.0,  46.0};
+    private static final int[]    CPU_CORES  = {16,    32,     8,    16};
+    private static final long[]   TOTAL_MB   = {32768, 65536, 16384, 32768};
+    private static final int[]    BASE_RPM   = {1800,  3200,   200,   850};
+    private static final int[]    BASE_QPS   = { 420,   650,    80,   270};
+    private static final double[] STORAGE_GB = { 380,   480,    80,   200};
 
     private final CloudMetricRepository cloudMetricRepository;
 
@@ -23,125 +31,125 @@ public class DataSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        if (cloudMetricRepository.count() > 0) {
+            System.out.println("[DataSeeder] Data already present — skipping seed.");
+            return;
+        }
 
-        // ── 1. Wipe everything so only amazon & vercel remain ──────────────
-        System.out.println("[DataSeeder] Clearing all existing metric data...");
-        cloudMetricRepository.deleteAll();
-        System.out.println("[DataSeeder] All records deleted.");
+        System.out.println("[DataSeeder] Seeding 240 static cloud metric records...");
 
-        // ── 2. Seed amazon and vercel ──────────────────────────────────────
-        String[] companies = { "amazon", "vercel" };
+        String[][] companies = {
+            {"amazon", "amz", "10.0"},
+            {"vercel", "vcl", "10.1"}
+        };
+        int[][] yearMonths = {{2026, 4}, {2026, 5}, {2026, 6}};
+        int recordsPerMonth = 40;
 
-        for (String company : companies) {
-            System.out.printf("[DataSeeder] Seeding %s...%n", company);
-            long t0 = System.currentTimeMillis();
-
-            int total   = 2000;
-            int threads = Math.max(2, Runtime.getRuntime().availableProcessors());
-            ExecutorService exec = Executors.newFixedThreadPool(threads);
-            int batchSize = total / threads;
-
-            List<Future<List<CloudMetricEntity>>> futures = new ArrayList<>();
-            for (int i = 0; i < threads; i++) {
-                final int size = (i == threads - 1) ? (total - i * batchSize) : batchSize;
-                futures.add(exec.submit(() -> buildBatch(company, size)));
+        List<CloudMetricEntity> all = new ArrayList<>();
+        for (String[] co : companies) {
+            for (int[] ym : yearMonths) {
+                all.addAll(generateMonth(co[0], co[1], co[2], ym[0], ym[1], recordsPerMonth));
             }
-
-            List<CloudMetricEntity> all = new ArrayList<>(total);
-            for (Future<List<CloudMetricEntity>> f : futures) all.addAll(f.get());
-            exec.shutdown();
-
-            all.sort((a, b) -> a.getLocalDateTime().compareTo(b.getLocalDateTime()));
-            cloudMetricRepository.saveAll(all);
-
-            System.out.printf("[DataSeeder] ✓ Seeded %d records for '%s' in %dms%n",
-                    all.size(), company, System.currentTimeMillis() - t0);
         }
 
-        System.out.println("[DataSeeder] Done.");
+        cloudMetricRepository.saveAll(all);
+        System.out.printf(
+            "[DataSeeder] Done — inserted %d records (%d companies × 3 months × %d records).%n",
+            all.size(), companies.length, recordsPerMonth);
+        System.out.println("[DataSeeder] Run 'python main.py seed' in audit-ml-service to generate audit metrics via Kafka.");
     }
 
-    // ── Batch builder ──────────────────────────────────────────────────────
-    private List<CloudMetricEntity> buildBatch(String company, int size) {
-        Random rng = new Random();
-        Instant now = Instant.now();
-        List<CloudMetricEntity> batch = new ArrayList<>(size);
+    /**
+     * Generates {@code count} deterministic CloudMetricEntity records for the given
+     * company/month, spread evenly across the calendar days of that month.
+     * Values are derived purely from the record index using sine/cosine oscillation
+     * so they are reproducible and match the Python seed_data.py output.
+     */
+    private List<CloudMetricEntity> generateMonth(
+            String company, String prefix, String ipNet,
+            int year, int month, int count) {
 
-        for (int j = 0; j < size; j++) {
+        List<CloudMetricEntity> records = new ArrayList<>(count);
+        YearMonth ym = YearMonth.of(year, month);
+        int daysInMonth = ym.lengthOfMonth();
+
+        // Per-company IP subnet shift: amazon=0, vercel=1 already encoded in ipNet
+        String[] agentIps = {
+            ipNet + ".0.10",
+            ipNet + ".0.11",
+            ipNet + ".0.20",
+            ipNet + ".0.30"
+        };
+
+        for (int i = 0; i < count; i++) {
+            int agentIdx = i % 4;
+
+            // ── Timestamp: spread evenly across month ─────────────────────
+            int dayOfMonth = 1 + (i * daysInMonth / count);
+            int hour       = (i * 23 / count);
+            Instant ts = ym.atDay(dayOfMonth)
+                           .atTime(hour, (i * 7) % 60)
+                           .toInstant(ZoneOffset.UTC);
+
+            // ── Deterministic oscillation — same formula as seed_data.py ──
+            double wave  = Math.sin(i * Math.PI / 10.0);  // -1 .. +1
+            double wave2 = Math.cos(i * Math.PI / 8.0);   // secondary oscillation
+
+            double cpu    = clamp(BASE_CPU[agentIdx]  + 15.0 * wave,  5.0, 95.0);
+            double memPct = clamp(BASE_MEM[agentIdx]  + 10.0 * wave2, 10.0, 95.0);
+
+            long totalMb = TOTAL_MB[agentIdx];
+            long usedMb  = (long) (totalMb * memPct / 100.0);
+            long freeMb  = totalMb - usedMb;
+
+            double netIn  = clamp(50.0 + 120.0 * ((cpu - 5.0) / 90.0), 10.0, 350.0);
+            double netOut = netIn * 0.78;
+            double diskPct   = clamp(28.0 + 22.0 * wave,  8.0, 90.0);
+            double storageGb = STORAGE_GB[agentIdx] + month * 8.0 + i * 1.5;
+            double diskRead  = clamp(40.0 + 90.0 * ((cpu - 5.0) / 90.0), 5.0, 400.0);
+            double diskWrite = diskRead * 0.62;
+
+            int    qps     = (int) clamp(BASE_QPS[agentIdx] * (0.75 + 0.5 * ((cpu - 5.0) / 90.0)), 5, 2000);
+            double queryMs = clamp(4.0 + 22.0 * (1.0 - (cpu - 5.0) / 90.0), 0.5, 200.0);
+            double cacheHit = clamp(0.95 - 0.06 * wave, 0.82, 0.999);
+            int    dbConns  = Math.max(1, qps / 8);
+            double dbSizeGb = STORAGE_GB[agentIdx] * 0.4 + month * 3.0 + i * 0.8;
+
+            int    rpm    = (int) clamp(BASE_RPM[agentIdx] * (0.75 + 0.5 * ((cpu - 5.0) / 90.0)), 10, 8000);
+            double errPct = clamp(0.4 + 2.5 * Math.max(0, wave), 0.05, 8.0);
+            double respMs = clamp(40.0 + 220.0 * (1.0 - (cpu - 5.0) / 90.0), 15.0, 900.0);
+
+            // ── Build entity ───────────────────────────────────────────────
+            String eventId = String.format("evt-%s-%d-%02d-%02d", prefix, year, month, i + 1);
+
             CloudMetricEntity e = new CloudMetricEntity();
-            e.setEventId(UUID.randomUUID().toString());
-            // Spread across 90 days so monthly breakdown is meaningful
-            e.setLocalDateTime(now.minus(rng.nextInt(90 * 24 * 60), ChronoUnit.MINUTES));
+            e.setEventId(eventId);
+            e.setLocalDateTime(ts);
             e.setCompanyInfoEntity(new CompanyInfoEntity(company));
-
-            // Compute
-            double cpu = 5 + rng.nextDouble() * 90;
+            e.setAgentInfoEntity(new AgentInfoEntity(agentId(agentIdx), agentId(agentIdx) + ".internal", agentIps[agentIdx]));
             e.setComputeInfoEntity(new ComputeInfoEntity(
-                    cpu, 16 + rng.nextInt(16),
-                    cpu / 10.0, cpu / 12.0, cpu / 15.0));
-
-            // Memory
-            long totalMb  = 32768;
-            double memPct = 15 + rng.nextDouble() * 80;
-            long usedMb   = (long) (totalMb * memPct / 100);
-            e.setMemoryInfoEntity(new MemoryInfoEntity(totalMb, usedMb, totalMb - usedMb, memPct));
-
-            // Disk
-            double diskRead  = 5  + rng.nextDouble() * 300;
-            double diskWrite = 2  + rng.nextDouble() * 200;
-            double diskPct   = 10 + rng.nextDouble() * 75;
-            double storage   = 20 + rng.nextDouble() * 980;
-            e.setDiskInfoEntity(new DiskInfoEntity(diskRead, diskWrite, diskPct, storage));
-
-            // Network
-            double netIn  = 0.5 + rng.nextDouble() * 150;
-            double netOut = 0.5 + rng.nextDouble() * 120;
-            int    conns  = 5   + rng.nextInt(1995);
-            e.setNetworkInfoEntity(new NetworkInfoEntity(netIn, netOut, conns));
-
-            // Application
-            int    rpm    = 10  + rng.nextInt(4990);
-            double errPct = rng.nextDouble() * 8;
-            double respMs = 10  + rng.nextDouble() * 990;
-            e.setApplicationInfoEntity(new ApplicationInfoEntity(rpm, errPct, respMs));
-
-            // Database
-            int    dbConns  = 1   + rng.nextInt(499);
-            int    qps      = 5   + rng.nextInt(995);
-            double queryMs  = 0.5 + rng.nextDouble() * 199;
-            double cacheHit = 0.5 + rng.nextDouble() * 0.49;
-            double dbSizeGB = 0.5 + rng.nextDouble() * 199;
-            e.setDatabaseInfoEntity(new DatabaseInfoEntity(dbConns, qps, queryMs, cacheHit, dbSizeGB));
-
-            String[] agentIds = { "prod-agent-1", "prod-agent-2", "dev-agent-1", "staging-agent" };
-            String agentId = agentIds[rng.nextInt(agentIds.length)];
-            e.setAgentInfoEntity(new AgentInfoEntity(agentId, agentId + ".internal", "10.0.0." + rng.nextInt(255)));
-            e.setResourceInfoEntity(new ResourceInfoEntity());
-
-            CloudAuditMetricEntity audit = new CloudAuditMetricEntity();
-            audit.setEventId(e.getEventId());
-            audit.setAuditTimestamp(e.getLocalDateTime());
-            audit.setTotalEstimatedCost(10 + rng.nextDouble() * 50);
-            audit.setDailyCost(1 + rng.nextDouble() * 5);
-            audit.setAverageCpuUsage(cpu);
-            audit.setPeakCpuUsage(Math.min(100, cpu + 10));
-            audit.setAverageMemoryUsage(memPct);
-            audit.setPeakMemoryUsage(Math.min(100, memPct + 10));
-            audit.setAverageDiskUsage(diskPct);
-            audit.setAverageNetworkUsage(netIn);
-            audit.setAverageResponseTime(respMs);
-            audit.setErrorTrend(errPct);
-            audit.setAverageQPS(qps);
-            audit.setPeakQPS(qps * 1.5);
-            audit.setCacheEfficiencyScore(cacheHit * 100);
-            audit.setComputeCostPercentage(40);
-            audit.setMemoryCostPercentage(30);
-            audit.setNetworkCostPercentage(10);
-            audit.setStorageCostPercentage(20);
-            e.setCloudAuditMetricEntity(audit);
-
-            batch.add(e);
+                    round2(cpu), CPU_CORES[agentIdx],
+                    round2(cpu / 10.0), round2(cpu / 12.0), round2(cpu / 15.0)));
+            e.setMemoryInfoEntity(new MemoryInfoEntity(totalMb, usedMb, freeMb, round2(memPct)));
+            e.setNetworkInfoEntity(new NetworkInfoEntity(round2(netIn), round2(netOut), (int)(netIn * 0.4)));
+            e.setDiskInfoEntity(new DiskInfoEntity(round2(diskRead), round2(diskWrite), round2(diskPct), round2(storageGb)));
+            e.setDatabaseInfoEntity(new DatabaseInfoEntity(dbConns, qps, round2(queryMs), round4(cacheHit), round2(dbSizeGb)));
+            e.setApplicationInfoEntity(new ApplicationInfoEntity(rpm, round3(errPct), round2(respMs)));
+            e.setResourceInfoEntity(new ResourceInfoEntity(
+                    "EC2", "res-" + eventId, "PRODUCTION", "ap-south-1", "ap-south-1a"));
+            // No audit metric — produced by audit-ml-service via Kafka
+            records.add(e);
         }
-        return batch;
+        return records;
     }
+
+    private static String agentId(int idx) { return AGENT_IDS[idx]; }
+
+    private static double clamp(double v, double min, double max) {
+        return Math.max(min, Math.min(max, v));
+    }
+
+    private static double round2(double v) { return Math.round(v * 100.0) / 100.0; }
+    private static double round3(double v) { return Math.round(v * 1000.0) / 1000.0; }
+    private static double round4(double v) { return Math.round(v * 10000.0) / 10000.0; }
 }
