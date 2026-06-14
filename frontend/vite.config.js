@@ -7,22 +7,22 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'http://13.204.66.166:6000',
+        target: 'http://13.204.66.166',
         changeOrigin: true,
         rewrite: (path) => `/AUTHENTICATIONSYSTEM${path}`
       },
       '/admin': {
-        target: 'http://13.204.66.166:6000',
+        target: 'http://13.204.66.166',
         changeOrigin: true,
         rewrite: (path) => `/AUTHENTICATIONSYSTEM${path}`
       },
       '/get': {
-        target: 'http://13.204.66.166:6000',
+        target: 'http://13.204.66.166',
         changeOrigin: true,
         rewrite: (path) => `/AUTHENTICATIONSYSTEM${path}`
       },
       '/ORCHESTRATIONENGINE': {
-        target: 'http://13.204.66.166:6000',
+        target: 'http://13.204.66.166',
         changeOrigin: true
       }
     }

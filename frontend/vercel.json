@@ -2,19 +2,19 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "http://13.204.66.166:6000/AUTHENTICATIONSYSTEM/api/$1"
+      "destination": "http://13.204.66.166/AUTHENTICATIONSYSTEM/api/$1"
     },
     {
       "source": "/admin/(.*)",
-      "destination": "http://13.204.66.166:6000/AUTHENTICATIONSYSTEM/admin/$1"
+      "destination": "http://13.204.66.166/AUTHENTICATIONSYSTEM/admin/$1"
     },
     {
       "source": "/get/(.*)",
-      "destination": "http://13.204.66.166:6000/AUTHENTICATIONSYSTEM/get/$1"
+      "destination": "http://13.204.66.166/AUTHENTICATIONSYSTEM/get/$1"
     },
     {
       "source": "/ORCHESTRATIONENGINE/(.*)",
-      "destination": "http://13.204.66.166:6000/ORCHESTRATIONENGINE/$1"
+      "destination": "http://13.204.66.166/ORCHESTRATIONENGINE/$1"
     },
     {
       "source": "/(.*)",
