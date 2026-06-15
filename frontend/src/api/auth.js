@@ -1,5 +1,5 @@
 // API layer — all requests routed via the API Gateway at port 6000
-// Vite dev proxy maps /api, /admin, /get → http://localhost:6000
+// Vite dev proxy maps /api, /admin, /get → http://3.6.254.66:6000
 
 const BASE_URL = ''
 

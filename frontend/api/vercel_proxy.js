@@ -1,6 +1,6 @@
 import httpProxy from 'http-proxy';
 
-const target = process.env.BACKEND_URL || 'http://13.204.66.166:6000';
+const target = 'http://3.6.254.66:6000';
 
 const proxy = httpProxy.createProxyServer({
   target: target,
