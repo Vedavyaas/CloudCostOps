@@ -83,20 +83,17 @@ export default function LoginPage() {
 
           {/* ── Test credentials banner ── */}
           <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
             background: 'rgba(79, 70, 229, 0.07)',
             border: '1px solid rgba(79, 70, 229, 0.18)',
             borderRadius: '10px',
             padding: '10px 14px',
             marginBottom: '20px',
           }}>
-            <span style={{ fontSize: '16px' }}>🔑</span>
-            <div style={{ flex: 1 }}>
-              <div style={{ fontSize: '10px', fontWeight: 700, color: 'var(--accent-primary)', textTransform: 'uppercase', letterSpacing: '0.07em', marginBottom: '4px' }}>Test Credentials</div>
-              <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-                <span style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>
+            <div style={{ fontSize: '10px', fontWeight: 700, color: 'var(--accent-primary)', textTransform: 'uppercase', letterSpacing: '0.07em', marginBottom: '8px' }}>🔑 Test Credentials</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              {/* Row 1: amazonAnalyst */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                <span style={{ fontSize: '12px', color: 'var(--text-secondary)', minWidth: '120px' }}>
                   <span style={{ fontWeight: 600, color: 'var(--text-muted)' }}>Username: </span>
                   <code style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--text-primary)' }}>amazonAnalyst</code>
                 </span>
@@ -104,15 +101,33 @@ export default function LoginPage() {
                   <span style={{ fontWeight: 600, color: 'var(--text-muted)' }}>Password: </span>
                   <code style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--text-primary)' }}>123456</code>
                 </span>
+                <span style={{
+                  fontSize: '9px', fontWeight: 700,
+                  background: 'rgba(5,150,105,0.10)', color: 'var(--tahoe-mint)',
+                  border: '1px solid rgba(5,150,105,0.22)',
+                  borderRadius: '99px', padding: '2px 8px',
+                  textTransform: 'uppercase', letterSpacing: '0.06em', flexShrink: 0,
+                }}>Pre-filled</span>
+              </div>
+              {/* Row 2: amazonAdmin */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                <span style={{ fontSize: '12px', color: 'var(--text-secondary)', minWidth: '120px' }}>
+                  <span style={{ fontWeight: 600, color: 'var(--text-muted)' }}>Username: </span>
+                  <code style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--text-primary)' }}>amazonAdmin</code>
+                </span>
+                <span style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>
+                  <span style={{ fontWeight: 600, color: 'var(--text-muted)' }}>Password: </span>
+                  <code style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--text-primary)' }}>123456</code>
+                </span>
+                <span style={{
+                  fontSize: '9px', fontWeight: 700,
+                  background: 'rgba(79, 70, 229, 0.12)', color: 'var(--accent-primary)',
+                  border: '1px solid rgba(79, 70, 229, 0.25)',
+                  borderRadius: '99px', padding: '2px 8px',
+                  textTransform: 'uppercase', letterSpacing: '0.06em', flexShrink: 0,
+                }}>Admin</span>
               </div>
             </div>
-            <span style={{
-              fontSize: '9px', fontWeight: 700,
-              background: 'rgba(5,150,105,0.10)', color: 'var(--tahoe-mint)',
-              border: '1px solid rgba(5,150,105,0.22)',
-              borderRadius: '99px', padding: '2px 8px',
-              textTransform: 'uppercase', letterSpacing: '0.06em', flexShrink: 0,
-            }}>Pre-filled</span>
           </div>
 
           <form onSubmit={handleSubmit} className={styles.form} id="login-form">

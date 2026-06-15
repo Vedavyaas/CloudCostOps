@@ -1,6 +1,6 @@
 """
 Generates the canonical seed_records.json — the single source of truth for all
-240 static cloud metric records (2 companies × 3 months × 40 records).
+120 static cloud metric records for Amazon (1 company × 3 months × 40 records).
 
 Run once:  python generate_seed_json.py
 Output:    ../seed_records.json          (project root — read by Python)
@@ -10,153 +10,217 @@ Output:    ../seed_records.json          (project root — read by Python)
 from __future__ import annotations
 
 import json
-import math
 import shutil
-from calendar import monthrange
-from datetime import datetime, timezone
 from pathlib import Path
 
-# ── Agent profiles ─────────────────────────────────────────────────────────────
-AGENT_IDS  = ["prod-agent-1", "prod-agent-2", "dev-agent-1", "staging-agent"]
-BASE_CPU   = [45.0,  62.0,  18.0,  32.0]
-BASE_MEM   = [62.0,  74.0,  30.0,  46.0]
-CPU_CORES  = [16,    32,     8,    16]
-TOTAL_MB   = [32768, 65536, 16384, 32768]
-BASE_RPM   = [1800,  3200,   200,   850]
-BASE_QPS   = [ 420,   650,    80,   270]
-STORAGE_GB = [ 380.0, 480.0,  80.0, 200.0]
-
-
-def _clamp(v, lo, hi): return max(lo, min(hi, v))
-def _r2(v): return round(v, 2)
-def _r3(v): return round(v, 3)
-def _r4(v): return round(v, 4)
-
-
-def _ts(year, month, day, hour, minute):
-    return datetime(year, month, day, hour, minute, 0, tzinfo=timezone.utc)\
-               .isoformat().replace("+00:00", "Z")
-
-
-def generate_month(company, prefix, ip_net, year, month, count=40):
-    days_in_month = monthrange(year, month)[1]
-    agent_ips = [f"{ip_net}.0.10", f"{ip_net}.0.11", f"{ip_net}.0.20", f"{ip_net}.0.30"]
-    records = []
-
-    for i in range(count):
-        idx = i % 4
-        wave  = math.sin(i * math.pi / 10.0)
-        wave2 = math.cos(i * math.pi / 8.0)
-
-        cpu     = _clamp(BASE_CPU[idx]  + 15.0 * wave,  5.0, 95.0)
-        mem_pct = _clamp(BASE_MEM[idx]  + 10.0 * wave2, 10.0, 95.0)
-
-        total_mb = TOTAL_MB[idx]
-        used_mb  = int(total_mb * mem_pct / 100.0)
-        free_mb  = total_mb - used_mb
-
-        net_in   = _clamp(50.0 + 120.0 * ((cpu - 5.0) / 90.0), 10.0, 350.0)
-        net_out  = net_in * 0.78
-        disk_pct = _clamp(28.0 + 22.0 * wave, 8.0, 90.0)
-        storage  = STORAGE_GB[idx] + month * 8.0 + i * 1.5
-        disk_r   = _clamp(40.0 + 90.0 * ((cpu - 5.0) / 90.0), 5.0, 400.0)
-        disk_w   = disk_r * 0.62
-
-        qps      = int(_clamp(BASE_QPS[idx] * (0.75 + 0.5 * ((cpu - 5.0) / 90.0)), 5, 2000))
-        query_ms = _clamp(4.0 + 22.0 * (1.0 - (cpu - 5.0) / 90.0), 0.5, 200.0)
-        cache    = _clamp(0.95 - 0.06 * wave, 0.82, 0.999)
-        db_conns = max(1, qps // 8)
-        db_size  = STORAGE_GB[idx] * 0.4 + month * 3.0 + i * 0.8
-
-        rpm      = int(_clamp(BASE_RPM[idx] * (0.75 + 0.5 * ((cpu - 5.0) / 90.0)), 10, 8000))
-        err_pct  = _clamp(0.4 + 2.5 * max(0.0, wave), 0.05, 8.0)
-        resp_ms  = _clamp(40.0 + 220.0 * (1.0 - (cpu - 5.0) / 90.0), 15.0, 900.0)
-
-        day_of_month = min(1 + (i * days_in_month // count), days_in_month)
-        hour         = i * 23 // count
-        minute       = (i * 7) % 60
-        event_id     = f"evt-{prefix}-{year}-{month:02d}-{i+1:02d}"
-
-        records.append({
-            "eventId":   event_id,
-            "timestamp": _ts(year, month, day_of_month, hour, minute),
-            "company":   {"companyName": company},
-            "agent": {
-                "agentId":   AGENT_IDS[idx],
-                "hostname":  f"{AGENT_IDS[idx]}.internal",
-                "ipAddress": agent_ips[idx],
-            },
-            "resource": {
-                "resourceType":    "EC2",
-                "resourceId":      f"res-{event_id}",
-                "environment":     "PRODUCTION",
-                "region":          "ap-south-1",
-                "availabilityZone":"ap-south-1a",
-            },
-            "compute": {
-                "cpuUsagePercent": _r2(cpu),
-                "cpuCores":        CPU_CORES[idx],
-                "loadAverage1m":   _r2(cpu / 10.0),
-                "loadAverage5m":   _r2(cpu / 12.0),
-                "loadAverage15m":  _r2(cpu / 15.0),
-            },
-            "memory": {
-                "totalMB":      total_mb,
-                "usedMB":       used_mb,
-                "freeMB":       free_mb,
-                "usagePercent": _r2(mem_pct),
-            },
-            "network": {
-                "networkInMB":       _r2(net_in),
-                "networkOutMB":      _r2(net_out),
-                "activeConnections": int(net_in * 0.4),
-            },
-            "disk": {
-                "diskReadMB":       _r2(disk_r),
-                "diskWriteMB":      _r2(disk_w),
-                "diskUsagePercent": _r2(disk_pct),
-                "storageUsedGB":    _r2(storage),
-            },
-            "database": {
-                "activeConnections":  db_conns,
-                "queriesPerSecond":   qps,
-                "averageQueryTimeMs": _r2(query_ms),
-                "cacheHitRatio":      _r4(cache),
-                "databaseSizeGB":     _r2(db_size),
-            },
-            "application": {
-                "requestsPerMinute": rpm,
-                "errorRatePercent":  _r3(err_pct),
-                "responseTimeMs":    _r2(resp_ms),
-            },
-        })
-
-    return records
-
-
-def build_all():
-    companies  = [("amazon", "amz", "10.0"), ("vercel", "vcl", "10.1")]
-    year_months = [(2026, 4), (2026, 5), (2026, 6)]
+def build_all() -> list[dict]:
+    # Statically typed list maintaining exact mapping with your Java dataset
     all_records = []
-    for company, prefix, ip_net in companies:
-        for year, month in year_months:
-            all_records.extend(generate_month(company, prefix, ip_net, year, month))
+
+    # ==========================================
+    # APRIL 2026 (Records 1 - 40)
+    # ==========================================
+    all_records.append(create("evt-amz-2026-04-01", "2026-04-01T02:00:00Z", "prod-agent-1", "10.0.0.10", 41.2, 16, 60.5, 32768, 19824, 12944, 105.4, 82.2, 382.5, 92.1, 412, 4.1, 0.941, 1720, 0.42, 185.2))
+    all_records.append(create("evt-amz-2026-04-02", "2026-04-01T14:30:00Z", "prod-agent-2", "10.0.0.11", 64.8, 32, 72.1, 65536, 47251, 18285, 142.1, 110.8, 482.1, 115.4, 620, 3.9, 0.962, 3150, 0.51, 148.1))
+    all_records.append(create("evt-amz-2026-04-03", "2026-04-02T05:15:00Z", "dev-agent-1", "10.0.0.20", 17.5, 8, 31.4, 16384, 5144, 11240, 26.4, 20.5, 81.2, 21.0, 78, 11.8, 0.889, 192, 1.15, 415.0))
+    all_records.append(create("evt-amz-2026-04-04", "2026-04-03T18:45:00Z", "staging-agent", "10.0.0.30", 33.1, 16, 44.8, 32768, 14680, 18088, 70.1, 54.6, 201.8, 52.3, 255, 6.4, 0.925, 835, 0.78, 285.4))
+    all_records.append(create("evt-amz-2026-04-05", "2026-04-04T09:10:00Z", "prod-agent-1", "10.0.0.10", 43.7, 16, 61.9, 32768, 20283, 12485, 110.2, 85.9, 384.1, 95.8, 425, 4.0, 0.945, 1785, 0.39, 179.5))
+    all_records.append(create("evt-amz-2026-04-06", "2026-04-05T21:20:00Z", "prod-agent-2", "10.0.0.11", 59.3, 32, 75.4, 65536, 49414, 16122, 138.5, 108.0, 485.6, 122.4, 665, 3.6, 0.958, 3240, 0.48, 142.0))
+    all_records.append(create("evt-amz-2026-04-07", "2026-04-06T11:05:00Z", "dev-agent-1", "10.0.0.20", 19.2, 8, 28.9, 16384, 4734, 11650, 29.1, 22.7, 83.4, 23.5, 84, 12.1, 0.892, 205, 1.08, 430.2))
+    all_records.append(create("evt-amz-2026-04-08", "2026-04-07T23:40:00Z", "staging-agent", "10.0.0.30", 30.5, 16, 47.1, 32768, 15433, 17335, 68.4, 53.3, 203.9, 56.1, 280, 6.2, 0.919, 860, 0.82, 298.1))
+    all_records.append(create("evt-amz-2026-04-09", "2026-04-08T13:15:00Z", "prod-agent-1", "10.0.0.10", 46.1, 16, 63.2, 32768, 20712, 12056, 114.8, 89.5, 386.2, 99.0, 440, 3.8, 0.948, 1820, 0.44, 174.0))
+    all_records.append(create("evt-amz-2026-04-10", "2026-04-09T03:50:00Z", "prod-agent-2", "10.0.0.11", 61.4, 32, 71.8, 65536, 47054, 18482, 140.2, 109.3, 488.0, 119.1, 612, 4.2, 0.965, 3110, 0.55, 151.6))
+    all_records.append(create("evt-amz-2026-04-11", "2026-04-10T16:25:00Z", "dev-agent-1", "10.0.0.20", 16.1, 8, 32.1, 16384, 5259, 11125, 25.0, 19.5, 85.1, 20.2, 75, 13.0, 0.881, 180, 1.22, 405.4))
+    all_records.append(create("evt-amz-2026-04-12", "2026-04-11T06:00:00Z", "staging-agent", "10.0.0.30", 34.7, 16, 45.3, 32768, 14843, 17925, 73.9, 57.6, 206.4, 50.8, 264, 5.9, 0.928, 885, 0.74, 276.9))
+    all_records.append(create("evt-amz-2026-04-13", "2026-04-12T19:35:00Z", "prod-agent-1", "10.0.0.10", 42.8, 16, 59.8, 32768, 19595, 13173, 107.1, 83.5, 388.9, 94.3, 418, 4.3, 0.939, 1745, 0.46, 182.1))
+    all_records.append(create("evt-amz-2026-04-14", "2026-04-13T08:10:00Z", "prod-agent-2", "10.0.0.11", 66.2, 32, 76.1, 65536, 49872, 15664, 146.7, 114.4, 491.2, 126.8, 678, 3.4, 0.971, 3290, 0.36, 135.4))
+    all_records.append(create("evt-amz-2026-04-15", "2026-04-14T20:45:00Z", "dev-agent-1", "10.0.0.20", 18.9, 8, 29.5, 16384, 4833, 11551, 28.5, 22.2, 87.5, 24.1, 82, 11.5, 0.895, 212, 1.02, 424.8))
+    all_records.append(create("evt-amz-2026-04-16", "2026-04-15T11:20:00Z", "staging-agent", "10.0.0.30", 31.2, 16, 48.0, 32768, 15728, 17040, 69.2, 53.9, 210.0, 58.4, 291, 6.5, 0.914, 842, 0.89, 304.2))
+    all_records.append(create("evt-amz-2026-04-17", "2026-04-16T22:55:00Z", "prod-agent-1", "10.0.0.10", 47.5, 16, 64.1, 32768, 21004, 11764, 117.3, 91.5, 391.4, 102.5, 452, 3.6, 0.952, 1860, 0.41, 169.8))
+    all_records.append(create("evt-amz-2026-04-18", "2026-04-17T12:30:00Z", "prod-agent-2", "10.0.0.11", 60.1, 32, 73.5, 65536, 48168, 17368, 139.1, 108.5, 494.3, 117.9, 625, 4.0, 0.960, 3170, 0.52, 146.5))
+    all_records.append(create("evt-amz-2026-04-19", "2026-04-18T01:05:00Z", "dev-agent-1", "10.0.0.20", 20.4, 8, 27.2, 16384, 4456, 11928, 31.0, 24.1, 89.9, 25.8, 89, 10.9, 0.902, 224, 0.95, 439.1))
+    all_records.append(create("evt-amz-2026-04-20", "2026-04-19T15:40:00Z", "staging-agent", "10.0.0.30", 35.9, 16, 43.9, 32768, 14385, 18383, 76.2, 59.4, 212.5, 49.2, 272, 5.6, 0.932, 910, 0.70, 268.0))
+    all_records.append(create("evt-amz-2026-04-21", "2026-04-20T04:15:00Z", "prod-agent-1", "10.0.0.10", 44.2, 16, 60.9, 32768, 19955, 12813, 111.4, 86.8, 395.2, 97.1, 431, 3.9, 0.943, 1805, 0.40, 176.3))
+    all_records.append(create("evt-amz-2026-04-22", "2026-04-21T17:50:00Z", "prod-agent-2", "10.0.0.11", 63.2, 32, 74.8, 65536, 49020, 16516, 141.6, 110.4, 497.8, 124.0, 652, 3.7, 0.967, 3215, 0.46, 140.7))
+    all_records.append(create("evt-amz-2026-04-23", "2026-04-22T06:25:00Z", "dev-agent-1", "10.0.0.20", 15.3, 8, 33.5, 16384, 5488, 10896, 23.8, 18.5, 92.4, 18.9, 71, 13.5, 0.876, 172, 1.28, 398.2))
+    all_records.append(create("evt-amz-2026-04-24", "2026-04-23T20:00:00Z", "staging-agent", "10.0.0.30", 32.6, 16, 46.5, 32768, 15237, 17531, 71.5, 55.7, 215.1, 54.7, 261, 6.1, 0.922, 852, 0.85, 291.5))
+    all_records.append(create("evt-amz-2026-04-25", "2026-04-24T09:35:00Z", "prod-agent-1", "10.0.0.10", 48.9, 16, 65.2, 32768, 21364, 11404, 120.5, 93.9, 398.7, 104.9, 465, 3.4, 0.956, 1910, 0.35, 164.1))
+    all_records.append(create("evt-amz-2026-04-26", "2026-04-25T22:10:00Z", "prod-agent-2", "10.0.0.11", 58.1, 32, 71.0, 65536, 46530, 19006, 136.4, 106.3, 501.2, 114.2, 604, 4.3, 0.954, 3080, 0.58, 154.9))
+    all_records.append(create("evt-amz-2026-04-27", "2026-04-26T12:45:00Z", "dev-agent-1", "10.0.0.20", 18.1, 8, 30.2, 16384, 4947, 11437, 27.2, 21.2, 94.8, 22.8, 80, 11.9, 0.891, 198, 1.11, 421.6))
+    all_records.append(create("evt-amz-2026-04-28", "2026-04-27T01:20:00Z", "staging-agent", "10.0.0.30", 29.8, 16, 49.2, 32768, 16121, 16647, 66.9, 52.1, 218.4, 60.5, 298, 6.7, 0.910, 822, 0.94, 310.8))
+    all_records.append(create("evt-amz-2026-04-29", "2026-04-28T14:55:00Z", "prod-agent-1", "10.0.0.10", 45.3, 16, 62.4, 32768, 20447, 12321, 113.1, 88.2, 401.9, 98.1, 436, 3.9, 0.946, 1810, 0.42, 175.8))
+    all_records.append(create("evt-amz-2026-04-30", "2026-04-29T04:30:00Z", "prod-agent-2", "10.0.0.11", 65.5, 32, 75.9, 65536, 49741, 15795, 145.2, 113.2, 505.4, 125.1, 672, 3.5, 0.969, 3270, 0.38, 137.2))
+    all_records.append(create("evt-amz-2026-04-31", "2026-04-29T18:05:00Z", "dev-agent-1", "10.0.0.20", 21.1, 8, 26.5, 16384, 4341, 12043, 32.4, 25.2, 97.2, 27.2, 93, 10.4, 0.906, 235, 0.88, 444.1))
+    all_records.append(create("evt-amz-2026-04-32", "2026-04-30T06:40:00Z", "staging-agent", "10.0.0.30", 36.4, 16, 42.8, 32768, 14024, 18744, 77.5, 60.4, 221.0, 47.9, 278, 5.4, 0.935, 925, 0.67, 262.5))
+    all_records.append(create("evt-amz-2026-04-33", "2026-04-30T19:15:00Z", "prod-agent-1", "10.0.0.10", 42.1, 16, 58.7, 32768, 19234, 13534, 105.8, 82.5, 404.2, 93.2, 410, 4.4, 0.937, 1715, 0.48, 187.9))
+    all_records.append(create("evt-amz-2026-04-34", "2026-04-30T22:30:00Z", "prod-agent-2", "10.0.0.11", 62.0, 32, 73.1, 65536, 47906, 17630, 139.8, 109.0, 508.6, 116.4, 618, 4.1, 0.961, 3140, 0.54, 149.3))
+    all_records.append(create("evt-amz-2026-04-35", "2026-04-30T23:00:00Z", "dev-agent-1", "10.0.0.20", 16.9, 8, 30.8, 16384, 5046, 11338, 25.8, 20.1, 99.5, 21.5, 76, 12.6, 0.886, 186, 1.18, 411.2))
+    all_records.append(create("evt-amz-2026-04-36", "2026-04-30T23:15:00Z", "staging-agent", "10.0.0.30", 31.9, 16, 47.4, 32768, 15532, 17236, 70.4, 54.9, 224.2, 57.2, 285, 6.3, 0.916, 848, 0.86, 301.0))
+    all_records.append(create("evt-amz-2026-04-37", "2026-04-30T23:30:00Z", "prod-agent-1", "10.0.0.10", 46.8, 16, 63.8, 32768, 20905, 11863, 115.9, 90.4, 407.5, 101.2, 446, 3.7, 0.950, 1840, 0.43, 171.4))
+    all_records.append(create("evt-amz-2026-04-38", "2026-04-30T23:45:00Z", "prod-agent-2", "10.0.0.11", 60.7, 32, 74.2, 65536, 48627, 16909, 140.9, 109.9, 511.9, 120.5, 634, 3.9, 0.963, 3195, 0.50, 144.2))
+    all_records.append(create("evt-amz-2026-04-39", "2026-04-30T23:50:00Z", "dev-agent-1", "10.0.0.20", 19.8, 8, 28.3, 16384, 4636, 11748, 29.8, 23.2, 102.1, 24.9, 86, 11.2, 0.898, 218, 1.05, 433.5))
+    all_records.append(create("evt-amz-2026-04-40", "2026-04-30T23:55:00Z", "staging-agent", "10.0.0.30", 35.2, 16, 44.5, 32768, 14581, 18187, 75.1, 58.5, 227.4, 50.4, 269, 5.8, 0.929, 902, 0.73, 272.4))
+
+    # ==========================================
+    # MAY 2026 (Records 41 - 80)
+    # ==========================================
+    all_records.append(create("evt-amz-2026-05-41", "2026-05-01T01:10:00Z", "prod-agent-1", "10.0.0.10", 44.8, 16, 61.2, 32768, 20054, 12714, 112.5, 87.7, 410.8, 98.2, 434, 3.8, 0.944, 1812, 0.41, 174.5))
+    all_records.append(create("evt-amz-2026-05-42", "2026-05-02T03:20:00Z", "prod-agent-2", "10.0.0.11", 62.5, 32, 73.8, 65536, 48364, 17172, 141.0, 109.9, 515.2, 118.5, 628, 4.0, 0.962, 3165, 0.53, 147.6))
+    all_records.append(create("evt-amz-2026-05-43", "2026-05-03T05:30:00Z", "dev-agent-1", "10.0.0.20", 18.3, 8, 29.8, 16384, 4882, 11502, 27.6, 21.5, 105.4, 23.1, 81, 11.7, 0.893, 201, 1.09, 423.1))
+    all_records.append(create("evt-amz-2026-05-44", "2026-05-04T07:40:00Z", "staging-agent", "10.0.0.30", 32.2, 16, 46.9, 32768, 15368, 17400, 70.8, 55.2, 230.6, 55.4, 263, 6.0, 0.923, 854, 0.84, 293.0))
+    all_records.append(create("evt-amz-2026-05-45", "2026-05-05T09:50:00Z", "prod-agent-1", "10.0.0.10", 47.9, 16, 64.5, 32768, 21135, 11633, 118.2, 92.1, 413.9, 103.1, 456, 3.5, 0.953, 1872, 0.34, 168.2))
+    all_records.append(create("evt-amz-2026-05-46", "2026-05-06T11:00:00Z", "prod-agent-2", "10.0.0.11", 57.4, 32, 70.3, 65536, 46071, 19465, 135.1, 105.3, 518.4, 112.8, 598, 4.4, 0.952, 3050, 0.60, 156.4))
+    all_records.append(create("evt-amz-2026-05-47", "2026-05-07T13:10:00Z", "dev-agent-1", "10.0.0.20", 17.1, 8, 31.0, 16384, 5079, 11305, 26.1, 20.3, 108.7, 21.8, 77, 12.4, 0.887, 188, 1.16, 413.2))
+    all_records.append(create("evt-amz-2026-05-48", "2026-05-08T15:20:00Z", "staging-agent", "10.0.0.30", 34.1, 16, 44.2, 32768, 14483, 18285, 73.0, 56.9, 233.9, 49.8, 271, 5.7, 0.930, 908, 0.71, 270.2))
+    all_records.append(create("evt-amz-2026-05-49", "2026-05-09T17:30:00Z", "prod-agent-1", "10.0.0.10", 41.5, 16, 58.2, 32768, 19070, 13698, 104.9, 81.8, 417.1, 92.4, 406, 4.5, 0.935, 1702, 0.49, 189.4))
+    all_records.append(create("evt-amz-2026-05-50", "2026-05-10T19:40:00Z", "prod-agent-2", "10.0.0.11", 66.8, 32, 76.7, 65536, 50266, 15270, 147.9, 115.3, 521.6, 127.9, 684, 3.3, 0.973, 3320, 0.34, 133.1))
+    all_records.append(create("evt-amz-2026-05-51", "2026-05-11T21:50:00Z", "dev-agent-1", "10.0.0.20", 20.1, 8, 26.9, 16384, 4407, 11977, 30.6, 23.8, 111.9, 26.2, 91, 10.7, 0.904, 228, 0.92, 441.2))
+    all_records.append(create("evt-amz-2026-05-52", "2026-05-12T23:00:00Z", "staging-agent", "10.0.0.30", 35.5, 16, 43.1, 32768, 14122, 18646, 75.9, 59.2, 235.2, 48.5, 276, 5.5, 0.933, 918, 0.69, 264.8))
+    all_records.append(create("evt-amz-2026-05-53", "2026-05-13T01:15:00Z", "prod-agent-1", "10.0.0.10", 45.9, 16, 62.8, 32768, 20578, 12190, 114.5, 89.3, 418.4, 98.8, 439, 3.8, 0.947, 1818, 0.43, 175.2))
+    all_records.append(create("evt-amz-2026-05-54", "2026-05-14T03:25:00Z", "prod-agent-2", "10.0.0.11", 61.1, 32, 71.5, 65536, 46858, 18678, 139.9, 109.1, 521.7, 118.8, 610, 4.2, 0.964, 3105, 0.56, 152.0))
+    all_records.append(create("evt-amz-2026-05-55", "2026-05-15T05:35:00Z", "dev-agent-1", "10.0.0.20", 15.8, 8, 32.7, 16384, 5357, 11027, 24.5, 19.1, 115.0, 19.5, 74, 13.2, 0.880, 178, 1.25, 401.8))
+    all_records.append(create("evt-amz-2026-05-56", "2026-05-16T07:45:00Z", "staging-agent", "10.0.0.30", 33.5, 16, 45.7, 32768, 14974, 17794, 72.4, 56.4, 238.2, 53.1, 267, 5.9, 0.926, 868, 0.80, 281.5))
+    all_records.append(create("evt-amz-2026-05-57", "2026-05-17T09:55:00Z", "prod-agent-1", "10.0.0.10", 43.1, 16, 60.1, 32768, 19693, 13075, 108.0, 84.2, 421.5, 94.9, 421, 4.2, 0.940, 1752, 0.45, 181.0))
+    all_records.append(create("evt-amz-2026-05-58", "2026-05-18T11:05:00Z", "prod-agent-2", "10.0.0.11", 65.0, 32, 75.1, 65536, 49216, 16320, 145.0, 113.1, 524.8, 124.5, 668, 3.5, 0.969, 3255, 0.39, 137.4))
+    all_records.append(create("evt-amz-2026-05-59", "2026-05-19T13:15:00Z", "dev-agent-1", "10.0.0.20", 19.5, 8, 28.6, 16384, 4685, 11699, 29.4, 22.9, 118.2, 25.2, 87, 11.1, 0.899, 215, 1.04, 431.5))
+    all_records.append(create("evt-amz-2026-05-60", "2026-05-20T15:25:00Z", "staging-agent", "10.0.0.30", 30.9, 16, 48.3, 32768, 15826, 16942, 68.9, 53.7, 241.4, 59.2, 294, 6.6, 0.912, 838, 0.91, 307.0))
+    all_records.append(create("evt-amz-2026-05-61", "2026-05-21T17:35:00Z", "prod-agent-1", "10.0.0.10", 47.1, 16, 63.5, 32768, 20807, 11961, 116.5, 90.8, 424.7, 101.8, 449, 3.7, 0.951, 1848, 0.42, 172.1))
+    all_records.append(create("evt-amz-2026-05-62", "2026-05-22T19:45:00Z", "prod-agent-2", "10.0.0.11", 59.8, 32, 72.9, 65536, 47775, 17761, 138.6, 108.1, 527.9, 116.8, 615, 4.1, 0.959, 3135, 0.55, 149.8))
+    all_records.append(create("evt-amz-2026-05-63", "2026-05-23T21:55:00Z", "dev-agent-1", "10.0.0.20", 16.5, 8, 31.7, 16384, 5193, 11191, 25.4, 19.8, 121.5, 20.8, 76, 12.8, 0.884, 183, 1.20, 408.1))
+    all_records.append(create("evt-amz-2026-05-64", "2026-05-24T23:05:00Z", "staging-agent", "10.0.0.30", 35.1, 16, 43.6, 32768, 14286, 18482, 75.3, 58.7, 244.7, 48.9, 273, 5.6, 0.931, 912, 0.70, 267.4))
+    all_records.append(create("evt-amz-2026-05-65", "2026-05-25T01:20:00Z", "prod-agent-1", "10.0.0.10", 42.5, 16, 59.1, 32768, 19365, 13403, 106.4, 83.0, 427.8, 93.8, 415, 4.3, 0.938, 1728, 0.47, 185.0))
+    all_records.append(create("evt-amz-2026-05-66", "2026-05-26T03:30:00Z", "prod-agent-2", "10.0.0.11", 64.1, 32, 74.4, 65536, 48758, 16778, 143.4, 111.8, 531.0, 122.4, 658, 3.6, 0.966, 3220, 0.42, 139.8))
+    all_records.append(create("evt-amz-2026-05-67", "2026-05-27T05:40:00Z", "dev-agent-1", "10.0.0.20", 18.8, 8, 29.2, 16384, 4784, 11600, 28.2, 22.0, 134.2, 23.9, 83, 11.4, 0.896, 208, 1.06, 427.1))
+    all_records.append(create("evt-amz-2026-05-68", "2026-05-28T07:50:00Z", "staging-agent", "10.0.0.30", 31.5, 16, 47.6, 32768, 15597, 17171, 69.8, 54.4, 247.9, 57.8, 288, 6.4, 0.915, 844, 0.88, 302.2))
+    all_records.append(create("evt-amz-2026-05-69", "2026-05-29T10:00:00Z", "prod-agent-1", "10.0.0.10", 48.2, 16, 64.9, 32768, 21265, 11503, 119.1, 92.9, 431.1, 104.2, 461, 3.4, 0.954, 1892, 0.32, 165.9))
+    all_records.append(create("evt-amz-2026-05-70", "2026-05-30T12:10:00Z", "prod-agent-2", "10.0.0.11", 58.6, 32, 71.1, 65536, 46596, 18940, 137.1, 106.9, 534.2, 114.9, 608, 4.3, 0.955, 3090, 0.57, 153.2))
+    all_records.append(create("evt-amz-2026-05-71", "2026-05-31T14:20:00Z", "dev-agent-1", "10.0.0.20", 17.8, 8, 30.5, 16384, 4997, 11387, 26.9, 21.0, 137.5, 22.5, 79, 12.0, 0.890, 195, 1.12, 418.6))
+    all_records.append(create("evt-amz-2026-05-72", "2026-05-31T16:30:00Z", "staging-agent", "10.0.0.30", 34.6, 16, 44.9, 32768, 14712, 18056, 73.8, 57.6, 250.6, 51.0, 277, 5.8, 0.928, 910, 0.74, 275.2))
+    all_records.append(create("evt-amz-2026-05-73", "2026-05-31T18:40:00Z", "prod-agent-1", "10.0.0.10", 43.9, 16, 60.5, 32768, 19824, 12944, 109.8, 85.6, 433.8, 96.5, 428, 4.0, 0.942, 1772, 0.43, 178.6))
+    all_records.append(create("evt-amz-2026-05-74", "2026-05-31T20:50:00Z", "prod-agent-2", "10.0.0.11", 65.8, 32, 75.6, 65536, 49545, 15991, 146.0, 113.9, 537.1, 126.1, 676, 3.4, 0.971, 3295, 0.37, 135.2))
+    all_records.append(create("evt-amz-2026-05-75", "2026-05-31T22:00:00Z", "dev-agent-1", "10.0.0.20", 20.8, 8, 27.5, 16384, 4505, 11879, 31.8, 24.8, 140.4, 27.0, 95, 10.5, 0.905, 232, 0.90, 443.1))
+    all_records.append(create("evt-amz-2026-05-76", "2026-05-31T22:15:00Z", "staging-agent", "10.0.0.30", 36.1, 16, 43.4, 32768, 14221, 18547, 77.0, 60.1, 253.2, 49.2, 281, 5.4, 0.934, 922, 0.68, 265.4))
+    all_records.append(create("evt-amz-2026-05-77", "2026-05-31T22:30:00Z", "prod-agent-1", "10.0.0.10", 41.9, 16, 58.5, 32768, 19168, 13600, 105.4, 82.2, 436.5, 93.0, 409, 4.4, 0.936, 1710, 0.48, 188.1))
+    all_records.append(create("evt-amz-2026-05-78", "2026-05-31T22:45:00Z", "prod-agent-2", "10.0.0.11", 61.7, 32, 72.1, 65536, 47251, 18285, 140.4, 109.5, 539.8, 117.5, 619, 4.1, 0.961, 3120, 0.54, 150.5))
+    all_records.append(create("evt-amz-2026-05-79", "2026-05-31T23:00:00Z", "dev-agent-1", "10.0.0.20", 16.0, 8, 32.3, 16384, 5291, 11093, 24.8, 19.3, 143.1, 19.8, 75, 13.1, 0.881, 180, 1.23, 403.5))
+    all_records.append(create("evt-amz-2026-05-80", "2026-05-31T23:30:00Z", "staging-agent", "10.0.0.30", 32.9, 16, 46.1, 32768, 15106, 17662, 71.4, 55.7, 246.4, 54.1, 265, 6.1, 0.924, 860, 0.82, 286.1))
+
+    # ==========================================
+    # JUNE 2026 (Records 81 - 120)
+    # ==========================================
+    all_records.append(create("evt-amz-2026-06-81", "2026-06-01T04:20:00Z", "prod-agent-1", "10.0.0.10", 46.2, 16, 62.1, 32768, 20348, 12420, 115.0, 89.7, 460.5, 100.2, 442, 3.7, 0.949, 1832, 0.42, 172.5))
+    all_records.append(create("evt-amz-2026-06-82", "2026-06-02T06:40:00Z", "prod-agent-2", "10.0.0.11", 60.4, 32, 72.8, 65536, 47710, 17826, 139.4, 108.7, 542.4, 117.1, 620, 4.1, 0.961, 3145, 0.54, 148.9))
+    all_records.append(create("evt-amz-2026-06-83", "2026-06-03T09:00:00Z", "dev-agent-1", "10.0.0.20", 17.2, 8, 30.6, 16384, 5013, 11371, 26.1, 20.3, 145.2, 22.1, 78, 12.2, 0.889, 191, 1.14, 416.4))
+    all_records.append(create("evt-amz-2026-06-84", "2026-06-04T11:20:00Z", "staging-agent", "10.0.0.30", 33.8, 16, 45.1, 32768, 14778, 17990, 72.5, 56.5, 258.1, 52.0, 269, 5.8, 0.927, 872, 0.78, 279.0))
+    all_records.append(create("evt-amz-2026-06-85", "2026-06-05T13:40:00Z", "prod-agent-1", "10.0.0.10", 42.9, 16, 59.5, 32768, 19496, 13272, 107.5, 83.8, 463.2, 94.5, 419, 4.2, 0.940, 1756, 0.45, 181.4))
+    all_records.append(create("evt-amz-2026-06-86", "2026-06-06T16:00:00Z", "prod-agent-2", "10.0.0.11", 64.9, 32, 75.0, 65536, 49152, 16384, 144.6, 112.8, 545.6, 123.8, 664, 3.5, 0.968, 3230, 0.40, 138.2))
+    all_records.append(create("evt-amz-2026-06-87", "2026-06-07T18:20:00Z", "dev-agent-1", "10.0.0.20", 19.3, 8, 28.1, 16384, 4603, 11781, 29.2, 22.7, 147.8, 24.9, 85, 11.3, 0.897, 211, 1.05, 429.2))
+    all_records.append(create("evt-amz-2026-06-88", "2026-06-08T20:40:00Z", "staging-agent", "10.0.0.30", 30.6, 16, 47.9, 32768, 15695, 17073, 68.6, 53.5, 260.5, 58.1, 290, 6.5, 0.913, 840, 0.90, 304.6))
+    all_records.append(create("evt-amz-2026-06-89", "2026-06-09T23:00:00Z", "prod-agent-1", "10.0.0.10", 47.8, 16, 64.2, 32768, 21037, 11731, 118.0, 92.0, 465.9, 102.9, 455, 3.6, 0.952, 1880, 0.33, 166.8))
+    all_records.append(create("evt-amz-2026-06-90", "2026-06-10T01:10:00Z", "prod-agent-2", "10.0.0.11", 57.9, 32, 70.6, 65536, 46268, 19268, 135.9, 106.0, 548.0, 113.9, 602, 4.3, 0.953, 3070, 0.59, 154.6))
+    all_records.append(create("evt-amz-2026-06-91", "2026-06-11T03:30:00Z", "dev-agent-1", "10.0.0.20", 16.8, 8, 31.3, 16384, 5128, 11256, 25.5, 19.9, 150.2, 21.2, 75, 12.6, 0.885, 182, 1.19, 410.5))
+    all_records.append(create("evt-amz-2026-06-92", "2026-06-12T05:50:00Z", "staging-agent", "10.0.0.30", 34.4, 16, 44.4, 32768, 14548, 18220, 73.4, 57.2, 263.1, 50.2, 274, 5.7, 0.929, 915, 0.72, 272.1))
+    all_records.append(create("evt-amz-2026-06-93", "2026-06-13T08:10:00Z", "prod-agent-1", "10.0.0.10", 41.8, 16, 58.4, 32768, 19136, 13632, 105.1, 82.0, 465.4, 92.8, 408, 4.4, 0.936, 1706, 0.48, 188.4))
+    all_records.append(create("evt-amz-2026-06-94", "2026-06-14T10:30:00Z", "prod-agent-2", "10.0.0.11", 66.5, 32, 76.3, 65536, 50004, 15532, 147.4, 115.0, 548.2, 127.1, 680, 3.3, 0.972, 3310, 0.35, 134.4))
+    all_records.append(create("evt-amz-2026-06-95", "2026-06-15T12:50:00Z", "dev-agent-1", "10.0.0.20", 19.9, 8, 27.2, 16384, 4456, 11928, 30.2, 23.5, 151.0, 25.8, 89, 10.9, 0.902, 222, 0.94, 438.4))
+    all_records.append(create("evt-amz-2026-06-96", "2026-06-16T15:10:00Z", "staging-agent", "10.0.0.30", 35.8, 16, 43.0, 32768, 14089, 18679, 76.4, 59.6, 263.9, 48.2, 279, 5.5, 0.933, 920, 0.68, 263.9))
+    all_records.append(create("evt-amz-2026-06-97", "2026-06-17T17:30:00Z", "prod-agent-1", "10.0.0.10", 45.1, 16, 61.5, 32768, 20152, 12616, 113.4, 88.4, 466.1, 98.4, 437, 3.9, 0.945, 1824, 0.42, 173.8))
+    all_records.append(create("evt-amz-2026-06-98", "2026-06-18T19:50:00Z", "prod-agent-2", "10.0.0.11", 61.5, 32, 72.0, 65536, 47185, 18351, 140.5, 109.6, 549.4, 119.1, 614, 4.2, 0.963, 3125, 0.55, 151.0))
+    all_records.append(create("evt-amz-2026-06-99", "2026-06-19T22:10:00Z", "dev-agent-1", "10.0.0.20", 15.4, 8, 33.1, 16384, 5423, 10961, 23.9, 18.6, 152.4, 19.1, 72, 13.4, 0.878, 174, 1.27, 399.0))
+    all_records.append(create("evt-amz-2026-06-100", "2026-06-20T00:30:00Z", "staging-agent", "10.0.0.30", 32.8, 16, 46.4, 32768, 15204, 17564, 71.1, 55.4, 265.1, 54.4, 264, 6.1, 0.923, 858, 0.83, 288.2))
+    all_records.append(create("evt-amz-2026-06-101", "2026-06-21T02:50:00Z", "prod-agent-1", "10.0.0.10", 43.4, 16, 60.3, 32768, 19759, 13009, 108.5, 84.6, 467.5, 95.2, 423, 4.1, 0.941, 1758, 0.44, 180.2))
+    all_records.append(create("evt-amz-2026-06-102", "2026-06-22T05:10:00Z", "prod-agent-2", "10.0.0.11", 64.3, 32, 74.6, 65536, 48889, 16647, 143.9, 112.2, 550.6, 122.9, 660, 3.6, 0.967, 3225, 0.41, 139.1))
+    all_records.append(create("evt-amz-2026-06-103", "2026-06-23T07:30:00Z", "dev-agent-1", "10.0.0.20", 19.1, 8, 28.9, 16384, 4734, 11650, 28.8, 22.5, 153.1, 24.5, 84, 11.5, 0.895, 210, 1.05, 428.1))
+    all_records.append(create("evt-amz-2026-06-104", "2026-06-24T09:50:00Z", "staging-agent", "10.0.0.30", 31.1, 16, 48.1, 32768, 15761, 17007, 68.7, 53.6, 266.4, 58.8, 292, 6.5, 0.913, 839, 0.91, 305.1))
+    all_records.append(create("evt-amz-2026-06-105", "2026-06-25T11:10:00Z", "prod-agent-1", "10.0.0.10", 47.3, 16, 63.7, 32768, 20873, 11895, 117.0, 91.2, 468.2, 102.1, 451, 3.6, 0.951, 1855, 0.35, 170.6))
+    all_records.append(create("evt-amz-2026-06-106", "2026-06-26T13:30:00Z", "prod-agent-2", "10.0.0.11", 59.1, 32, 71.9, 65536, 47119, 18417, 137.9, 107.5, 553.1, 115.8, 611, 4.2, 0.957, 3115, 0.56, 151.9))
+    all_records.append(create("evt-amz-2026-06-107", "2026-06-27T15:50:00Z", "dev-agent-1", "10.0.0.20", 16.2, 8, 32.0, 16384, 5242, 11142, 25.1, 19.6, 154.9, 20.4, 75, 12.9, 0.883, 181, 1.21, 406.2))
+    all_records.append(create("evt-amz-2026-06-108", "2026-06-28T18:10:00Z", "staging-agent", "10.0.0.30", 34.9, 16, 44.1, 32768, 14450, 18318, 74.5, 58.1, 269.1, 49.5, 275, 5.6, 0.931, 914, 0.71, 269.0))
+    all_records.append(create("evt-amz-2026-06-109", "2026-06-29T20:30:00Z", "prod-agent-1", "10.0.0.10", 42.3, 16, 58.9, 32768, 19299, 13469, 106.1, 82.7, 471.4, 93.4, 411, 4.3, 0.938, 1720, 0.46, 186.1))
+    all_records.append(create("evt-amz-2026-06-110", "2026-06-30T22:50:00Z", "prod-agent-2", "10.0.0.11", 64.5, 32, 74.9, 65536, 49086, 16450, 144.1, 112.4, 555.0, 123.1, 662, 3.6, 0.967, 3225, 0.41, 139.0))
+    all_records.append(create("evt-amz-2026-06-111", "2026-06-30T23:00:00Z", "dev-agent-1", "10.0.0.20", 18.5, 8, 29.5, 16384, 4833, 11551, 28.0, 21.8, 157.2, 23.5, 81, 11.6, 0.894, 203, 1.08, 425.1))
+    all_records.append(create("evt-amz-2026-06-112", "2026-06-30T23:10:00Z", "staging-agent", "10.0.0.30", 31.8, 16, 47.2, 32768, 15466, 17302, 70.1, 54.7, 270.5, 57.5, 286, 6.3, 0.916, 846, 0.87, 301.2))
+    all_records.append(create("evt-amz-2026-06-113", "2026-06-30T23:15:00Z", "prod-agent-1", "10.0.0.10", 48.0, 16, 64.7, 32768, 21200, 11568, 118.9, 92.7, 473.1, 103.9, 458, 3.5, 0.953, 1885, 0.33, 166.0))
+    all_records.append(create("evt-amz-2026-06-114", "2026-06-30T23:20:00Z", "prod-agent-2", "10.0.0.11", 58.3, 32, 70.9, 65536, 46465, 19071, 136.8, 106.7, 558.1, 114.5, 605, 4.3, 0.954, 3085, 0.58, 153.9))
+    all_records.append(create("evt-amz-2026-06-115", "2026-06-30T23:25:00Z", "dev-agent-1", "10.0.0.20", 17.4, 8, 30.9, 16384, 5062, 11322, 26.5, 20.7, 160.4, 22.2, 78, 12.1, 0.888, 193, 1.13, 417.2))
+    all_records.append(create("evt-amz-2026-06-116", "2026-06-30T23:30:00Z", "staging-agent", "10.0.0.30", 34.3, 16, 44.6, 32768, 14614, 18154, 73.6, 57.4, 273.2, 50.7, 275, 5.7, 0.929, 912, 0.73, 273.4))
+    all_records.append(create("evt-amz-2026-06-117", "2026-06-30T23:35:00Z", "prod-agent-1", "10.0.0.10", 43.5, 16, 60.1, 32768, 19693, 13075, 109.1, 85.1, 475.2, 95.8, 425, 4.1, 0.941, 1765, 0.44, 179.5))
+    all_records.append(create("evt-amz-2026-06-118", "2026-06-30T23:40:00Z", "prod-agent-2", "10.0.0.11", 65.2, 32, 75.3, 65536, 49348, 16188, 145.4, 113.4, 560.1, 125.4, 670, 3.5, 0.970, 3265, 0.38, 136.1))
+    all_records.append(create("evt-amz-2026-06-119", "2026-06-30T23:45:00Z", "dev-agent-1", "10.0.0.20", 20.5, 8, 27.1, 16384, 4440, 11944, 31.4, 24.5, 162.8, 26.5, 93, 10.6, 0.903, 229, 0.91, 442.1))
+    all_records.append(create("evt-amz-2026-06-120", "2026-06-30T23:50:00Z", "staging-agent", "10.0.0.30", 31.4, 16, 45.2, 32768, 14805, 17963, 69.4, 54.1, 275.0, 55.0, 266, 6.2, 0.920, 842, 0.84, 290.4))
+
     return all_records
 
+def create(ev_id, ts, ag_id, ip, cpu, cores, mem_p, tot_m, usd_m, fr_m,
+           n_in, n_out, st_gb, d_p, qps, q_ms, c_hit, rpm, err, resp) -> dict:
+    """Helper method executing exact functional object payload maps match Java schema."""
+    return {
+        "eventId": ev_id,
+        "timestamp": ts,
+        "company": {"companyName": "amazon"},
+        "agent": {
+            "agentId": ag_id,
+            "hostname": f"{ag_id}.internal",
+            "ipAddress": ip
+        },
+        "resource": {
+            "resourceType": "EC2",
+            "resourceId": f"res-{ev_id}",
+            "environment": "PRODUCTION",
+            "region": "ap-south-1",
+            "availabilityZone": "ap-south-1a"
+        },
+        "compute": {
+            "cpuUsagePercent": round(cpu, 2),
+            "cpuCores": cores,
+            "loadAverage1m": round(cpu / 10.0, 2),
+            "loadAverage5m": round(cpu / 12.0, 2),
+            "loadAverage15m": round(cpu / 15.0, 2)
+        },
+        "memory": {
+            "totalMB": tot_m,
+            "usedMB": usd_m,
+            "freeMB": fr_m,
+            "usagePercent": round(mem_p, 2)
+        },
+        "network": {
+            "networkInMB": round(n_in, 2),
+            "networkOutMB": round(n_out, 2),
+            "activeConnections": int(n_in * 0.4)
+        },
+        "disk": {
+            "diskReadMB": round(cpu * 2.1, 2),
+            "diskWriteMB": round(cpu * 1.3, 2),
+            "diskUsagePercent": round(d_p, 2),
+            "storageUsedGB": round(st_gb, 2)
+        },
+        "database": {
+            "activeConnections": int(qps // 8),
+            "queriesPerSecond": qps,
+            "averageQueryTimeMs": round(q_ms, 2),
+            "cacheHitRatio": round(c_hit, 4),
+            "databaseSizeGB": round(st_gb * 0.4, 2)
+        },
+        "application": {
+            "requestsPerMinute": rpm,
+            "errorRatePercent": round(err, 3),
+            "responseTimeMs": round(resp, 2)
+        }
+    }
 
 if __name__ == "__main__":
     records = build_all()
 
-    here        = Path(__file__).resolve().parent          # audit-ml-service/
-    project_root = here.parent                              # CloudCostOps/
-    java_res    = project_root / "OrchestrationEngine" / "src" / "main" / "resources"
+    here = Path(__file__).resolve().parent
+    project_root = here.parent
+    java_res = project_root / "OrchestrationEngine" / "src" / "main" / "resources"
 
-    # Write to project root (read by Python)
+    # Write to project root
     root_json = project_root / "seed_records.json"
     root_json.write_text(json.dumps(records, indent=2), encoding="utf-8")
     print(f"Written {len(records)} records → {root_json}")
 
-    # Copy to Java classpath resources (read by DataSeeder)
+    # Copy to Java resource folder
     java_json = java_res / "seed_records.json"
     shutil.copy(root_json, java_json)
     print(f"Copied  {len(records)} records → {java_json}")

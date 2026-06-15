@@ -1,0 +1,6602 @@
+[
+  {
+    "eventId": "evt-amz-2026-04-01",
+    "timestamp": "2026-04-01T02:00:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-01",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 41.2,
+      "cpuCores": 16,
+      "loadAverage1m": 4.12,
+      "loadAverage5m": 3.43,
+      "loadAverage15m": 2.75
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 19824,
+      "freeMB": 12944,
+      "usagePercent": 60.5
+    },
+    "network": {
+      "networkInMB": 105.4,
+      "networkOutMB": 82.2,
+      "activeConnections": 42
+    },
+    "disk": {
+      "diskReadMB": 86.52,
+      "diskWriteMB": 53.56,
+      "diskUsagePercent": 92.1,
+      "storageUsedGB": 382.5
+    },
+    "database": {
+      "activeConnections": 51,
+      "queriesPerSecond": 412,
+      "averageQueryTimeMs": 4.1,
+      "cacheHitRatio": 0.941,
+      "databaseSizeGB": 153.0
+    },
+    "application": {
+      "requestsPerMinute": 1720,
+      "errorRatePercent": 0.42,
+      "responseTimeMs": 185.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-02",
+    "timestamp": "2026-04-01T14:30:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-02",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 64.8,
+      "cpuCores": 32,
+      "loadAverage1m": 6.48,
+      "loadAverage5m": 5.4,
+      "loadAverage15m": 4.32
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 47251,
+      "freeMB": 18285,
+      "usagePercent": 72.1
+    },
+    "network": {
+      "networkInMB": 142.1,
+      "networkOutMB": 110.8,
+      "activeConnections": 56
+    },
+    "disk": {
+      "diskReadMB": 136.08,
+      "diskWriteMB": 84.24,
+      "diskUsagePercent": 115.4,
+      "storageUsedGB": 482.1
+    },
+    "database": {
+      "activeConnections": 77,
+      "queriesPerSecond": 620,
+      "averageQueryTimeMs": 3.9,
+      "cacheHitRatio": 0.962,
+      "databaseSizeGB": 192.84
+    },
+    "application": {
+      "requestsPerMinute": 3150,
+      "errorRatePercent": 0.51,
+      "responseTimeMs": 148.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-03",
+    "timestamp": "2026-04-02T05:15:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-03",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 17.5,
+      "cpuCores": 8,
+      "loadAverage1m": 1.75,
+      "loadAverage5m": 1.46,
+      "loadAverage15m": 1.17
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 5144,
+      "freeMB": 11240,
+      "usagePercent": 31.4
+    },
+    "network": {
+      "networkInMB": 26.4,
+      "networkOutMB": 20.5,
+      "activeConnections": 10
+    },
+    "disk": {
+      "diskReadMB": 36.75,
+      "diskWriteMB": 22.75,
+      "diskUsagePercent": 21.0,
+      "storageUsedGB": 81.2
+    },
+    "database": {
+      "activeConnections": 9,
+      "queriesPerSecond": 78,
+      "averageQueryTimeMs": 11.8,
+      "cacheHitRatio": 0.889,
+      "databaseSizeGB": 32.48
+    },
+    "application": {
+      "requestsPerMinute": 192,
+      "errorRatePercent": 1.15,
+      "responseTimeMs": 415.0
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-04",
+    "timestamp": "2026-04-03T18:45:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-04",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 33.1,
+      "cpuCores": 16,
+      "loadAverage1m": 3.31,
+      "loadAverage5m": 2.76,
+      "loadAverage15m": 2.21
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 14680,
+      "freeMB": 18088,
+      "usagePercent": 44.8
+    },
+    "network": {
+      "networkInMB": 70.1,
+      "networkOutMB": 54.6,
+      "activeConnections": 28
+    },
+    "disk": {
+      "diskReadMB": 69.51,
+      "diskWriteMB": 43.03,
+      "diskUsagePercent": 52.3,
+      "storageUsedGB": 201.8
+    },
+    "database": {
+      "activeConnections": 31,
+      "queriesPerSecond": 255,
+      "averageQueryTimeMs": 6.4,
+      "cacheHitRatio": 0.925,
+      "databaseSizeGB": 80.72
+    },
+    "application": {
+      "requestsPerMinute": 835,
+      "errorRatePercent": 0.78,
+      "responseTimeMs": 285.4
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-05",
+    "timestamp": "2026-04-04T09:10:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-05",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 43.7,
+      "cpuCores": 16,
+      "loadAverage1m": 4.37,
+      "loadAverage5m": 3.64,
+      "loadAverage15m": 2.91
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 20283,
+      "freeMB": 12485,
+      "usagePercent": 61.9
+    },
+    "network": {
+      "networkInMB": 110.2,
+      "networkOutMB": 85.9,
+      "activeConnections": 44
+    },
+    "disk": {
+      "diskReadMB": 91.77,
+      "diskWriteMB": 56.81,
+      "diskUsagePercent": 95.8,
+      "storageUsedGB": 384.1
+    },
+    "database": {
+      "activeConnections": 53,
+      "queriesPerSecond": 425,
+      "averageQueryTimeMs": 4.0,
+      "cacheHitRatio": 0.945,
+      "databaseSizeGB": 153.64
+    },
+    "application": {
+      "requestsPerMinute": 1785,
+      "errorRatePercent": 0.39,
+      "responseTimeMs": 179.5
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-06",
+    "timestamp": "2026-04-05T21:20:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-06",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 59.3,
+      "cpuCores": 32,
+      "loadAverage1m": 5.93,
+      "loadAverage5m": 4.94,
+      "loadAverage15m": 3.95
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 49414,
+      "freeMB": 16122,
+      "usagePercent": 75.4
+    },
+    "network": {
+      "networkInMB": 138.5,
+      "networkOutMB": 108.0,
+      "activeConnections": 55
+    },
+    "disk": {
+      "diskReadMB": 124.53,
+      "diskWriteMB": 77.09,
+      "diskUsagePercent": 122.4,
+      "storageUsedGB": 485.6
+    },
+    "database": {
+      "activeConnections": 83,
+      "queriesPerSecond": 665,
+      "averageQueryTimeMs": 3.6,
+      "cacheHitRatio": 0.958,
+      "databaseSizeGB": 194.24
+    },
+    "application": {
+      "requestsPerMinute": 3240,
+      "errorRatePercent": 0.48,
+      "responseTimeMs": 142.0
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-07",
+    "timestamp": "2026-04-06T11:05:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-07",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 19.2,
+      "cpuCores": 8,
+      "loadAverage1m": 1.92,
+      "loadAverage5m": 1.6,
+      "loadAverage15m": 1.28
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 4734,
+      "freeMB": 11650,
+      "usagePercent": 28.9
+    },
+    "network": {
+      "networkInMB": 29.1,
+      "networkOutMB": 22.7,
+      "activeConnections": 11
+    },
+    "disk": {
+      "diskReadMB": 40.32,
+      "diskWriteMB": 24.96,
+      "diskUsagePercent": 23.5,
+      "storageUsedGB": 83.4
+    },
+    "database": {
+      "activeConnections": 10,
+      "queriesPerSecond": 84,
+      "averageQueryTimeMs": 12.1,
+      "cacheHitRatio": 0.892,
+      "databaseSizeGB": 33.36
+    },
+    "application": {
+      "requestsPerMinute": 205,
+      "errorRatePercent": 1.08,
+      "responseTimeMs": 430.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-08",
+    "timestamp": "2026-04-07T23:40:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-08",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 30.5,
+      "cpuCores": 16,
+      "loadAverage1m": 3.05,
+      "loadAverage5m": 2.54,
+      "loadAverage15m": 2.03
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 15433,
+      "freeMB": 17335,
+      "usagePercent": 47.1
+    },
+    "network": {
+      "networkInMB": 68.4,
+      "networkOutMB": 53.3,
+      "activeConnections": 27
+    },
+    "disk": {
+      "diskReadMB": 64.05,
+      "diskWriteMB": 39.65,
+      "diskUsagePercent": 56.1,
+      "storageUsedGB": 203.9
+    },
+    "database": {
+      "activeConnections": 35,
+      "queriesPerSecond": 280,
+      "averageQueryTimeMs": 6.2,
+      "cacheHitRatio": 0.919,
+      "databaseSizeGB": 81.56
+    },
+    "application": {
+      "requestsPerMinute": 860,
+      "errorRatePercent": 0.82,
+      "responseTimeMs": 298.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-09",
+    "timestamp": "2026-04-08T13:15:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-09",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 46.1,
+      "cpuCores": 16,
+      "loadAverage1m": 4.61,
+      "loadAverage5m": 3.84,
+      "loadAverage15m": 3.07
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 20712,
+      "freeMB": 12056,
+      "usagePercent": 63.2
+    },
+    "network": {
+      "networkInMB": 114.8,
+      "networkOutMB": 89.5,
+      "activeConnections": 45
+    },
+    "disk": {
+      "diskReadMB": 96.81,
+      "diskWriteMB": 59.93,
+      "diskUsagePercent": 99.0,
+      "storageUsedGB": 386.2
+    },
+    "database": {
+      "activeConnections": 55,
+      "queriesPerSecond": 440,
+      "averageQueryTimeMs": 3.8,
+      "cacheHitRatio": 0.948,
+      "databaseSizeGB": 154.48
+    },
+    "application": {
+      "requestsPerMinute": 1820,
+      "errorRatePercent": 0.44,
+      "responseTimeMs": 174.0
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-10",
+    "timestamp": "2026-04-09T03:50:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-10",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 61.4,
+      "cpuCores": 32,
+      "loadAverage1m": 6.14,
+      "loadAverage5m": 5.12,
+      "loadAverage15m": 4.09
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 47054,
+      "freeMB": 18482,
+      "usagePercent": 71.8
+    },
+    "network": {
+      "networkInMB": 140.2,
+      "networkOutMB": 109.3,
+      "activeConnections": 56
+    },
+    "disk": {
+      "diskReadMB": 128.94,
+      "diskWriteMB": 79.82,
+      "diskUsagePercent": 119.1,
+      "storageUsedGB": 488.0
+    },
+    "database": {
+      "activeConnections": 76,
+      "queriesPerSecond": 612,
+      "averageQueryTimeMs": 4.2,
+      "cacheHitRatio": 0.965,
+      "databaseSizeGB": 195.2
+    },
+    "application": {
+      "requestsPerMinute": 3110,
+      "errorRatePercent": 0.55,
+      "responseTimeMs": 151.6
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-11",
+    "timestamp": "2026-04-10T16:25:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-11",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 16.1,
+      "cpuCores": 8,
+      "loadAverage1m": 1.61,
+      "loadAverage5m": 1.34,
+      "loadAverage15m": 1.07
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 5259,
+      "freeMB": 11125,
+      "usagePercent": 32.1
+    },
+    "network": {
+      "networkInMB": 25.0,
+      "networkOutMB": 19.5,
+      "activeConnections": 10
+    },
+    "disk": {
+      "diskReadMB": 33.81,
+      "diskWriteMB": 20.93,
+      "diskUsagePercent": 20.2,
+      "storageUsedGB": 85.1
+    },
+    "database": {
+      "activeConnections": 9,
+      "queriesPerSecond": 75,
+      "averageQueryTimeMs": 13.0,
+      "cacheHitRatio": 0.881,
+      "databaseSizeGB": 34.04
+    },
+    "application": {
+      "requestsPerMinute": 180,
+      "errorRatePercent": 1.22,
+      "responseTimeMs": 405.4
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-12",
+    "timestamp": "2026-04-11T06:00:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-12",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 34.7,
+      "cpuCores": 16,
+      "loadAverage1m": 3.47,
+      "loadAverage5m": 2.89,
+      "loadAverage15m": 2.31
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 14843,
+      "freeMB": 17925,
+      "usagePercent": 45.3
+    },
+    "network": {
+      "networkInMB": 73.9,
+      "networkOutMB": 57.6,
+      "activeConnections": 29
+    },
+    "disk": {
+      "diskReadMB": 72.87,
+      "diskWriteMB": 45.11,
+      "diskUsagePercent": 50.8,
+      "storageUsedGB": 206.4
+    },
+    "database": {
+      "activeConnections": 33,
+      "queriesPerSecond": 264,
+      "averageQueryTimeMs": 5.9,
+      "cacheHitRatio": 0.928,
+      "databaseSizeGB": 82.56
+    },
+    "application": {
+      "requestsPerMinute": 885,
+      "errorRatePercent": 0.74,
+      "responseTimeMs": 276.9
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-13",
+    "timestamp": "2026-04-12T19:35:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-13",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 42.8,
+      "cpuCores": 16,
+      "loadAverage1m": 4.28,
+      "loadAverage5m": 3.57,
+      "loadAverage15m": 2.85
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 19595,
+      "freeMB": 13173,
+      "usagePercent": 59.8
+    },
+    "network": {
+      "networkInMB": 107.1,
+      "networkOutMB": 83.5,
+      "activeConnections": 42
+    },
+    "disk": {
+      "diskReadMB": 89.88,
+      "diskWriteMB": 55.64,
+      "diskUsagePercent": 94.3,
+      "storageUsedGB": 388.9
+    },
+    "database": {
+      "activeConnections": 52,
+      "queriesPerSecond": 418,
+      "averageQueryTimeMs": 4.3,
+      "cacheHitRatio": 0.939,
+      "databaseSizeGB": 155.56
+    },
+    "application": {
+      "requestsPerMinute": 1745,
+      "errorRatePercent": 0.46,
+      "responseTimeMs": 182.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-14",
+    "timestamp": "2026-04-13T08:10:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-14",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 66.2,
+      "cpuCores": 32,
+      "loadAverage1m": 6.62,
+      "loadAverage5m": 5.52,
+      "loadAverage15m": 4.41
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 49872,
+      "freeMB": 15664,
+      "usagePercent": 76.1
+    },
+    "network": {
+      "networkInMB": 146.7,
+      "networkOutMB": 114.4,
+      "activeConnections": 58
+    },
+    "disk": {
+      "diskReadMB": 139.02,
+      "diskWriteMB": 86.06,
+      "diskUsagePercent": 126.8,
+      "storageUsedGB": 491.2
+    },
+    "database": {
+      "activeConnections": 84,
+      "queriesPerSecond": 678,
+      "averageQueryTimeMs": 3.4,
+      "cacheHitRatio": 0.971,
+      "databaseSizeGB": 196.48
+    },
+    "application": {
+      "requestsPerMinute": 3290,
+      "errorRatePercent": 0.36,
+      "responseTimeMs": 135.4
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-15",
+    "timestamp": "2026-04-14T20:45:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-15",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 18.9,
+      "cpuCores": 8,
+      "loadAverage1m": 1.89,
+      "loadAverage5m": 1.57,
+      "loadAverage15m": 1.26
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 4833,
+      "freeMB": 11551,
+      "usagePercent": 29.5
+    },
+    "network": {
+      "networkInMB": 28.5,
+      "networkOutMB": 22.2,
+      "activeConnections": 11
+    },
+    "disk": {
+      "diskReadMB": 39.69,
+      "diskWriteMB": 24.57,
+      "diskUsagePercent": 24.1,
+      "storageUsedGB": 87.5
+    },
+    "database": {
+      "activeConnections": 10,
+      "queriesPerSecond": 82,
+      "averageQueryTimeMs": 11.5,
+      "cacheHitRatio": 0.895,
+      "databaseSizeGB": 35.0
+    },
+    "application": {
+      "requestsPerMinute": 212,
+      "errorRatePercent": 1.02,
+      "responseTimeMs": 424.8
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-16",
+    "timestamp": "2026-04-15T11:20:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-16",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 31.2,
+      "cpuCores": 16,
+      "loadAverage1m": 3.12,
+      "loadAverage5m": 2.6,
+      "loadAverage15m": 2.08
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 15728,
+      "freeMB": 17040,
+      "usagePercent": 48.0
+    },
+    "network": {
+      "networkInMB": 69.2,
+      "networkOutMB": 53.9,
+      "activeConnections": 27
+    },
+    "disk": {
+      "diskReadMB": 65.52,
+      "diskWriteMB": 40.56,
+      "diskUsagePercent": 58.4,
+      "storageUsedGB": 210.0
+    },
+    "database": {
+      "activeConnections": 36,
+      "queriesPerSecond": 291,
+      "averageQueryTimeMs": 6.5,
+      "cacheHitRatio": 0.914,
+      "databaseSizeGB": 84.0
+    },
+    "application": {
+      "requestsPerMinute": 842,
+      "errorRatePercent": 0.89,
+      "responseTimeMs": 304.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-17",
+    "timestamp": "2026-04-16T22:55:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-17",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 47.5,
+      "cpuCores": 16,
+      "loadAverage1m": 4.75,
+      "loadAverage5m": 3.96,
+      "loadAverage15m": 3.17
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 21004,
+      "freeMB": 11764,
+      "usagePercent": 64.1
+    },
+    "network": {
+      "networkInMB": 117.3,
+      "networkOutMB": 91.5,
+      "activeConnections": 46
+    },
+    "disk": {
+      "diskReadMB": 99.75,
+      "diskWriteMB": 61.75,
+      "diskUsagePercent": 102.5,
+      "storageUsedGB": 391.4
+    },
+    "database": {
+      "activeConnections": 56,
+      "queriesPerSecond": 452,
+      "averageQueryTimeMs": 3.6,
+      "cacheHitRatio": 0.952,
+      "databaseSizeGB": 156.56
+    },
+    "application": {
+      "requestsPerMinute": 1860,
+      "errorRatePercent": 0.41,
+      "responseTimeMs": 169.8
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-18",
+    "timestamp": "2026-04-17T12:30:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-18",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 60.1,
+      "cpuCores": 32,
+      "loadAverage1m": 6.01,
+      "loadAverage5m": 5.01,
+      "loadAverage15m": 4.01
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 48168,
+      "freeMB": 17368,
+      "usagePercent": 73.5
+    },
+    "network": {
+      "networkInMB": 139.1,
+      "networkOutMB": 108.5,
+      "activeConnections": 55
+    },
+    "disk": {
+      "diskReadMB": 126.21,
+      "diskWriteMB": 78.13,
+      "diskUsagePercent": 117.9,
+      "storageUsedGB": 494.3
+    },
+    "database": {
+      "activeConnections": 78,
+      "queriesPerSecond": 625,
+      "averageQueryTimeMs": 4.0,
+      "cacheHitRatio": 0.96,
+      "databaseSizeGB": 197.72
+    },
+    "application": {
+      "requestsPerMinute": 3170,
+      "errorRatePercent": 0.52,
+      "responseTimeMs": 146.5
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-19",
+    "timestamp": "2026-04-18T01:05:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-19",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 20.4,
+      "cpuCores": 8,
+      "loadAverage1m": 2.04,
+      "loadAverage5m": 1.7,
+      "loadAverage15m": 1.36
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 4456,
+      "freeMB": 11928,
+      "usagePercent": 27.2
+    },
+    "network": {
+      "networkInMB": 31.0,
+      "networkOutMB": 24.1,
+      "activeConnections": 12
+    },
+    "disk": {
+      "diskReadMB": 42.84,
+      "diskWriteMB": 26.52,
+      "diskUsagePercent": 25.8,
+      "storageUsedGB": 89.9
+    },
+    "database": {
+      "activeConnections": 11,
+      "queriesPerSecond": 89,
+      "averageQueryTimeMs": 10.9,
+      "cacheHitRatio": 0.902,
+      "databaseSizeGB": 35.96
+    },
+    "application": {
+      "requestsPerMinute": 224,
+      "errorRatePercent": 0.95,
+      "responseTimeMs": 439.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-20",
+    "timestamp": "2026-04-19T15:40:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-20",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 35.9,
+      "cpuCores": 16,
+      "loadAverage1m": 3.59,
+      "loadAverage5m": 2.99,
+      "loadAverage15m": 2.39
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 14385,
+      "freeMB": 18383,
+      "usagePercent": 43.9
+    },
+    "network": {
+      "networkInMB": 76.2,
+      "networkOutMB": 59.4,
+      "activeConnections": 30
+    },
+    "disk": {
+      "diskReadMB": 75.39,
+      "diskWriteMB": 46.67,
+      "diskUsagePercent": 49.2,
+      "storageUsedGB": 212.5
+    },
+    "database": {
+      "activeConnections": 34,
+      "queriesPerSecond": 272,
+      "averageQueryTimeMs": 5.6,
+      "cacheHitRatio": 0.932,
+      "databaseSizeGB": 85.0
+    },
+    "application": {
+      "requestsPerMinute": 910,
+      "errorRatePercent": 0.7,
+      "responseTimeMs": 268.0
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-21",
+    "timestamp": "2026-04-20T04:15:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-21",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 44.2,
+      "cpuCores": 16,
+      "loadAverage1m": 4.42,
+      "loadAverage5m": 3.68,
+      "loadAverage15m": 2.95
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 19955,
+      "freeMB": 12813,
+      "usagePercent": 60.9
+    },
+    "network": {
+      "networkInMB": 111.4,
+      "networkOutMB": 86.8,
+      "activeConnections": 44
+    },
+    "disk": {
+      "diskReadMB": 92.82,
+      "diskWriteMB": 57.46,
+      "diskUsagePercent": 97.1,
+      "storageUsedGB": 395.2
+    },
+    "database": {
+      "activeConnections": 53,
+      "queriesPerSecond": 431,
+      "averageQueryTimeMs": 3.9,
+      "cacheHitRatio": 0.943,
+      "databaseSizeGB": 158.08
+    },
+    "application": {
+      "requestsPerMinute": 1805,
+      "errorRatePercent": 0.4,
+      "responseTimeMs": 176.3
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-22",
+    "timestamp": "2026-04-21T17:50:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-22",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 63.2,
+      "cpuCores": 32,
+      "loadAverage1m": 6.32,
+      "loadAverage5m": 5.27,
+      "loadAverage15m": 4.21
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 49020,
+      "freeMB": 16516,
+      "usagePercent": 74.8
+    },
+    "network": {
+      "networkInMB": 141.6,
+      "networkOutMB": 110.4,
+      "activeConnections": 56
+    },
+    "disk": {
+      "diskReadMB": 132.72,
+      "diskWriteMB": 82.16,
+      "diskUsagePercent": 124.0,
+      "storageUsedGB": 497.8
+    },
+    "database": {
+      "activeConnections": 81,
+      "queriesPerSecond": 652,
+      "averageQueryTimeMs": 3.7,
+      "cacheHitRatio": 0.967,
+      "databaseSizeGB": 199.12
+    },
+    "application": {
+      "requestsPerMinute": 3215,
+      "errorRatePercent": 0.46,
+      "responseTimeMs": 140.7
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-23",
+    "timestamp": "2026-04-22T06:25:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-23",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 15.3,
+      "cpuCores": 8,
+      "loadAverage1m": 1.53,
+      "loadAverage5m": 1.28,
+      "loadAverage15m": 1.02
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 5488,
+      "freeMB": 10896,
+      "usagePercent": 33.5
+    },
+    "network": {
+      "networkInMB": 23.8,
+      "networkOutMB": 18.5,
+      "activeConnections": 9
+    },
+    "disk": {
+      "diskReadMB": 32.13,
+      "diskWriteMB": 19.89,
+      "diskUsagePercent": 18.9,
+      "storageUsedGB": 92.4
+    },
+    "database": {
+      "activeConnections": 8,
+      "queriesPerSecond": 71,
+      "averageQueryTimeMs": 13.5,
+      "cacheHitRatio": 0.876,
+      "databaseSizeGB": 36.96
+    },
+    "application": {
+      "requestsPerMinute": 172,
+      "errorRatePercent": 1.28,
+      "responseTimeMs": 398.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-24",
+    "timestamp": "2026-04-23T20:00:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-24",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 32.6,
+      "cpuCores": 16,
+      "loadAverage1m": 3.26,
+      "loadAverage5m": 2.72,
+      "loadAverage15m": 2.17
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 15237,
+      "freeMB": 17531,
+      "usagePercent": 46.5
+    },
+    "network": {
+      "networkInMB": 71.5,
+      "networkOutMB": 55.7,
+      "activeConnections": 28
+    },
+    "disk": {
+      "diskReadMB": 68.46,
+      "diskWriteMB": 42.38,
+      "diskUsagePercent": 54.7,
+      "storageUsedGB": 215.1
+    },
+    "database": {
+      "activeConnections": 32,
+      "queriesPerSecond": 261,
+      "averageQueryTimeMs": 6.1,
+      "cacheHitRatio": 0.922,
+      "databaseSizeGB": 86.04
+    },
+    "application": {
+      "requestsPerMinute": 852,
+      "errorRatePercent": 0.85,
+      "responseTimeMs": 291.5
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-25",
+    "timestamp": "2026-04-24T09:35:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-25",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 48.9,
+      "cpuCores": 16,
+      "loadAverage1m": 4.89,
+      "loadAverage5m": 4.08,
+      "loadAverage15m": 3.26
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 21364,
+      "freeMB": 11404,
+      "usagePercent": 65.2
+    },
+    "network": {
+      "networkInMB": 120.5,
+      "networkOutMB": 93.9,
+      "activeConnections": 48
+    },
+    "disk": {
+      "diskReadMB": 102.69,
+      "diskWriteMB": 63.57,
+      "diskUsagePercent": 104.9,
+      "storageUsedGB": 398.7
+    },
+    "database": {
+      "activeConnections": 58,
+      "queriesPerSecond": 465,
+      "averageQueryTimeMs": 3.4,
+      "cacheHitRatio": 0.956,
+      "databaseSizeGB": 159.48
+    },
+    "application": {
+      "requestsPerMinute": 1910,
+      "errorRatePercent": 0.35,
+      "responseTimeMs": 164.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-26",
+    "timestamp": "2026-04-25T22:10:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-26",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 58.1,
+      "cpuCores": 32,
+      "loadAverage1m": 5.81,
+      "loadAverage5m": 4.84,
+      "loadAverage15m": 3.87
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 46530,
+      "freeMB": 19006,
+      "usagePercent": 71.0
+    },
+    "network": {
+      "networkInMB": 136.4,
+      "networkOutMB": 106.3,
+      "activeConnections": 54
+    },
+    "disk": {
+      "diskReadMB": 122.01,
+      "diskWriteMB": 75.53,
+      "diskUsagePercent": 114.2,
+      "storageUsedGB": 501.2
+    },
+    "database": {
+      "activeConnections": 75,
+      "queriesPerSecond": 604,
+      "averageQueryTimeMs": 4.3,
+      "cacheHitRatio": 0.954,
+      "databaseSizeGB": 200.48
+    },
+    "application": {
+      "requestsPerMinute": 3080,
+      "errorRatePercent": 0.58,
+      "responseTimeMs": 154.9
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-27",
+    "timestamp": "2026-04-26T12:45:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-27",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 18.1,
+      "cpuCores": 8,
+      "loadAverage1m": 1.81,
+      "loadAverage5m": 1.51,
+      "loadAverage15m": 1.21
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 4947,
+      "freeMB": 11437,
+      "usagePercent": 30.2
+    },
+    "network": {
+      "networkInMB": 27.2,
+      "networkOutMB": 21.2,
+      "activeConnections": 10
+    },
+    "disk": {
+      "diskReadMB": 38.01,
+      "diskWriteMB": 23.53,
+      "diskUsagePercent": 22.8,
+      "storageUsedGB": 94.8
+    },
+    "database": {
+      "activeConnections": 10,
+      "queriesPerSecond": 80,
+      "averageQueryTimeMs": 11.9,
+      "cacheHitRatio": 0.891,
+      "databaseSizeGB": 37.92
+    },
+    "application": {
+      "requestsPerMinute": 198,
+      "errorRatePercent": 1.11,
+      "responseTimeMs": 421.6
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-28",
+    "timestamp": "2026-04-27T01:20:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-28",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 29.8,
+      "cpuCores": 16,
+      "loadAverage1m": 2.98,
+      "loadAverage5m": 2.48,
+      "loadAverage15m": 1.99
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 16121,
+      "freeMB": 16647,
+      "usagePercent": 49.2
+    },
+    "network": {
+      "networkInMB": 66.9,
+      "networkOutMB": 52.1,
+      "activeConnections": 26
+    },
+    "disk": {
+      "diskReadMB": 62.58,
+      "diskWriteMB": 38.74,
+      "diskUsagePercent": 60.5,
+      "storageUsedGB": 218.4
+    },
+    "database": {
+      "activeConnections": 37,
+      "queriesPerSecond": 298,
+      "averageQueryTimeMs": 6.7,
+      "cacheHitRatio": 0.91,
+      "databaseSizeGB": 87.36
+    },
+    "application": {
+      "requestsPerMinute": 822,
+      "errorRatePercent": 0.94,
+      "responseTimeMs": 310.8
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-29",
+    "timestamp": "2026-04-28T14:55:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-29",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 45.3,
+      "cpuCores": 16,
+      "loadAverage1m": 4.53,
+      "loadAverage5m": 3.77,
+      "loadAverage15m": 3.02
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 20447,
+      "freeMB": 12321,
+      "usagePercent": 62.4
+    },
+    "network": {
+      "networkInMB": 113.1,
+      "networkOutMB": 88.2,
+      "activeConnections": 45
+    },
+    "disk": {
+      "diskReadMB": 95.13,
+      "diskWriteMB": 58.89,
+      "diskUsagePercent": 98.1,
+      "storageUsedGB": 401.9
+    },
+    "database": {
+      "activeConnections": 54,
+      "queriesPerSecond": 436,
+      "averageQueryTimeMs": 3.9,
+      "cacheHitRatio": 0.946,
+      "databaseSizeGB": 160.76
+    },
+    "application": {
+      "requestsPerMinute": 1810,
+      "errorRatePercent": 0.42,
+      "responseTimeMs": 175.8
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-30",
+    "timestamp": "2026-04-29T04:30:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-30",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 65.5,
+      "cpuCores": 32,
+      "loadAverage1m": 6.55,
+      "loadAverage5m": 5.46,
+      "loadAverage15m": 4.37
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 49741,
+      "freeMB": 15795,
+      "usagePercent": 75.9
+    },
+    "network": {
+      "networkInMB": 145.2,
+      "networkOutMB": 113.2,
+      "activeConnections": 58
+    },
+    "disk": {
+      "diskReadMB": 137.55,
+      "diskWriteMB": 85.15,
+      "diskUsagePercent": 125.1,
+      "storageUsedGB": 505.4
+    },
+    "database": {
+      "activeConnections": 84,
+      "queriesPerSecond": 672,
+      "averageQueryTimeMs": 3.5,
+      "cacheHitRatio": 0.969,
+      "databaseSizeGB": 202.16
+    },
+    "application": {
+      "requestsPerMinute": 3270,
+      "errorRatePercent": 0.38,
+      "responseTimeMs": 137.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-31",
+    "timestamp": "2026-04-29T18:05:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-31",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 21.1,
+      "cpuCores": 8,
+      "loadAverage1m": 2.11,
+      "loadAverage5m": 1.76,
+      "loadAverage15m": 1.41
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 4341,
+      "freeMB": 12043,
+      "usagePercent": 26.5
+    },
+    "network": {
+      "networkInMB": 32.4,
+      "networkOutMB": 25.2,
+      "activeConnections": 12
+    },
+    "disk": {
+      "diskReadMB": 44.31,
+      "diskWriteMB": 27.43,
+      "diskUsagePercent": 27.2,
+      "storageUsedGB": 97.2
+    },
+    "database": {
+      "activeConnections": 11,
+      "queriesPerSecond": 93,
+      "averageQueryTimeMs": 10.4,
+      "cacheHitRatio": 0.906,
+      "databaseSizeGB": 38.88
+    },
+    "application": {
+      "requestsPerMinute": 235,
+      "errorRatePercent": 0.88,
+      "responseTimeMs": 444.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-32",
+    "timestamp": "2026-04-30T06:40:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-32",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 36.4,
+      "cpuCores": 16,
+      "loadAverage1m": 3.64,
+      "loadAverage5m": 3.03,
+      "loadAverage15m": 2.43
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 14024,
+      "freeMB": 18744,
+      "usagePercent": 42.8
+    },
+    "network": {
+      "networkInMB": 77.5,
+      "networkOutMB": 60.4,
+      "activeConnections": 31
+    },
+    "disk": {
+      "diskReadMB": 76.44,
+      "diskWriteMB": 47.32,
+      "diskUsagePercent": 47.9,
+      "storageUsedGB": 221.0
+    },
+    "database": {
+      "activeConnections": 34,
+      "queriesPerSecond": 278,
+      "averageQueryTimeMs": 5.4,
+      "cacheHitRatio": 0.935,
+      "databaseSizeGB": 88.4
+    },
+    "application": {
+      "requestsPerMinute": 925,
+      "errorRatePercent": 0.67,
+      "responseTimeMs": 262.5
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-33",
+    "timestamp": "2026-04-30T19:15:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-33",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 42.1,
+      "cpuCores": 16,
+      "loadAverage1m": 4.21,
+      "loadAverage5m": 3.51,
+      "loadAverage15m": 2.81
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 19234,
+      "freeMB": 13534,
+      "usagePercent": 58.7
+    },
+    "network": {
+      "networkInMB": 105.8,
+      "networkOutMB": 82.5,
+      "activeConnections": 42
+    },
+    "disk": {
+      "diskReadMB": 88.41,
+      "diskWriteMB": 54.73,
+      "diskUsagePercent": 93.2,
+      "storageUsedGB": 404.2
+    },
+    "database": {
+      "activeConnections": 51,
+      "queriesPerSecond": 410,
+      "averageQueryTimeMs": 4.4,
+      "cacheHitRatio": 0.937,
+      "databaseSizeGB": 161.68
+    },
+    "application": {
+      "requestsPerMinute": 1715,
+      "errorRatePercent": 0.48,
+      "responseTimeMs": 187.9
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-34",
+    "timestamp": "2026-04-30T22:30:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-34",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 62.0,
+      "cpuCores": 32,
+      "loadAverage1m": 6.2,
+      "loadAverage5m": 5.17,
+      "loadAverage15m": 4.13
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 47906,
+      "freeMB": 17630,
+      "usagePercent": 73.1
+    },
+    "network": {
+      "networkInMB": 139.8,
+      "networkOutMB": 109.0,
+      "activeConnections": 55
+    },
+    "disk": {
+      "diskReadMB": 130.2,
+      "diskWriteMB": 80.6,
+      "diskUsagePercent": 116.4,
+      "storageUsedGB": 508.6
+    },
+    "database": {
+      "activeConnections": 77,
+      "queriesPerSecond": 618,
+      "averageQueryTimeMs": 4.1,
+      "cacheHitRatio": 0.961,
+      "databaseSizeGB": 203.44
+    },
+    "application": {
+      "requestsPerMinute": 3140,
+      "errorRatePercent": 0.54,
+      "responseTimeMs": 149.3
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-35",
+    "timestamp": "2026-04-30T23:00:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-35",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 16.9,
+      "cpuCores": 8,
+      "loadAverage1m": 1.69,
+      "loadAverage5m": 1.41,
+      "loadAverage15m": 1.13
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 5046,
+      "freeMB": 11338,
+      "usagePercent": 30.8
+    },
+    "network": {
+      "networkInMB": 25.8,
+      "networkOutMB": 20.1,
+      "activeConnections": 10
+    },
+    "disk": {
+      "diskReadMB": 35.49,
+      "diskWriteMB": 21.97,
+      "diskUsagePercent": 21.5,
+      "storageUsedGB": 99.5
+    },
+    "database": {
+      "activeConnections": 9,
+      "queriesPerSecond": 76,
+      "averageQueryTimeMs": 12.6,
+      "cacheHitRatio": 0.886,
+      "databaseSizeGB": 39.8
+    },
+    "application": {
+      "requestsPerMinute": 186,
+      "errorRatePercent": 1.18,
+      "responseTimeMs": 411.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-36",
+    "timestamp": "2026-04-30T23:15:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-36",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 31.9,
+      "cpuCores": 16,
+      "loadAverage1m": 3.19,
+      "loadAverage5m": 2.66,
+      "loadAverage15m": 2.13
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 15532,
+      "freeMB": 17236,
+      "usagePercent": 47.4
+    },
+    "network": {
+      "networkInMB": 70.4,
+      "networkOutMB": 54.9,
+      "activeConnections": 28
+    },
+    "disk": {
+      "diskReadMB": 66.99,
+      "diskWriteMB": 41.47,
+      "diskUsagePercent": 57.2,
+      "storageUsedGB": 224.2
+    },
+    "database": {
+      "activeConnections": 35,
+      "queriesPerSecond": 285,
+      "averageQueryTimeMs": 6.3,
+      "cacheHitRatio": 0.916,
+      "databaseSizeGB": 89.68
+    },
+    "application": {
+      "requestsPerMinute": 848,
+      "errorRatePercent": 0.86,
+      "responseTimeMs": 301.0
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-37",
+    "timestamp": "2026-04-30T23:30:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-37",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 46.8,
+      "cpuCores": 16,
+      "loadAverage1m": 4.68,
+      "loadAverage5m": 3.9,
+      "loadAverage15m": 3.12
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 20905,
+      "freeMB": 11863,
+      "usagePercent": 63.8
+    },
+    "network": {
+      "networkInMB": 115.9,
+      "networkOutMB": 90.4,
+      "activeConnections": 46
+    },
+    "disk": {
+      "diskReadMB": 98.28,
+      "diskWriteMB": 60.84,
+      "diskUsagePercent": 101.2,
+      "storageUsedGB": 407.5
+    },
+    "database": {
+      "activeConnections": 55,
+      "queriesPerSecond": 446,
+      "averageQueryTimeMs": 3.7,
+      "cacheHitRatio": 0.95,
+      "databaseSizeGB": 163.0
+    },
+    "application": {
+      "requestsPerMinute": 1840,
+      "errorRatePercent": 0.43,
+      "responseTimeMs": 171.4
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-38",
+    "timestamp": "2026-04-30T23:45:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-38",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 60.7,
+      "cpuCores": 32,
+      "loadAverage1m": 6.07,
+      "loadAverage5m": 5.06,
+      "loadAverage15m": 4.05
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 48627,
+      "freeMB": 16909,
+      "usagePercent": 74.2
+    },
+    "network": {
+      "networkInMB": 140.9,
+      "networkOutMB": 109.9,
+      "activeConnections": 56
+    },
+    "disk": {
+      "diskReadMB": 127.47,
+      "diskWriteMB": 78.91,
+      "diskUsagePercent": 120.5,
+      "storageUsedGB": 511.9
+    },
+    "database": {
+      "activeConnections": 79,
+      "queriesPerSecond": 634,
+      "averageQueryTimeMs": 3.9,
+      "cacheHitRatio": 0.963,
+      "databaseSizeGB": 204.76
+    },
+    "application": {
+      "requestsPerMinute": 3195,
+      "errorRatePercent": 0.5,
+      "responseTimeMs": 144.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-39",
+    "timestamp": "2026-04-30T23:50:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-39",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 19.8,
+      "cpuCores": 8,
+      "loadAverage1m": 1.98,
+      "loadAverage5m": 1.65,
+      "loadAverage15m": 1.32
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 4636,
+      "freeMB": 11748,
+      "usagePercent": 28.3
+    },
+    "network": {
+      "networkInMB": 29.8,
+      "networkOutMB": 23.2,
+      "activeConnections": 11
+    },
+    "disk": {
+      "diskReadMB": 41.58,
+      "diskWriteMB": 25.74,
+      "diskUsagePercent": 24.9,
+      "storageUsedGB": 102.1
+    },
+    "database": {
+      "activeConnections": 10,
+      "queriesPerSecond": 86,
+      "averageQueryTimeMs": 11.2,
+      "cacheHitRatio": 0.898,
+      "databaseSizeGB": 40.84
+    },
+    "application": {
+      "requestsPerMinute": 218,
+      "errorRatePercent": 1.05,
+      "responseTimeMs": 433.5
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-04-40",
+    "timestamp": "2026-04-30T23:55:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-04-40",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 35.2,
+      "cpuCores": 16,
+      "loadAverage1m": 3.52,
+      "loadAverage5m": 2.93,
+      "loadAverage15m": 2.35
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 14581,
+      "freeMB": 18187,
+      "usagePercent": 44.5
+    },
+    "network": {
+      "networkInMB": 75.1,
+      "networkOutMB": 58.5,
+      "activeConnections": 30
+    },
+    "disk": {
+      "diskReadMB": 73.92,
+      "diskWriteMB": 45.76,
+      "diskUsagePercent": 50.4,
+      "storageUsedGB": 227.4
+    },
+    "database": {
+      "activeConnections": 33,
+      "queriesPerSecond": 269,
+      "averageQueryTimeMs": 5.8,
+      "cacheHitRatio": 0.929,
+      "databaseSizeGB": 90.96
+    },
+    "application": {
+      "requestsPerMinute": 902,
+      "errorRatePercent": 0.73,
+      "responseTimeMs": 272.4
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-41",
+    "timestamp": "2026-05-01T01:10:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-41",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 44.8,
+      "cpuCores": 16,
+      "loadAverage1m": 4.48,
+      "loadAverage5m": 3.73,
+      "loadAverage15m": 2.99
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 20054,
+      "freeMB": 12714,
+      "usagePercent": 61.2
+    },
+    "network": {
+      "networkInMB": 112.5,
+      "networkOutMB": 87.7,
+      "activeConnections": 45
+    },
+    "disk": {
+      "diskReadMB": 94.08,
+      "diskWriteMB": 58.24,
+      "diskUsagePercent": 98.2,
+      "storageUsedGB": 410.8
+    },
+    "database": {
+      "activeConnections": 54,
+      "queriesPerSecond": 434,
+      "averageQueryTimeMs": 3.8,
+      "cacheHitRatio": 0.944,
+      "databaseSizeGB": 164.32
+    },
+    "application": {
+      "requestsPerMinute": 1812,
+      "errorRatePercent": 0.41,
+      "responseTimeMs": 174.5
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-42",
+    "timestamp": "2026-05-02T03:20:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-42",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 62.5,
+      "cpuCores": 32,
+      "loadAverage1m": 6.25,
+      "loadAverage5m": 5.21,
+      "loadAverage15m": 4.17
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 48364,
+      "freeMB": 17172,
+      "usagePercent": 73.8
+    },
+    "network": {
+      "networkInMB": 141.0,
+      "networkOutMB": 109.9,
+      "activeConnections": 56
+    },
+    "disk": {
+      "diskReadMB": 131.25,
+      "diskWriteMB": 81.25,
+      "diskUsagePercent": 118.5,
+      "storageUsedGB": 515.2
+    },
+    "database": {
+      "activeConnections": 78,
+      "queriesPerSecond": 628,
+      "averageQueryTimeMs": 4.0,
+      "cacheHitRatio": 0.962,
+      "databaseSizeGB": 206.08
+    },
+    "application": {
+      "requestsPerMinute": 3165,
+      "errorRatePercent": 0.53,
+      "responseTimeMs": 147.6
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-43",
+    "timestamp": "2026-05-03T05:30:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-43",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 18.3,
+      "cpuCores": 8,
+      "loadAverage1m": 1.83,
+      "loadAverage5m": 1.53,
+      "loadAverage15m": 1.22
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 4882,
+      "freeMB": 11502,
+      "usagePercent": 29.8
+    },
+    "network": {
+      "networkInMB": 27.6,
+      "networkOutMB": 21.5,
+      "activeConnections": 11
+    },
+    "disk": {
+      "diskReadMB": 38.43,
+      "diskWriteMB": 23.79,
+      "diskUsagePercent": 23.1,
+      "storageUsedGB": 105.4
+    },
+    "database": {
+      "activeConnections": 10,
+      "queriesPerSecond": 81,
+      "averageQueryTimeMs": 11.7,
+      "cacheHitRatio": 0.893,
+      "databaseSizeGB": 42.16
+    },
+    "application": {
+      "requestsPerMinute": 201,
+      "errorRatePercent": 1.09,
+      "responseTimeMs": 423.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-44",
+    "timestamp": "2026-05-04T07:40:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-44",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 32.2,
+      "cpuCores": 16,
+      "loadAverage1m": 3.22,
+      "loadAverage5m": 2.68,
+      "loadAverage15m": 2.15
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 15368,
+      "freeMB": 17400,
+      "usagePercent": 46.9
+    },
+    "network": {
+      "networkInMB": 70.8,
+      "networkOutMB": 55.2,
+      "activeConnections": 28
+    },
+    "disk": {
+      "diskReadMB": 67.62,
+      "diskWriteMB": 41.86,
+      "diskUsagePercent": 55.4,
+      "storageUsedGB": 230.6
+    },
+    "database": {
+      "activeConnections": 32,
+      "queriesPerSecond": 263,
+      "averageQueryTimeMs": 6.0,
+      "cacheHitRatio": 0.923,
+      "databaseSizeGB": 92.24
+    },
+    "application": {
+      "requestsPerMinute": 854,
+      "errorRatePercent": 0.84,
+      "responseTimeMs": 293.0
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-45",
+    "timestamp": "2026-05-05T09:50:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-45",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 47.9,
+      "cpuCores": 16,
+      "loadAverage1m": 4.79,
+      "loadAverage5m": 3.99,
+      "loadAverage15m": 3.19
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 21135,
+      "freeMB": 11633,
+      "usagePercent": 64.5
+    },
+    "network": {
+      "networkInMB": 118.2,
+      "networkOutMB": 92.1,
+      "activeConnections": 47
+    },
+    "disk": {
+      "diskReadMB": 100.59,
+      "diskWriteMB": 62.27,
+      "diskUsagePercent": 103.1,
+      "storageUsedGB": 413.9
+    },
+    "database": {
+      "activeConnections": 57,
+      "queriesPerSecond": 456,
+      "averageQueryTimeMs": 3.5,
+      "cacheHitRatio": 0.953,
+      "databaseSizeGB": 165.56
+    },
+    "application": {
+      "requestsPerMinute": 1872,
+      "errorRatePercent": 0.34,
+      "responseTimeMs": 168.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-46",
+    "timestamp": "2026-05-06T11:00:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-46",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 57.4,
+      "cpuCores": 32,
+      "loadAverage1m": 5.74,
+      "loadAverage5m": 4.78,
+      "loadAverage15m": 3.83
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 46071,
+      "freeMB": 19465,
+      "usagePercent": 70.3
+    },
+    "network": {
+      "networkInMB": 135.1,
+      "networkOutMB": 105.3,
+      "activeConnections": 54
+    },
+    "disk": {
+      "diskReadMB": 120.54,
+      "diskWriteMB": 74.62,
+      "diskUsagePercent": 112.8,
+      "storageUsedGB": 518.4
+    },
+    "database": {
+      "activeConnections": 74,
+      "queriesPerSecond": 598,
+      "averageQueryTimeMs": 4.4,
+      "cacheHitRatio": 0.952,
+      "databaseSizeGB": 207.36
+    },
+    "application": {
+      "requestsPerMinute": 3050,
+      "errorRatePercent": 0.6,
+      "responseTimeMs": 156.4
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-47",
+    "timestamp": "2026-05-07T13:10:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-47",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 17.1,
+      "cpuCores": 8,
+      "loadAverage1m": 1.71,
+      "loadAverage5m": 1.43,
+      "loadAverage15m": 1.14
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 5079,
+      "freeMB": 11305,
+      "usagePercent": 31.0
+    },
+    "network": {
+      "networkInMB": 26.1,
+      "networkOutMB": 20.3,
+      "activeConnections": 10
+    },
+    "disk": {
+      "diskReadMB": 35.91,
+      "diskWriteMB": 22.23,
+      "diskUsagePercent": 21.8,
+      "storageUsedGB": 108.7
+    },
+    "database": {
+      "activeConnections": 9,
+      "queriesPerSecond": 77,
+      "averageQueryTimeMs": 12.4,
+      "cacheHitRatio": 0.887,
+      "databaseSizeGB": 43.48
+    },
+    "application": {
+      "requestsPerMinute": 188,
+      "errorRatePercent": 1.16,
+      "responseTimeMs": 413.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-48",
+    "timestamp": "2026-05-08T15:20:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-48",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 34.1,
+      "cpuCores": 16,
+      "loadAverage1m": 3.41,
+      "loadAverage5m": 2.84,
+      "loadAverage15m": 2.27
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 14483,
+      "freeMB": 18285,
+      "usagePercent": 44.2
+    },
+    "network": {
+      "networkInMB": 73.0,
+      "networkOutMB": 56.9,
+      "activeConnections": 29
+    },
+    "disk": {
+      "diskReadMB": 71.61,
+      "diskWriteMB": 44.33,
+      "diskUsagePercent": 49.8,
+      "storageUsedGB": 233.9
+    },
+    "database": {
+      "activeConnections": 33,
+      "queriesPerSecond": 271,
+      "averageQueryTimeMs": 5.7,
+      "cacheHitRatio": 0.93,
+      "databaseSizeGB": 93.56
+    },
+    "application": {
+      "requestsPerMinute": 908,
+      "errorRatePercent": 0.71,
+      "responseTimeMs": 270.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-49",
+    "timestamp": "2026-05-09T17:30:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-49",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 41.5,
+      "cpuCores": 16,
+      "loadAverage1m": 4.15,
+      "loadAverage5m": 3.46,
+      "loadAverage15m": 2.77
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 19070,
+      "freeMB": 13698,
+      "usagePercent": 58.2
+    },
+    "network": {
+      "networkInMB": 104.9,
+      "networkOutMB": 81.8,
+      "activeConnections": 41
+    },
+    "disk": {
+      "diskReadMB": 87.15,
+      "diskWriteMB": 53.95,
+      "diskUsagePercent": 92.4,
+      "storageUsedGB": 417.1
+    },
+    "database": {
+      "activeConnections": 50,
+      "queriesPerSecond": 406,
+      "averageQueryTimeMs": 4.5,
+      "cacheHitRatio": 0.935,
+      "databaseSizeGB": 166.84
+    },
+    "application": {
+      "requestsPerMinute": 1702,
+      "errorRatePercent": 0.49,
+      "responseTimeMs": 189.4
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-50",
+    "timestamp": "2026-05-10T19:40:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-50",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 66.8,
+      "cpuCores": 32,
+      "loadAverage1m": 6.68,
+      "loadAverage5m": 5.57,
+      "loadAverage15m": 4.45
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 50266,
+      "freeMB": 15270,
+      "usagePercent": 76.7
+    },
+    "network": {
+      "networkInMB": 147.9,
+      "networkOutMB": 115.3,
+      "activeConnections": 59
+    },
+    "disk": {
+      "diskReadMB": 140.28,
+      "diskWriteMB": 86.84,
+      "diskUsagePercent": 127.9,
+      "storageUsedGB": 521.6
+    },
+    "database": {
+      "activeConnections": 85,
+      "queriesPerSecond": 684,
+      "averageQueryTimeMs": 3.3,
+      "cacheHitRatio": 0.973,
+      "databaseSizeGB": 208.64
+    },
+    "application": {
+      "requestsPerMinute": 3320,
+      "errorRatePercent": 0.34,
+      "responseTimeMs": 133.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-51",
+    "timestamp": "2026-05-11T21:50:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-51",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 20.1,
+      "cpuCores": 8,
+      "loadAverage1m": 2.01,
+      "loadAverage5m": 1.68,
+      "loadAverage15m": 1.34
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 4407,
+      "freeMB": 11977,
+      "usagePercent": 26.9
+    },
+    "network": {
+      "networkInMB": 30.6,
+      "networkOutMB": 23.8,
+      "activeConnections": 12
+    },
+    "disk": {
+      "diskReadMB": 42.21,
+      "diskWriteMB": 26.13,
+      "diskUsagePercent": 26.2,
+      "storageUsedGB": 111.9
+    },
+    "database": {
+      "activeConnections": 11,
+      "queriesPerSecond": 91,
+      "averageQueryTimeMs": 10.7,
+      "cacheHitRatio": 0.904,
+      "databaseSizeGB": 44.76
+    },
+    "application": {
+      "requestsPerMinute": 228,
+      "errorRatePercent": 0.92,
+      "responseTimeMs": 441.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-52",
+    "timestamp": "2026-05-12T23:00:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-52",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 35.5,
+      "cpuCores": 16,
+      "loadAverage1m": 3.55,
+      "loadAverage5m": 2.96,
+      "loadAverage15m": 2.37
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 14122,
+      "freeMB": 18646,
+      "usagePercent": 43.1
+    },
+    "network": {
+      "networkInMB": 75.9,
+      "networkOutMB": 59.2,
+      "activeConnections": 30
+    },
+    "disk": {
+      "diskReadMB": 74.55,
+      "diskWriteMB": 46.15,
+      "diskUsagePercent": 48.5,
+      "storageUsedGB": 235.2
+    },
+    "database": {
+      "activeConnections": 34,
+      "queriesPerSecond": 276,
+      "averageQueryTimeMs": 5.5,
+      "cacheHitRatio": 0.933,
+      "databaseSizeGB": 94.08
+    },
+    "application": {
+      "requestsPerMinute": 918,
+      "errorRatePercent": 0.69,
+      "responseTimeMs": 264.8
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-53",
+    "timestamp": "2026-05-13T01:15:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-53",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 45.9,
+      "cpuCores": 16,
+      "loadAverage1m": 4.59,
+      "loadAverage5m": 3.82,
+      "loadAverage15m": 3.06
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 20578,
+      "freeMB": 12190,
+      "usagePercent": 62.8
+    },
+    "network": {
+      "networkInMB": 114.5,
+      "networkOutMB": 89.3,
+      "activeConnections": 45
+    },
+    "disk": {
+      "diskReadMB": 96.39,
+      "diskWriteMB": 59.67,
+      "diskUsagePercent": 98.8,
+      "storageUsedGB": 418.4
+    },
+    "database": {
+      "activeConnections": 54,
+      "queriesPerSecond": 439,
+      "averageQueryTimeMs": 3.8,
+      "cacheHitRatio": 0.947,
+      "databaseSizeGB": 167.36
+    },
+    "application": {
+      "requestsPerMinute": 1818,
+      "errorRatePercent": 0.43,
+      "responseTimeMs": 175.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-54",
+    "timestamp": "2026-05-14T03:25:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-54",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 61.1,
+      "cpuCores": 32,
+      "loadAverage1m": 6.11,
+      "loadAverage5m": 5.09,
+      "loadAverage15m": 4.07
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 46858,
+      "freeMB": 18678,
+      "usagePercent": 71.5
+    },
+    "network": {
+      "networkInMB": 139.9,
+      "networkOutMB": 109.1,
+      "activeConnections": 55
+    },
+    "disk": {
+      "diskReadMB": 128.31,
+      "diskWriteMB": 79.43,
+      "diskUsagePercent": 118.8,
+      "storageUsedGB": 521.7
+    },
+    "database": {
+      "activeConnections": 76,
+      "queriesPerSecond": 610,
+      "averageQueryTimeMs": 4.2,
+      "cacheHitRatio": 0.964,
+      "databaseSizeGB": 208.68
+    },
+    "application": {
+      "requestsPerMinute": 3105,
+      "errorRatePercent": 0.56,
+      "responseTimeMs": 152.0
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-55",
+    "timestamp": "2026-05-15T05:35:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-55",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 15.8,
+      "cpuCores": 8,
+      "loadAverage1m": 1.58,
+      "loadAverage5m": 1.32,
+      "loadAverage15m": 1.05
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 5357,
+      "freeMB": 11027,
+      "usagePercent": 32.7
+    },
+    "network": {
+      "networkInMB": 24.5,
+      "networkOutMB": 19.1,
+      "activeConnections": 9
+    },
+    "disk": {
+      "diskReadMB": 33.18,
+      "diskWriteMB": 20.54,
+      "diskUsagePercent": 19.5,
+      "storageUsedGB": 115.0
+    },
+    "database": {
+      "activeConnections": 9,
+      "queriesPerSecond": 74,
+      "averageQueryTimeMs": 13.2,
+      "cacheHitRatio": 0.88,
+      "databaseSizeGB": 46.0
+    },
+    "application": {
+      "requestsPerMinute": 178,
+      "errorRatePercent": 1.25,
+      "responseTimeMs": 401.8
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-56",
+    "timestamp": "2026-05-16T07:45:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-56",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 33.5,
+      "cpuCores": 16,
+      "loadAverage1m": 3.35,
+      "loadAverage5m": 2.79,
+      "loadAverage15m": 2.23
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 14974,
+      "freeMB": 17794,
+      "usagePercent": 45.7
+    },
+    "network": {
+      "networkInMB": 72.4,
+      "networkOutMB": 56.4,
+      "activeConnections": 28
+    },
+    "disk": {
+      "diskReadMB": 70.35,
+      "diskWriteMB": 43.55,
+      "diskUsagePercent": 53.1,
+      "storageUsedGB": 238.2
+    },
+    "database": {
+      "activeConnections": 33,
+      "queriesPerSecond": 267,
+      "averageQueryTimeMs": 5.9,
+      "cacheHitRatio": 0.926,
+      "databaseSizeGB": 95.28
+    },
+    "application": {
+      "requestsPerMinute": 868,
+      "errorRatePercent": 0.8,
+      "responseTimeMs": 281.5
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-57",
+    "timestamp": "2026-05-17T09:55:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-57",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 43.1,
+      "cpuCores": 16,
+      "loadAverage1m": 4.31,
+      "loadAverage5m": 3.59,
+      "loadAverage15m": 2.87
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 19693,
+      "freeMB": 13075,
+      "usagePercent": 60.1
+    },
+    "network": {
+      "networkInMB": 108.0,
+      "networkOutMB": 84.2,
+      "activeConnections": 43
+    },
+    "disk": {
+      "diskReadMB": 90.51,
+      "diskWriteMB": 56.03,
+      "diskUsagePercent": 94.9,
+      "storageUsedGB": 421.5
+    },
+    "database": {
+      "activeConnections": 52,
+      "queriesPerSecond": 421,
+      "averageQueryTimeMs": 4.2,
+      "cacheHitRatio": 0.94,
+      "databaseSizeGB": 168.6
+    },
+    "application": {
+      "requestsPerMinute": 1752,
+      "errorRatePercent": 0.45,
+      "responseTimeMs": 181.0
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-58",
+    "timestamp": "2026-05-18T11:05:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-58",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 65.0,
+      "cpuCores": 32,
+      "loadAverage1m": 6.5,
+      "loadAverage5m": 5.42,
+      "loadAverage15m": 4.33
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 49216,
+      "freeMB": 16320,
+      "usagePercent": 75.1
+    },
+    "network": {
+      "networkInMB": 145.0,
+      "networkOutMB": 113.1,
+      "activeConnections": 58
+    },
+    "disk": {
+      "diskReadMB": 136.5,
+      "diskWriteMB": 84.5,
+      "diskUsagePercent": 124.5,
+      "storageUsedGB": 524.8
+    },
+    "database": {
+      "activeConnections": 83,
+      "queriesPerSecond": 668,
+      "averageQueryTimeMs": 3.5,
+      "cacheHitRatio": 0.969,
+      "databaseSizeGB": 209.92
+    },
+    "application": {
+      "requestsPerMinute": 3255,
+      "errorRatePercent": 0.39,
+      "responseTimeMs": 137.4
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-59",
+    "timestamp": "2026-05-19T13:15:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-59",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 19.5,
+      "cpuCores": 8,
+      "loadAverage1m": 1.95,
+      "loadAverage5m": 1.62,
+      "loadAverage15m": 1.3
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 4685,
+      "freeMB": 11699,
+      "usagePercent": 28.6
+    },
+    "network": {
+      "networkInMB": 29.4,
+      "networkOutMB": 22.9,
+      "activeConnections": 11
+    },
+    "disk": {
+      "diskReadMB": 40.95,
+      "diskWriteMB": 25.35,
+      "diskUsagePercent": 25.2,
+      "storageUsedGB": 118.2
+    },
+    "database": {
+      "activeConnections": 10,
+      "queriesPerSecond": 87,
+      "averageQueryTimeMs": 11.1,
+      "cacheHitRatio": 0.899,
+      "databaseSizeGB": 47.28
+    },
+    "application": {
+      "requestsPerMinute": 215,
+      "errorRatePercent": 1.04,
+      "responseTimeMs": 431.5
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-60",
+    "timestamp": "2026-05-20T15:25:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-60",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 30.9,
+      "cpuCores": 16,
+      "loadAverage1m": 3.09,
+      "loadAverage5m": 2.57,
+      "loadAverage15m": 2.06
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 15826,
+      "freeMB": 16942,
+      "usagePercent": 48.3
+    },
+    "network": {
+      "networkInMB": 68.9,
+      "networkOutMB": 53.7,
+      "activeConnections": 27
+    },
+    "disk": {
+      "diskReadMB": 64.89,
+      "diskWriteMB": 40.17,
+      "diskUsagePercent": 59.2,
+      "storageUsedGB": 241.4
+    },
+    "database": {
+      "activeConnections": 36,
+      "queriesPerSecond": 294,
+      "averageQueryTimeMs": 6.6,
+      "cacheHitRatio": 0.912,
+      "databaseSizeGB": 96.56
+    },
+    "application": {
+      "requestsPerMinute": 838,
+      "errorRatePercent": 0.91,
+      "responseTimeMs": 307.0
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-61",
+    "timestamp": "2026-05-21T17:35:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-61",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 47.1,
+      "cpuCores": 16,
+      "loadAverage1m": 4.71,
+      "loadAverage5m": 3.93,
+      "loadAverage15m": 3.14
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 20807,
+      "freeMB": 11961,
+      "usagePercent": 63.5
+    },
+    "network": {
+      "networkInMB": 116.5,
+      "networkOutMB": 90.8,
+      "activeConnections": 46
+    },
+    "disk": {
+      "diskReadMB": 98.91,
+      "diskWriteMB": 61.23,
+      "diskUsagePercent": 101.8,
+      "storageUsedGB": 424.7
+    },
+    "database": {
+      "activeConnections": 56,
+      "queriesPerSecond": 449,
+      "averageQueryTimeMs": 3.7,
+      "cacheHitRatio": 0.951,
+      "databaseSizeGB": 169.88
+    },
+    "application": {
+      "requestsPerMinute": 1848,
+      "errorRatePercent": 0.42,
+      "responseTimeMs": 172.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-62",
+    "timestamp": "2026-05-22T19:45:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-62",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 59.8,
+      "cpuCores": 32,
+      "loadAverage1m": 5.98,
+      "loadAverage5m": 4.98,
+      "loadAverage15m": 3.99
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 47775,
+      "freeMB": 17761,
+      "usagePercent": 72.9
+    },
+    "network": {
+      "networkInMB": 138.6,
+      "networkOutMB": 108.1,
+      "activeConnections": 55
+    },
+    "disk": {
+      "diskReadMB": 125.58,
+      "diskWriteMB": 77.74,
+      "diskUsagePercent": 116.8,
+      "storageUsedGB": 527.9
+    },
+    "database": {
+      "activeConnections": 76,
+      "queriesPerSecond": 615,
+      "averageQueryTimeMs": 4.1,
+      "cacheHitRatio": 0.959,
+      "databaseSizeGB": 211.16
+    },
+    "application": {
+      "requestsPerMinute": 3135,
+      "errorRatePercent": 0.55,
+      "responseTimeMs": 149.8
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-63",
+    "timestamp": "2026-05-23T21:55:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-63",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 16.5,
+      "cpuCores": 8,
+      "loadAverage1m": 1.65,
+      "loadAverage5m": 1.38,
+      "loadAverage15m": 1.1
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 5193,
+      "freeMB": 11191,
+      "usagePercent": 31.7
+    },
+    "network": {
+      "networkInMB": 25.4,
+      "networkOutMB": 19.8,
+      "activeConnections": 10
+    },
+    "disk": {
+      "diskReadMB": 34.65,
+      "diskWriteMB": 21.45,
+      "diskUsagePercent": 20.8,
+      "storageUsedGB": 121.5
+    },
+    "database": {
+      "activeConnections": 9,
+      "queriesPerSecond": 76,
+      "averageQueryTimeMs": 12.8,
+      "cacheHitRatio": 0.884,
+      "databaseSizeGB": 48.6
+    },
+    "application": {
+      "requestsPerMinute": 183,
+      "errorRatePercent": 1.2,
+      "responseTimeMs": 408.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-64",
+    "timestamp": "2026-05-24T23:05:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-64",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 35.1,
+      "cpuCores": 16,
+      "loadAverage1m": 3.51,
+      "loadAverage5m": 2.93,
+      "loadAverage15m": 2.34
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 14286,
+      "freeMB": 18482,
+      "usagePercent": 43.6
+    },
+    "network": {
+      "networkInMB": 75.3,
+      "networkOutMB": 58.7,
+      "activeConnections": 30
+    },
+    "disk": {
+      "diskReadMB": 73.71,
+      "diskWriteMB": 45.63,
+      "diskUsagePercent": 48.9,
+      "storageUsedGB": 244.7
+    },
+    "database": {
+      "activeConnections": 34,
+      "queriesPerSecond": 273,
+      "averageQueryTimeMs": 5.6,
+      "cacheHitRatio": 0.931,
+      "databaseSizeGB": 97.88
+    },
+    "application": {
+      "requestsPerMinute": 912,
+      "errorRatePercent": 0.7,
+      "responseTimeMs": 267.4
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-65",
+    "timestamp": "2026-05-25T01:20:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-65",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 42.5,
+      "cpuCores": 16,
+      "loadAverage1m": 4.25,
+      "loadAverage5m": 3.54,
+      "loadAverage15m": 2.83
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 19365,
+      "freeMB": 13403,
+      "usagePercent": 59.1
+    },
+    "network": {
+      "networkInMB": 106.4,
+      "networkOutMB": 83.0,
+      "activeConnections": 42
+    },
+    "disk": {
+      "diskReadMB": 89.25,
+      "diskWriteMB": 55.25,
+      "diskUsagePercent": 93.8,
+      "storageUsedGB": 427.8
+    },
+    "database": {
+      "activeConnections": 51,
+      "queriesPerSecond": 415,
+      "averageQueryTimeMs": 4.3,
+      "cacheHitRatio": 0.938,
+      "databaseSizeGB": 171.12
+    },
+    "application": {
+      "requestsPerMinute": 1728,
+      "errorRatePercent": 0.47,
+      "responseTimeMs": 185.0
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-66",
+    "timestamp": "2026-05-26T03:30:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-66",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 64.1,
+      "cpuCores": 32,
+      "loadAverage1m": 6.41,
+      "loadAverage5m": 5.34,
+      "loadAverage15m": 4.27
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 48758,
+      "freeMB": 16778,
+      "usagePercent": 74.4
+    },
+    "network": {
+      "networkInMB": 143.4,
+      "networkOutMB": 111.8,
+      "activeConnections": 57
+    },
+    "disk": {
+      "diskReadMB": 134.61,
+      "diskWriteMB": 83.33,
+      "diskUsagePercent": 122.4,
+      "storageUsedGB": 531.0
+    },
+    "database": {
+      "activeConnections": 82,
+      "queriesPerSecond": 658,
+      "averageQueryTimeMs": 3.6,
+      "cacheHitRatio": 0.966,
+      "databaseSizeGB": 212.4
+    },
+    "application": {
+      "requestsPerMinute": 3220,
+      "errorRatePercent": 0.42,
+      "responseTimeMs": 139.8
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-67",
+    "timestamp": "2026-05-27T05:40:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-67",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 18.8,
+      "cpuCores": 8,
+      "loadAverage1m": 1.88,
+      "loadAverage5m": 1.57,
+      "loadAverage15m": 1.25
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 4784,
+      "freeMB": 11600,
+      "usagePercent": 29.2
+    },
+    "network": {
+      "networkInMB": 28.2,
+      "networkOutMB": 22.0,
+      "activeConnections": 11
+    },
+    "disk": {
+      "diskReadMB": 39.48,
+      "diskWriteMB": 24.44,
+      "diskUsagePercent": 23.9,
+      "storageUsedGB": 134.2
+    },
+    "database": {
+      "activeConnections": 10,
+      "queriesPerSecond": 83,
+      "averageQueryTimeMs": 11.4,
+      "cacheHitRatio": 0.896,
+      "databaseSizeGB": 53.68
+    },
+    "application": {
+      "requestsPerMinute": 208,
+      "errorRatePercent": 1.06,
+      "responseTimeMs": 427.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-68",
+    "timestamp": "2026-05-28T07:50:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-68",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 31.5,
+      "cpuCores": 16,
+      "loadAverage1m": 3.15,
+      "loadAverage5m": 2.62,
+      "loadAverage15m": 2.1
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 15597,
+      "freeMB": 17171,
+      "usagePercent": 47.6
+    },
+    "network": {
+      "networkInMB": 69.8,
+      "networkOutMB": 54.4,
+      "activeConnections": 27
+    },
+    "disk": {
+      "diskReadMB": 66.15,
+      "diskWriteMB": 40.95,
+      "diskUsagePercent": 57.8,
+      "storageUsedGB": 247.9
+    },
+    "database": {
+      "activeConnections": 36,
+      "queriesPerSecond": 288,
+      "averageQueryTimeMs": 6.4,
+      "cacheHitRatio": 0.915,
+      "databaseSizeGB": 99.16
+    },
+    "application": {
+      "requestsPerMinute": 844,
+      "errorRatePercent": 0.88,
+      "responseTimeMs": 302.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-69",
+    "timestamp": "2026-05-29T10:00:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-69",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 48.2,
+      "cpuCores": 16,
+      "loadAverage1m": 4.82,
+      "loadAverage5m": 4.02,
+      "loadAverage15m": 3.21
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 21265,
+      "freeMB": 11503,
+      "usagePercent": 64.9
+    },
+    "network": {
+      "networkInMB": 119.1,
+      "networkOutMB": 92.9,
+      "activeConnections": 47
+    },
+    "disk": {
+      "diskReadMB": 101.22,
+      "diskWriteMB": 62.66,
+      "diskUsagePercent": 104.2,
+      "storageUsedGB": 431.1
+    },
+    "database": {
+      "activeConnections": 57,
+      "queriesPerSecond": 461,
+      "averageQueryTimeMs": 3.4,
+      "cacheHitRatio": 0.954,
+      "databaseSizeGB": 172.44
+    },
+    "application": {
+      "requestsPerMinute": 1892,
+      "errorRatePercent": 0.32,
+      "responseTimeMs": 165.9
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-70",
+    "timestamp": "2026-05-30T12:10:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-70",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 58.6,
+      "cpuCores": 32,
+      "loadAverage1m": 5.86,
+      "loadAverage5m": 4.88,
+      "loadAverage15m": 3.91
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 46596,
+      "freeMB": 18940,
+      "usagePercent": 71.1
+    },
+    "network": {
+      "networkInMB": 137.1,
+      "networkOutMB": 106.9,
+      "activeConnections": 54
+    },
+    "disk": {
+      "diskReadMB": 123.06,
+      "diskWriteMB": 76.18,
+      "diskUsagePercent": 114.9,
+      "storageUsedGB": 534.2
+    },
+    "database": {
+      "activeConnections": 76,
+      "queriesPerSecond": 608,
+      "averageQueryTimeMs": 4.3,
+      "cacheHitRatio": 0.955,
+      "databaseSizeGB": 213.68
+    },
+    "application": {
+      "requestsPerMinute": 3090,
+      "errorRatePercent": 0.57,
+      "responseTimeMs": 153.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-71",
+    "timestamp": "2026-05-31T14:20:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-71",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 17.8,
+      "cpuCores": 8,
+      "loadAverage1m": 1.78,
+      "loadAverage5m": 1.48,
+      "loadAverage15m": 1.19
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 4997,
+      "freeMB": 11387,
+      "usagePercent": 30.5
+    },
+    "network": {
+      "networkInMB": 26.9,
+      "networkOutMB": 21.0,
+      "activeConnections": 10
+    },
+    "disk": {
+      "diskReadMB": 37.38,
+      "diskWriteMB": 23.14,
+      "diskUsagePercent": 22.5,
+      "storageUsedGB": 137.5
+    },
+    "database": {
+      "activeConnections": 9,
+      "queriesPerSecond": 79,
+      "averageQueryTimeMs": 12.0,
+      "cacheHitRatio": 0.89,
+      "databaseSizeGB": 55.0
+    },
+    "application": {
+      "requestsPerMinute": 195,
+      "errorRatePercent": 1.12,
+      "responseTimeMs": 418.6
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-72",
+    "timestamp": "2026-05-31T16:30:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-72",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 34.6,
+      "cpuCores": 16,
+      "loadAverage1m": 3.46,
+      "loadAverage5m": 2.88,
+      "loadAverage15m": 2.31
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 14712,
+      "freeMB": 18056,
+      "usagePercent": 44.9
+    },
+    "network": {
+      "networkInMB": 73.8,
+      "networkOutMB": 57.6,
+      "activeConnections": 29
+    },
+    "disk": {
+      "diskReadMB": 72.66,
+      "diskWriteMB": 44.98,
+      "diskUsagePercent": 51.0,
+      "storageUsedGB": 250.6
+    },
+    "database": {
+      "activeConnections": 34,
+      "queriesPerSecond": 277,
+      "averageQueryTimeMs": 5.8,
+      "cacheHitRatio": 0.928,
+      "databaseSizeGB": 100.24
+    },
+    "application": {
+      "requestsPerMinute": 910,
+      "errorRatePercent": 0.74,
+      "responseTimeMs": 275.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-73",
+    "timestamp": "2026-05-31T18:40:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-73",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 43.9,
+      "cpuCores": 16,
+      "loadAverage1m": 4.39,
+      "loadAverage5m": 3.66,
+      "loadAverage15m": 2.93
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 19824,
+      "freeMB": 12944,
+      "usagePercent": 60.5
+    },
+    "network": {
+      "networkInMB": 109.8,
+      "networkOutMB": 85.6,
+      "activeConnections": 43
+    },
+    "disk": {
+      "diskReadMB": 92.19,
+      "diskWriteMB": 57.07,
+      "diskUsagePercent": 96.5,
+      "storageUsedGB": 433.8
+    },
+    "database": {
+      "activeConnections": 53,
+      "queriesPerSecond": 428,
+      "averageQueryTimeMs": 4.0,
+      "cacheHitRatio": 0.942,
+      "databaseSizeGB": 173.52
+    },
+    "application": {
+      "requestsPerMinute": 1772,
+      "errorRatePercent": 0.43,
+      "responseTimeMs": 178.6
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-74",
+    "timestamp": "2026-05-31T20:50:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-74",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 65.8,
+      "cpuCores": 32,
+      "loadAverage1m": 6.58,
+      "loadAverage5m": 5.48,
+      "loadAverage15m": 4.39
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 49545,
+      "freeMB": 15991,
+      "usagePercent": 75.6
+    },
+    "network": {
+      "networkInMB": 146.0,
+      "networkOutMB": 113.9,
+      "activeConnections": 58
+    },
+    "disk": {
+      "diskReadMB": 138.18,
+      "diskWriteMB": 85.54,
+      "diskUsagePercent": 126.1,
+      "storageUsedGB": 537.1
+    },
+    "database": {
+      "activeConnections": 84,
+      "queriesPerSecond": 676,
+      "averageQueryTimeMs": 3.4,
+      "cacheHitRatio": 0.971,
+      "databaseSizeGB": 214.84
+    },
+    "application": {
+      "requestsPerMinute": 3295,
+      "errorRatePercent": 0.37,
+      "responseTimeMs": 135.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-75",
+    "timestamp": "2026-05-31T22:00:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-75",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 20.8,
+      "cpuCores": 8,
+      "loadAverage1m": 2.08,
+      "loadAverage5m": 1.73,
+      "loadAverage15m": 1.39
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 4505,
+      "freeMB": 11879,
+      "usagePercent": 27.5
+    },
+    "network": {
+      "networkInMB": 31.8,
+      "networkOutMB": 24.8,
+      "activeConnections": 12
+    },
+    "disk": {
+      "diskReadMB": 43.68,
+      "diskWriteMB": 27.04,
+      "diskUsagePercent": 27.0,
+      "storageUsedGB": 140.4
+    },
+    "database": {
+      "activeConnections": 11,
+      "queriesPerSecond": 95,
+      "averageQueryTimeMs": 10.5,
+      "cacheHitRatio": 0.905,
+      "databaseSizeGB": 56.16
+    },
+    "application": {
+      "requestsPerMinute": 232,
+      "errorRatePercent": 0.9,
+      "responseTimeMs": 443.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-76",
+    "timestamp": "2026-05-31T22:15:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-76",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 36.1,
+      "cpuCores": 16,
+      "loadAverage1m": 3.61,
+      "loadAverage5m": 3.01,
+      "loadAverage15m": 2.41
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 14221,
+      "freeMB": 18547,
+      "usagePercent": 43.4
+    },
+    "network": {
+      "networkInMB": 77.0,
+      "networkOutMB": 60.1,
+      "activeConnections": 30
+    },
+    "disk": {
+      "diskReadMB": 75.81,
+      "diskWriteMB": 46.93,
+      "diskUsagePercent": 49.2,
+      "storageUsedGB": 253.2
+    },
+    "database": {
+      "activeConnections": 35,
+      "queriesPerSecond": 281,
+      "averageQueryTimeMs": 5.4,
+      "cacheHitRatio": 0.934,
+      "databaseSizeGB": 101.28
+    },
+    "application": {
+      "requestsPerMinute": 922,
+      "errorRatePercent": 0.68,
+      "responseTimeMs": 265.4
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-77",
+    "timestamp": "2026-05-31T22:30:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-77",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 41.9,
+      "cpuCores": 16,
+      "loadAverage1m": 4.19,
+      "loadAverage5m": 3.49,
+      "loadAverage15m": 2.79
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 19168,
+      "freeMB": 13600,
+      "usagePercent": 58.5
+    },
+    "network": {
+      "networkInMB": 105.4,
+      "networkOutMB": 82.2,
+      "activeConnections": 42
+    },
+    "disk": {
+      "diskReadMB": 87.99,
+      "diskWriteMB": 54.47,
+      "diskUsagePercent": 93.0,
+      "storageUsedGB": 436.5
+    },
+    "database": {
+      "activeConnections": 51,
+      "queriesPerSecond": 409,
+      "averageQueryTimeMs": 4.4,
+      "cacheHitRatio": 0.936,
+      "databaseSizeGB": 174.6
+    },
+    "application": {
+      "requestsPerMinute": 1710,
+      "errorRatePercent": 0.48,
+      "responseTimeMs": 188.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-78",
+    "timestamp": "2026-05-31T22:45:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-78",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 61.7,
+      "cpuCores": 32,
+      "loadAverage1m": 6.17,
+      "loadAverage5m": 5.14,
+      "loadAverage15m": 4.11
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 47251,
+      "freeMB": 18285,
+      "usagePercent": 72.1
+    },
+    "network": {
+      "networkInMB": 140.4,
+      "networkOutMB": 109.5,
+      "activeConnections": 56
+    },
+    "disk": {
+      "diskReadMB": 129.57,
+      "diskWriteMB": 80.21,
+      "diskUsagePercent": 117.5,
+      "storageUsedGB": 539.8
+    },
+    "database": {
+      "activeConnections": 77,
+      "queriesPerSecond": 619,
+      "averageQueryTimeMs": 4.1,
+      "cacheHitRatio": 0.961,
+      "databaseSizeGB": 215.92
+    },
+    "application": {
+      "requestsPerMinute": 3120,
+      "errorRatePercent": 0.54,
+      "responseTimeMs": 150.5
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-79",
+    "timestamp": "2026-05-31T23:00:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-79",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 16.0,
+      "cpuCores": 8,
+      "loadAverage1m": 1.6,
+      "loadAverage5m": 1.33,
+      "loadAverage15m": 1.07
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 5291,
+      "freeMB": 11093,
+      "usagePercent": 32.3
+    },
+    "network": {
+      "networkInMB": 24.8,
+      "networkOutMB": 19.3,
+      "activeConnections": 9
+    },
+    "disk": {
+      "diskReadMB": 33.6,
+      "diskWriteMB": 20.8,
+      "diskUsagePercent": 19.8,
+      "storageUsedGB": 143.1
+    },
+    "database": {
+      "activeConnections": 9,
+      "queriesPerSecond": 75,
+      "averageQueryTimeMs": 13.1,
+      "cacheHitRatio": 0.881,
+      "databaseSizeGB": 57.24
+    },
+    "application": {
+      "requestsPerMinute": 180,
+      "errorRatePercent": 1.23,
+      "responseTimeMs": 403.5
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-05-80",
+    "timestamp": "2026-05-31T23:30:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-05-80",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 32.9,
+      "cpuCores": 16,
+      "loadAverage1m": 3.29,
+      "loadAverage5m": 2.74,
+      "loadAverage15m": 2.19
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 15106,
+      "freeMB": 17662,
+      "usagePercent": 46.1
+    },
+    "network": {
+      "networkInMB": 71.4,
+      "networkOutMB": 55.7,
+      "activeConnections": 28
+    },
+    "disk": {
+      "diskReadMB": 69.09,
+      "diskWriteMB": 42.77,
+      "diskUsagePercent": 54.1,
+      "storageUsedGB": 246.4
+    },
+    "database": {
+      "activeConnections": 33,
+      "queriesPerSecond": 265,
+      "averageQueryTimeMs": 6.1,
+      "cacheHitRatio": 0.924,
+      "databaseSizeGB": 98.56
+    },
+    "application": {
+      "requestsPerMinute": 860,
+      "errorRatePercent": 0.82,
+      "responseTimeMs": 286.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-81",
+    "timestamp": "2026-06-01T04:20:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-81",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 46.2,
+      "cpuCores": 16,
+      "loadAverage1m": 4.62,
+      "loadAverage5m": 3.85,
+      "loadAverage15m": 3.08
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 20348,
+      "freeMB": 12420,
+      "usagePercent": 62.1
+    },
+    "network": {
+      "networkInMB": 115.0,
+      "networkOutMB": 89.7,
+      "activeConnections": 46
+    },
+    "disk": {
+      "diskReadMB": 97.02,
+      "diskWriteMB": 60.06,
+      "diskUsagePercent": 100.2,
+      "storageUsedGB": 460.5
+    },
+    "database": {
+      "activeConnections": 55,
+      "queriesPerSecond": 442,
+      "averageQueryTimeMs": 3.7,
+      "cacheHitRatio": 0.949,
+      "databaseSizeGB": 184.2
+    },
+    "application": {
+      "requestsPerMinute": 1832,
+      "errorRatePercent": 0.42,
+      "responseTimeMs": 172.5
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-82",
+    "timestamp": "2026-06-02T06:40:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-82",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 60.4,
+      "cpuCores": 32,
+      "loadAverage1m": 6.04,
+      "loadAverage5m": 5.03,
+      "loadAverage15m": 4.03
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 47710,
+      "freeMB": 17826,
+      "usagePercent": 72.8
+    },
+    "network": {
+      "networkInMB": 139.4,
+      "networkOutMB": 108.7,
+      "activeConnections": 55
+    },
+    "disk": {
+      "diskReadMB": 126.84,
+      "diskWriteMB": 78.52,
+      "diskUsagePercent": 117.1,
+      "storageUsedGB": 542.4
+    },
+    "database": {
+      "activeConnections": 77,
+      "queriesPerSecond": 620,
+      "averageQueryTimeMs": 4.1,
+      "cacheHitRatio": 0.961,
+      "databaseSizeGB": 216.96
+    },
+    "application": {
+      "requestsPerMinute": 3145,
+      "errorRatePercent": 0.54,
+      "responseTimeMs": 148.9
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-83",
+    "timestamp": "2026-06-03T09:00:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-83",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 17.2,
+      "cpuCores": 8,
+      "loadAverage1m": 1.72,
+      "loadAverage5m": 1.43,
+      "loadAverage15m": 1.15
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 5013,
+      "freeMB": 11371,
+      "usagePercent": 30.6
+    },
+    "network": {
+      "networkInMB": 26.1,
+      "networkOutMB": 20.3,
+      "activeConnections": 10
+    },
+    "disk": {
+      "diskReadMB": 36.12,
+      "diskWriteMB": 22.36,
+      "diskUsagePercent": 22.1,
+      "storageUsedGB": 145.2
+    },
+    "database": {
+      "activeConnections": 9,
+      "queriesPerSecond": 78,
+      "averageQueryTimeMs": 12.2,
+      "cacheHitRatio": 0.889,
+      "databaseSizeGB": 58.08
+    },
+    "application": {
+      "requestsPerMinute": 191,
+      "errorRatePercent": 1.14,
+      "responseTimeMs": 416.4
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-84",
+    "timestamp": "2026-06-04T11:20:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-84",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 33.8,
+      "cpuCores": 16,
+      "loadAverage1m": 3.38,
+      "loadAverage5m": 2.82,
+      "loadAverage15m": 2.25
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 14778,
+      "freeMB": 17990,
+      "usagePercent": 45.1
+    },
+    "network": {
+      "networkInMB": 72.5,
+      "networkOutMB": 56.5,
+      "activeConnections": 29
+    },
+    "disk": {
+      "diskReadMB": 70.98,
+      "diskWriteMB": 43.94,
+      "diskUsagePercent": 52.0,
+      "storageUsedGB": 258.1
+    },
+    "database": {
+      "activeConnections": 33,
+      "queriesPerSecond": 269,
+      "averageQueryTimeMs": 5.8,
+      "cacheHitRatio": 0.927,
+      "databaseSizeGB": 103.24
+    },
+    "application": {
+      "requestsPerMinute": 872,
+      "errorRatePercent": 0.78,
+      "responseTimeMs": 279.0
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-85",
+    "timestamp": "2026-06-05T13:40:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-85",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 42.9,
+      "cpuCores": 16,
+      "loadAverage1m": 4.29,
+      "loadAverage5m": 3.57,
+      "loadAverage15m": 2.86
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 19496,
+      "freeMB": 13272,
+      "usagePercent": 59.5
+    },
+    "network": {
+      "networkInMB": 107.5,
+      "networkOutMB": 83.8,
+      "activeConnections": 43
+    },
+    "disk": {
+      "diskReadMB": 90.09,
+      "diskWriteMB": 55.77,
+      "diskUsagePercent": 94.5,
+      "storageUsedGB": 463.2
+    },
+    "database": {
+      "activeConnections": 52,
+      "queriesPerSecond": 419,
+      "averageQueryTimeMs": 4.2,
+      "cacheHitRatio": 0.94,
+      "databaseSizeGB": 185.28
+    },
+    "application": {
+      "requestsPerMinute": 1756,
+      "errorRatePercent": 0.45,
+      "responseTimeMs": 181.4
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-86",
+    "timestamp": "2026-06-06T16:00:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-86",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 64.9,
+      "cpuCores": 32,
+      "loadAverage1m": 6.49,
+      "loadAverage5m": 5.41,
+      "loadAverage15m": 4.33
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 49152,
+      "freeMB": 16384,
+      "usagePercent": 75.0
+    },
+    "network": {
+      "networkInMB": 144.6,
+      "networkOutMB": 112.8,
+      "activeConnections": 57
+    },
+    "disk": {
+      "diskReadMB": 136.29,
+      "diskWriteMB": 84.37,
+      "diskUsagePercent": 123.8,
+      "storageUsedGB": 545.6
+    },
+    "database": {
+      "activeConnections": 83,
+      "queriesPerSecond": 664,
+      "averageQueryTimeMs": 3.5,
+      "cacheHitRatio": 0.968,
+      "databaseSizeGB": 218.24
+    },
+    "application": {
+      "requestsPerMinute": 3230,
+      "errorRatePercent": 0.4,
+      "responseTimeMs": 138.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-87",
+    "timestamp": "2026-06-07T18:20:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-87",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 19.3,
+      "cpuCores": 8,
+      "loadAverage1m": 1.93,
+      "loadAverage5m": 1.61,
+      "loadAverage15m": 1.29
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 4603,
+      "freeMB": 11781,
+      "usagePercent": 28.1
+    },
+    "network": {
+      "networkInMB": 29.2,
+      "networkOutMB": 22.7,
+      "activeConnections": 11
+    },
+    "disk": {
+      "diskReadMB": 40.53,
+      "diskWriteMB": 25.09,
+      "diskUsagePercent": 24.9,
+      "storageUsedGB": 147.8
+    },
+    "database": {
+      "activeConnections": 10,
+      "queriesPerSecond": 85,
+      "averageQueryTimeMs": 11.3,
+      "cacheHitRatio": 0.897,
+      "databaseSizeGB": 59.12
+    },
+    "application": {
+      "requestsPerMinute": 211,
+      "errorRatePercent": 1.05,
+      "responseTimeMs": 429.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-88",
+    "timestamp": "2026-06-08T20:40:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-88",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 30.6,
+      "cpuCores": 16,
+      "loadAverage1m": 3.06,
+      "loadAverage5m": 2.55,
+      "loadAverage15m": 2.04
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 15695,
+      "freeMB": 17073,
+      "usagePercent": 47.9
+    },
+    "network": {
+      "networkInMB": 68.6,
+      "networkOutMB": 53.5,
+      "activeConnections": 27
+    },
+    "disk": {
+      "diskReadMB": 64.26,
+      "diskWriteMB": 39.78,
+      "diskUsagePercent": 58.1,
+      "storageUsedGB": 260.5
+    },
+    "database": {
+      "activeConnections": 36,
+      "queriesPerSecond": 290,
+      "averageQueryTimeMs": 6.5,
+      "cacheHitRatio": 0.913,
+      "databaseSizeGB": 104.2
+    },
+    "application": {
+      "requestsPerMinute": 840,
+      "errorRatePercent": 0.9,
+      "responseTimeMs": 304.6
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-89",
+    "timestamp": "2026-06-09T23:00:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-89",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 47.8,
+      "cpuCores": 16,
+      "loadAverage1m": 4.78,
+      "loadAverage5m": 3.98,
+      "loadAverage15m": 3.19
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 21037,
+      "freeMB": 11731,
+      "usagePercent": 64.2
+    },
+    "network": {
+      "networkInMB": 118.0,
+      "networkOutMB": 92.0,
+      "activeConnections": 47
+    },
+    "disk": {
+      "diskReadMB": 100.38,
+      "diskWriteMB": 62.14,
+      "diskUsagePercent": 102.9,
+      "storageUsedGB": 465.9
+    },
+    "database": {
+      "activeConnections": 56,
+      "queriesPerSecond": 455,
+      "averageQueryTimeMs": 3.6,
+      "cacheHitRatio": 0.952,
+      "databaseSizeGB": 186.36
+    },
+    "application": {
+      "requestsPerMinute": 1880,
+      "errorRatePercent": 0.33,
+      "responseTimeMs": 166.8
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-90",
+    "timestamp": "2026-06-10T01:10:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-90",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 57.9,
+      "cpuCores": 32,
+      "loadAverage1m": 5.79,
+      "loadAverage5m": 4.83,
+      "loadAverage15m": 3.86
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 46268,
+      "freeMB": 19268,
+      "usagePercent": 70.6
+    },
+    "network": {
+      "networkInMB": 135.9,
+      "networkOutMB": 106.0,
+      "activeConnections": 54
+    },
+    "disk": {
+      "diskReadMB": 121.59,
+      "diskWriteMB": 75.27,
+      "diskUsagePercent": 113.9,
+      "storageUsedGB": 548.0
+    },
+    "database": {
+      "activeConnections": 75,
+      "queriesPerSecond": 602,
+      "averageQueryTimeMs": 4.3,
+      "cacheHitRatio": 0.953,
+      "databaseSizeGB": 219.2
+    },
+    "application": {
+      "requestsPerMinute": 3070,
+      "errorRatePercent": 0.59,
+      "responseTimeMs": 154.6
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-91",
+    "timestamp": "2026-06-11T03:30:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-91",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 16.8,
+      "cpuCores": 8,
+      "loadAverage1m": 1.68,
+      "loadAverage5m": 1.4,
+      "loadAverage15m": 1.12
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 5128,
+      "freeMB": 11256,
+      "usagePercent": 31.3
+    },
+    "network": {
+      "networkInMB": 25.5,
+      "networkOutMB": 19.9,
+      "activeConnections": 10
+    },
+    "disk": {
+      "diskReadMB": 35.28,
+      "diskWriteMB": 21.84,
+      "diskUsagePercent": 21.2,
+      "storageUsedGB": 150.2
+    },
+    "database": {
+      "activeConnections": 9,
+      "queriesPerSecond": 75,
+      "averageQueryTimeMs": 12.6,
+      "cacheHitRatio": 0.885,
+      "databaseSizeGB": 60.08
+    },
+    "application": {
+      "requestsPerMinute": 182,
+      "errorRatePercent": 1.19,
+      "responseTimeMs": 410.5
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-92",
+    "timestamp": "2026-06-12T05:50:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-92",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 34.4,
+      "cpuCores": 16,
+      "loadAverage1m": 3.44,
+      "loadAverage5m": 2.87,
+      "loadAverage15m": 2.29
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 14548,
+      "freeMB": 18220,
+      "usagePercent": 44.4
+    },
+    "network": {
+      "networkInMB": 73.4,
+      "networkOutMB": 57.2,
+      "activeConnections": 29
+    },
+    "disk": {
+      "diskReadMB": 72.24,
+      "diskWriteMB": 44.72,
+      "diskUsagePercent": 50.2,
+      "storageUsedGB": 263.1
+    },
+    "database": {
+      "activeConnections": 34,
+      "queriesPerSecond": 274,
+      "averageQueryTimeMs": 5.7,
+      "cacheHitRatio": 0.929,
+      "databaseSizeGB": 105.24
+    },
+    "application": {
+      "requestsPerMinute": 915,
+      "errorRatePercent": 0.72,
+      "responseTimeMs": 272.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-93",
+    "timestamp": "2026-06-13T08:10:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-93",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 41.8,
+      "cpuCores": 16,
+      "loadAverage1m": 4.18,
+      "loadAverage5m": 3.48,
+      "loadAverage15m": 2.79
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 19136,
+      "freeMB": 13632,
+      "usagePercent": 58.4
+    },
+    "network": {
+      "networkInMB": 105.1,
+      "networkOutMB": 82.0,
+      "activeConnections": 42
+    },
+    "disk": {
+      "diskReadMB": 87.78,
+      "diskWriteMB": 54.34,
+      "diskUsagePercent": 92.8,
+      "storageUsedGB": 465.4
+    },
+    "database": {
+      "activeConnections": 51,
+      "queriesPerSecond": 408,
+      "averageQueryTimeMs": 4.4,
+      "cacheHitRatio": 0.936,
+      "databaseSizeGB": 186.16
+    },
+    "application": {
+      "requestsPerMinute": 1706,
+      "errorRatePercent": 0.48,
+      "responseTimeMs": 188.4
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-94",
+    "timestamp": "2026-06-14T10:30:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-94",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 66.5,
+      "cpuCores": 32,
+      "loadAverage1m": 6.65,
+      "loadAverage5m": 5.54,
+      "loadAverage15m": 4.43
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 50004,
+      "freeMB": 15532,
+      "usagePercent": 76.3
+    },
+    "network": {
+      "networkInMB": 147.4,
+      "networkOutMB": 115.0,
+      "activeConnections": 58
+    },
+    "disk": {
+      "diskReadMB": 139.65,
+      "diskWriteMB": 86.45,
+      "diskUsagePercent": 127.1,
+      "storageUsedGB": 548.2
+    },
+    "database": {
+      "activeConnections": 85,
+      "queriesPerSecond": 680,
+      "averageQueryTimeMs": 3.3,
+      "cacheHitRatio": 0.972,
+      "databaseSizeGB": 219.28
+    },
+    "application": {
+      "requestsPerMinute": 3310,
+      "errorRatePercent": 0.35,
+      "responseTimeMs": 134.4
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-95",
+    "timestamp": "2026-06-15T12:50:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-95",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 19.9,
+      "cpuCores": 8,
+      "loadAverage1m": 1.99,
+      "loadAverage5m": 1.66,
+      "loadAverage15m": 1.33
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 4456,
+      "freeMB": 11928,
+      "usagePercent": 27.2
+    },
+    "network": {
+      "networkInMB": 30.2,
+      "networkOutMB": 23.5,
+      "activeConnections": 12
+    },
+    "disk": {
+      "diskReadMB": 41.79,
+      "diskWriteMB": 25.87,
+      "diskUsagePercent": 25.8,
+      "storageUsedGB": 151.0
+    },
+    "database": {
+      "activeConnections": 11,
+      "queriesPerSecond": 89,
+      "averageQueryTimeMs": 10.9,
+      "cacheHitRatio": 0.902,
+      "databaseSizeGB": 60.4
+    },
+    "application": {
+      "requestsPerMinute": 222,
+      "errorRatePercent": 0.94,
+      "responseTimeMs": 438.4
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-96",
+    "timestamp": "2026-06-16T15:10:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-96",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 35.8,
+      "cpuCores": 16,
+      "loadAverage1m": 3.58,
+      "loadAverage5m": 2.98,
+      "loadAverage15m": 2.39
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 14089,
+      "freeMB": 18679,
+      "usagePercent": 43.0
+    },
+    "network": {
+      "networkInMB": 76.4,
+      "networkOutMB": 59.6,
+      "activeConnections": 30
+    },
+    "disk": {
+      "diskReadMB": 75.18,
+      "diskWriteMB": 46.54,
+      "diskUsagePercent": 48.2,
+      "storageUsedGB": 263.9
+    },
+    "database": {
+      "activeConnections": 34,
+      "queriesPerSecond": 279,
+      "averageQueryTimeMs": 5.5,
+      "cacheHitRatio": 0.933,
+      "databaseSizeGB": 105.56
+    },
+    "application": {
+      "requestsPerMinute": 920,
+      "errorRatePercent": 0.68,
+      "responseTimeMs": 263.9
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-97",
+    "timestamp": "2026-06-17T17:30:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-97",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 45.1,
+      "cpuCores": 16,
+      "loadAverage1m": 4.51,
+      "loadAverage5m": 3.76,
+      "loadAverage15m": 3.01
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 20152,
+      "freeMB": 12616,
+      "usagePercent": 61.5
+    },
+    "network": {
+      "networkInMB": 113.4,
+      "networkOutMB": 88.4,
+      "activeConnections": 45
+    },
+    "disk": {
+      "diskReadMB": 94.71,
+      "diskWriteMB": 58.63,
+      "diskUsagePercent": 98.4,
+      "storageUsedGB": 466.1
+    },
+    "database": {
+      "activeConnections": 54,
+      "queriesPerSecond": 437,
+      "averageQueryTimeMs": 3.9,
+      "cacheHitRatio": 0.945,
+      "databaseSizeGB": 186.44
+    },
+    "application": {
+      "requestsPerMinute": 1824,
+      "errorRatePercent": 0.42,
+      "responseTimeMs": 173.8
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-98",
+    "timestamp": "2026-06-18T19:50:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-98",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 61.5,
+      "cpuCores": 32,
+      "loadAverage1m": 6.15,
+      "loadAverage5m": 5.12,
+      "loadAverage15m": 4.1
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 47185,
+      "freeMB": 18351,
+      "usagePercent": 72.0
+    },
+    "network": {
+      "networkInMB": 140.5,
+      "networkOutMB": 109.6,
+      "activeConnections": 56
+    },
+    "disk": {
+      "diskReadMB": 129.15,
+      "diskWriteMB": 79.95,
+      "diskUsagePercent": 119.1,
+      "storageUsedGB": 549.4
+    },
+    "database": {
+      "activeConnections": 76,
+      "queriesPerSecond": 614,
+      "averageQueryTimeMs": 4.2,
+      "cacheHitRatio": 0.963,
+      "databaseSizeGB": 219.76
+    },
+    "application": {
+      "requestsPerMinute": 3125,
+      "errorRatePercent": 0.55,
+      "responseTimeMs": 151.0
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-99",
+    "timestamp": "2026-06-19T22:10:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-99",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 15.4,
+      "cpuCores": 8,
+      "loadAverage1m": 1.54,
+      "loadAverage5m": 1.28,
+      "loadAverage15m": 1.03
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 5423,
+      "freeMB": 10961,
+      "usagePercent": 33.1
+    },
+    "network": {
+      "networkInMB": 23.9,
+      "networkOutMB": 18.6,
+      "activeConnections": 9
+    },
+    "disk": {
+      "diskReadMB": 32.34,
+      "diskWriteMB": 20.02,
+      "diskUsagePercent": 19.1,
+      "storageUsedGB": 152.4
+    },
+    "database": {
+      "activeConnections": 9,
+      "queriesPerSecond": 72,
+      "averageQueryTimeMs": 13.4,
+      "cacheHitRatio": 0.878,
+      "databaseSizeGB": 60.96
+    },
+    "application": {
+      "requestsPerMinute": 174,
+      "errorRatePercent": 1.27,
+      "responseTimeMs": 399.0
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-100",
+    "timestamp": "2026-06-20T00:30:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-100",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 32.8,
+      "cpuCores": 16,
+      "loadAverage1m": 3.28,
+      "loadAverage5m": 2.73,
+      "loadAverage15m": 2.19
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 15204,
+      "freeMB": 17564,
+      "usagePercent": 46.4
+    },
+    "network": {
+      "networkInMB": 71.1,
+      "networkOutMB": 55.4,
+      "activeConnections": 28
+    },
+    "disk": {
+      "diskReadMB": 68.88,
+      "diskWriteMB": 42.64,
+      "diskUsagePercent": 54.4,
+      "storageUsedGB": 265.1
+    },
+    "database": {
+      "activeConnections": 33,
+      "queriesPerSecond": 264,
+      "averageQueryTimeMs": 6.1,
+      "cacheHitRatio": 0.923,
+      "databaseSizeGB": 106.04
+    },
+    "application": {
+      "requestsPerMinute": 858,
+      "errorRatePercent": 0.83,
+      "responseTimeMs": 288.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-101",
+    "timestamp": "2026-06-21T02:50:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-101",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 43.4,
+      "cpuCores": 16,
+      "loadAverage1m": 4.34,
+      "loadAverage5m": 3.62,
+      "loadAverage15m": 2.89
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 19759,
+      "freeMB": 13009,
+      "usagePercent": 60.3
+    },
+    "network": {
+      "networkInMB": 108.5,
+      "networkOutMB": 84.6,
+      "activeConnections": 43
+    },
+    "disk": {
+      "diskReadMB": 91.14,
+      "diskWriteMB": 56.42,
+      "diskUsagePercent": 95.2,
+      "storageUsedGB": 467.5
+    },
+    "database": {
+      "activeConnections": 52,
+      "queriesPerSecond": 423,
+      "averageQueryTimeMs": 4.1,
+      "cacheHitRatio": 0.941,
+      "databaseSizeGB": 187.0
+    },
+    "application": {
+      "requestsPerMinute": 1758,
+      "errorRatePercent": 0.44,
+      "responseTimeMs": 180.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-102",
+    "timestamp": "2026-06-22T05:10:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-102",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 64.3,
+      "cpuCores": 32,
+      "loadAverage1m": 6.43,
+      "loadAverage5m": 5.36,
+      "loadAverage15m": 4.29
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 48889,
+      "freeMB": 16647,
+      "usagePercent": 74.6
+    },
+    "network": {
+      "networkInMB": 143.9,
+      "networkOutMB": 112.2,
+      "activeConnections": 57
+    },
+    "disk": {
+      "diskReadMB": 135.03,
+      "diskWriteMB": 83.59,
+      "diskUsagePercent": 122.9,
+      "storageUsedGB": 550.6
+    },
+    "database": {
+      "activeConnections": 82,
+      "queriesPerSecond": 660,
+      "averageQueryTimeMs": 3.6,
+      "cacheHitRatio": 0.967,
+      "databaseSizeGB": 220.24
+    },
+    "application": {
+      "requestsPerMinute": 3225,
+      "errorRatePercent": 0.41,
+      "responseTimeMs": 139.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-103",
+    "timestamp": "2026-06-23T07:30:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-103",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 19.1,
+      "cpuCores": 8,
+      "loadAverage1m": 1.91,
+      "loadAverage5m": 1.59,
+      "loadAverage15m": 1.27
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 4734,
+      "freeMB": 11650,
+      "usagePercent": 28.9
+    },
+    "network": {
+      "networkInMB": 28.8,
+      "networkOutMB": 22.5,
+      "activeConnections": 11
+    },
+    "disk": {
+      "diskReadMB": 40.11,
+      "diskWriteMB": 24.83,
+      "diskUsagePercent": 24.5,
+      "storageUsedGB": 153.1
+    },
+    "database": {
+      "activeConnections": 10,
+      "queriesPerSecond": 84,
+      "averageQueryTimeMs": 11.5,
+      "cacheHitRatio": 0.895,
+      "databaseSizeGB": 61.24
+    },
+    "application": {
+      "requestsPerMinute": 210,
+      "errorRatePercent": 1.05,
+      "responseTimeMs": 428.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-104",
+    "timestamp": "2026-06-24T09:50:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-104",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 31.1,
+      "cpuCores": 16,
+      "loadAverage1m": 3.11,
+      "loadAverage5m": 2.59,
+      "loadAverage15m": 2.07
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 15761,
+      "freeMB": 17007,
+      "usagePercent": 48.1
+    },
+    "network": {
+      "networkInMB": 68.7,
+      "networkOutMB": 53.6,
+      "activeConnections": 27
+    },
+    "disk": {
+      "diskReadMB": 65.31,
+      "diskWriteMB": 40.43,
+      "diskUsagePercent": 58.8,
+      "storageUsedGB": 266.4
+    },
+    "database": {
+      "activeConnections": 36,
+      "queriesPerSecond": 292,
+      "averageQueryTimeMs": 6.5,
+      "cacheHitRatio": 0.913,
+      "databaseSizeGB": 106.56
+    },
+    "application": {
+      "requestsPerMinute": 839,
+      "errorRatePercent": 0.91,
+      "responseTimeMs": 305.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-105",
+    "timestamp": "2026-06-25T11:10:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-105",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 47.3,
+      "cpuCores": 16,
+      "loadAverage1m": 4.73,
+      "loadAverage5m": 3.94,
+      "loadAverage15m": 3.15
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 20873,
+      "freeMB": 11895,
+      "usagePercent": 63.7
+    },
+    "network": {
+      "networkInMB": 117.0,
+      "networkOutMB": 91.2,
+      "activeConnections": 46
+    },
+    "disk": {
+      "diskReadMB": 99.33,
+      "diskWriteMB": 61.49,
+      "diskUsagePercent": 102.1,
+      "storageUsedGB": 468.2
+    },
+    "database": {
+      "activeConnections": 56,
+      "queriesPerSecond": 451,
+      "averageQueryTimeMs": 3.6,
+      "cacheHitRatio": 0.951,
+      "databaseSizeGB": 187.28
+    },
+    "application": {
+      "requestsPerMinute": 1855,
+      "errorRatePercent": 0.35,
+      "responseTimeMs": 170.6
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-106",
+    "timestamp": "2026-06-26T13:30:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-106",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 59.1,
+      "cpuCores": 32,
+      "loadAverage1m": 5.91,
+      "loadAverage5m": 4.92,
+      "loadAverage15m": 3.94
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 47119,
+      "freeMB": 18417,
+      "usagePercent": 71.9
+    },
+    "network": {
+      "networkInMB": 137.9,
+      "networkOutMB": 107.5,
+      "activeConnections": 55
+    },
+    "disk": {
+      "diskReadMB": 124.11,
+      "diskWriteMB": 76.83,
+      "diskUsagePercent": 115.8,
+      "storageUsedGB": 553.1
+    },
+    "database": {
+      "activeConnections": 76,
+      "queriesPerSecond": 611,
+      "averageQueryTimeMs": 4.2,
+      "cacheHitRatio": 0.957,
+      "databaseSizeGB": 221.24
+    },
+    "application": {
+      "requestsPerMinute": 3115,
+      "errorRatePercent": 0.56,
+      "responseTimeMs": 151.9
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-107",
+    "timestamp": "2026-06-27T15:50:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-107",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 16.2,
+      "cpuCores": 8,
+      "loadAverage1m": 1.62,
+      "loadAverage5m": 1.35,
+      "loadAverage15m": 1.08
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 5242,
+      "freeMB": 11142,
+      "usagePercent": 32.0
+    },
+    "network": {
+      "networkInMB": 25.1,
+      "networkOutMB": 19.6,
+      "activeConnections": 10
+    },
+    "disk": {
+      "diskReadMB": 34.02,
+      "diskWriteMB": 21.06,
+      "diskUsagePercent": 20.4,
+      "storageUsedGB": 154.9
+    },
+    "database": {
+      "activeConnections": 9,
+      "queriesPerSecond": 75,
+      "averageQueryTimeMs": 12.9,
+      "cacheHitRatio": 0.883,
+      "databaseSizeGB": 61.96
+    },
+    "application": {
+      "requestsPerMinute": 181,
+      "errorRatePercent": 1.21,
+      "responseTimeMs": 406.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-108",
+    "timestamp": "2026-06-28T18:10:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-108",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 34.9,
+      "cpuCores": 16,
+      "loadAverage1m": 3.49,
+      "loadAverage5m": 2.91,
+      "loadAverage15m": 2.33
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 14450,
+      "freeMB": 18318,
+      "usagePercent": 44.1
+    },
+    "network": {
+      "networkInMB": 74.5,
+      "networkOutMB": 58.1,
+      "activeConnections": 29
+    },
+    "disk": {
+      "diskReadMB": 73.29,
+      "diskWriteMB": 45.37,
+      "diskUsagePercent": 49.5,
+      "storageUsedGB": 269.1
+    },
+    "database": {
+      "activeConnections": 34,
+      "queriesPerSecond": 275,
+      "averageQueryTimeMs": 5.6,
+      "cacheHitRatio": 0.931,
+      "databaseSizeGB": 107.64
+    },
+    "application": {
+      "requestsPerMinute": 914,
+      "errorRatePercent": 0.71,
+      "responseTimeMs": 269.0
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-109",
+    "timestamp": "2026-06-29T20:30:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-109",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 42.3,
+      "cpuCores": 16,
+      "loadAverage1m": 4.23,
+      "loadAverage5m": 3.52,
+      "loadAverage15m": 2.82
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 19299,
+      "freeMB": 13469,
+      "usagePercent": 58.9
+    },
+    "network": {
+      "networkInMB": 106.1,
+      "networkOutMB": 82.7,
+      "activeConnections": 42
+    },
+    "disk": {
+      "diskReadMB": 88.83,
+      "diskWriteMB": 54.99,
+      "diskUsagePercent": 93.4,
+      "storageUsedGB": 471.4
+    },
+    "database": {
+      "activeConnections": 51,
+      "queriesPerSecond": 411,
+      "averageQueryTimeMs": 4.3,
+      "cacheHitRatio": 0.938,
+      "databaseSizeGB": 188.56
+    },
+    "application": {
+      "requestsPerMinute": 1720,
+      "errorRatePercent": 0.46,
+      "responseTimeMs": 186.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-110",
+    "timestamp": "2026-06-30T22:50:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-110",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 64.5,
+      "cpuCores": 32,
+      "loadAverage1m": 6.45,
+      "loadAverage5m": 5.38,
+      "loadAverage15m": 4.3
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 49086,
+      "freeMB": 16450,
+      "usagePercent": 74.9
+    },
+    "network": {
+      "networkInMB": 144.1,
+      "networkOutMB": 112.4,
+      "activeConnections": 57
+    },
+    "disk": {
+      "diskReadMB": 135.45,
+      "diskWriteMB": 83.85,
+      "diskUsagePercent": 123.1,
+      "storageUsedGB": 555.0
+    },
+    "database": {
+      "activeConnections": 82,
+      "queriesPerSecond": 662,
+      "averageQueryTimeMs": 3.6,
+      "cacheHitRatio": 0.967,
+      "databaseSizeGB": 222.0
+    },
+    "application": {
+      "requestsPerMinute": 3225,
+      "errorRatePercent": 0.41,
+      "responseTimeMs": 139.0
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-111",
+    "timestamp": "2026-06-30T23:00:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-111",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 18.5,
+      "cpuCores": 8,
+      "loadAverage1m": 1.85,
+      "loadAverage5m": 1.54,
+      "loadAverage15m": 1.23
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 4833,
+      "freeMB": 11551,
+      "usagePercent": 29.5
+    },
+    "network": {
+      "networkInMB": 28.0,
+      "networkOutMB": 21.8,
+      "activeConnections": 11
+    },
+    "disk": {
+      "diskReadMB": 38.85,
+      "diskWriteMB": 24.05,
+      "diskUsagePercent": 23.5,
+      "storageUsedGB": 157.2
+    },
+    "database": {
+      "activeConnections": 10,
+      "queriesPerSecond": 81,
+      "averageQueryTimeMs": 11.6,
+      "cacheHitRatio": 0.894,
+      "databaseSizeGB": 62.88
+    },
+    "application": {
+      "requestsPerMinute": 203,
+      "errorRatePercent": 1.08,
+      "responseTimeMs": 425.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-112",
+    "timestamp": "2026-06-30T23:10:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-112",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 31.8,
+      "cpuCores": 16,
+      "loadAverage1m": 3.18,
+      "loadAverage5m": 2.65,
+      "loadAverage15m": 2.12
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 15466,
+      "freeMB": 17302,
+      "usagePercent": 47.2
+    },
+    "network": {
+      "networkInMB": 70.1,
+      "networkOutMB": 54.7,
+      "activeConnections": 28
+    },
+    "disk": {
+      "diskReadMB": 66.78,
+      "diskWriteMB": 41.34,
+      "diskUsagePercent": 57.5,
+      "storageUsedGB": 270.5
+    },
+    "database": {
+      "activeConnections": 35,
+      "queriesPerSecond": 286,
+      "averageQueryTimeMs": 6.3,
+      "cacheHitRatio": 0.916,
+      "databaseSizeGB": 108.2
+    },
+    "application": {
+      "requestsPerMinute": 846,
+      "errorRatePercent": 0.87,
+      "responseTimeMs": 301.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-113",
+    "timestamp": "2026-06-30T23:15:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-113",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 48.0,
+      "cpuCores": 16,
+      "loadAverage1m": 4.8,
+      "loadAverage5m": 4.0,
+      "loadAverage15m": 3.2
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 21200,
+      "freeMB": 11568,
+      "usagePercent": 64.7
+    },
+    "network": {
+      "networkInMB": 118.9,
+      "networkOutMB": 92.7,
+      "activeConnections": 47
+    },
+    "disk": {
+      "diskReadMB": 100.8,
+      "diskWriteMB": 62.4,
+      "diskUsagePercent": 103.9,
+      "storageUsedGB": 473.1
+    },
+    "database": {
+      "activeConnections": 57,
+      "queriesPerSecond": 458,
+      "averageQueryTimeMs": 3.5,
+      "cacheHitRatio": 0.953,
+      "databaseSizeGB": 189.24
+    },
+    "application": {
+      "requestsPerMinute": 1885,
+      "errorRatePercent": 0.33,
+      "responseTimeMs": 166.0
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-114",
+    "timestamp": "2026-06-30T23:20:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-114",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 58.3,
+      "cpuCores": 32,
+      "loadAverage1m": 5.83,
+      "loadAverage5m": 4.86,
+      "loadAverage15m": 3.89
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 46465,
+      "freeMB": 19071,
+      "usagePercent": 70.9
+    },
+    "network": {
+      "networkInMB": 136.8,
+      "networkOutMB": 106.7,
+      "activeConnections": 54
+    },
+    "disk": {
+      "diskReadMB": 122.43,
+      "diskWriteMB": 75.79,
+      "diskUsagePercent": 114.5,
+      "storageUsedGB": 558.1
+    },
+    "database": {
+      "activeConnections": 75,
+      "queriesPerSecond": 605,
+      "averageQueryTimeMs": 4.3,
+      "cacheHitRatio": 0.954,
+      "databaseSizeGB": 223.24
+    },
+    "application": {
+      "requestsPerMinute": 3085,
+      "errorRatePercent": 0.58,
+      "responseTimeMs": 153.9
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-115",
+    "timestamp": "2026-06-30T23:25:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-115",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 17.4,
+      "cpuCores": 8,
+      "loadAverage1m": 1.74,
+      "loadAverage5m": 1.45,
+      "loadAverage15m": 1.16
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 5062,
+      "freeMB": 11322,
+      "usagePercent": 30.9
+    },
+    "network": {
+      "networkInMB": 26.5,
+      "networkOutMB": 20.7,
+      "activeConnections": 10
+    },
+    "disk": {
+      "diskReadMB": 36.54,
+      "diskWriteMB": 22.62,
+      "diskUsagePercent": 22.2,
+      "storageUsedGB": 160.4
+    },
+    "database": {
+      "activeConnections": 9,
+      "queriesPerSecond": 78,
+      "averageQueryTimeMs": 12.1,
+      "cacheHitRatio": 0.888,
+      "databaseSizeGB": 64.16
+    },
+    "application": {
+      "requestsPerMinute": 193,
+      "errorRatePercent": 1.13,
+      "responseTimeMs": 417.2
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-116",
+    "timestamp": "2026-06-30T23:30:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-116",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 34.3,
+      "cpuCores": 16,
+      "loadAverage1m": 3.43,
+      "loadAverage5m": 2.86,
+      "loadAverage15m": 2.29
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 14614,
+      "freeMB": 18154,
+      "usagePercent": 44.6
+    },
+    "network": {
+      "networkInMB": 73.6,
+      "networkOutMB": 57.4,
+      "activeConnections": 29
+    },
+    "disk": {
+      "diskReadMB": 72.03,
+      "diskWriteMB": 44.59,
+      "diskUsagePercent": 50.7,
+      "storageUsedGB": 273.2
+    },
+    "database": {
+      "activeConnections": 34,
+      "queriesPerSecond": 275,
+      "averageQueryTimeMs": 5.7,
+      "cacheHitRatio": 0.929,
+      "databaseSizeGB": 109.28
+    },
+    "application": {
+      "requestsPerMinute": 912,
+      "errorRatePercent": 0.73,
+      "responseTimeMs": 273.4
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-117",
+    "timestamp": "2026-06-30T23:35:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-1",
+      "hostname": "prod-agent-1.internal",
+      "ipAddress": "10.0.0.10"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-117",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 43.5,
+      "cpuCores": 16,
+      "loadAverage1m": 4.35,
+      "loadAverage5m": 3.62,
+      "loadAverage15m": 2.9
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 19693,
+      "freeMB": 13075,
+      "usagePercent": 60.1
+    },
+    "network": {
+      "networkInMB": 109.1,
+      "networkOutMB": 85.1,
+      "activeConnections": 43
+    },
+    "disk": {
+      "diskReadMB": 91.35,
+      "diskWriteMB": 56.55,
+      "diskUsagePercent": 95.8,
+      "storageUsedGB": 475.2
+    },
+    "database": {
+      "activeConnections": 53,
+      "queriesPerSecond": 425,
+      "averageQueryTimeMs": 4.1,
+      "cacheHitRatio": 0.941,
+      "databaseSizeGB": 190.08
+    },
+    "application": {
+      "requestsPerMinute": 1765,
+      "errorRatePercent": 0.44,
+      "responseTimeMs": 179.5
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-118",
+    "timestamp": "2026-06-30T23:40:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "prod-agent-2",
+      "hostname": "prod-agent-2.internal",
+      "ipAddress": "10.0.0.11"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-118",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 65.2,
+      "cpuCores": 32,
+      "loadAverage1m": 6.52,
+      "loadAverage5m": 5.43,
+      "loadAverage15m": 4.35
+    },
+    "memory": {
+      "totalMB": 65536,
+      "usedMB": 49348,
+      "freeMB": 16188,
+      "usagePercent": 75.3
+    },
+    "network": {
+      "networkInMB": 145.4,
+      "networkOutMB": 113.4,
+      "activeConnections": 58
+    },
+    "disk": {
+      "diskReadMB": 136.92,
+      "diskWriteMB": 84.76,
+      "diskUsagePercent": 125.4,
+      "storageUsedGB": 560.1
+    },
+    "database": {
+      "activeConnections": 83,
+      "queriesPerSecond": 670,
+      "averageQueryTimeMs": 3.5,
+      "cacheHitRatio": 0.97,
+      "databaseSizeGB": 224.04
+    },
+    "application": {
+      "requestsPerMinute": 3265,
+      "errorRatePercent": 0.38,
+      "responseTimeMs": 136.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-119",
+    "timestamp": "2026-06-30T23:45:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "dev-agent-1",
+      "hostname": "dev-agent-1.internal",
+      "ipAddress": "10.0.0.20"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-119",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 20.5,
+      "cpuCores": 8,
+      "loadAverage1m": 2.05,
+      "loadAverage5m": 1.71,
+      "loadAverage15m": 1.37
+    },
+    "memory": {
+      "totalMB": 16384,
+      "usedMB": 4440,
+      "freeMB": 11944,
+      "usagePercent": 27.1
+    },
+    "network": {
+      "networkInMB": 31.4,
+      "networkOutMB": 24.5,
+      "activeConnections": 12
+    },
+    "disk": {
+      "diskReadMB": 43.05,
+      "diskWriteMB": 26.65,
+      "diskUsagePercent": 26.5,
+      "storageUsedGB": 162.8
+    },
+    "database": {
+      "activeConnections": 11,
+      "queriesPerSecond": 93,
+      "averageQueryTimeMs": 10.6,
+      "cacheHitRatio": 0.903,
+      "databaseSizeGB": 65.12
+    },
+    "application": {
+      "requestsPerMinute": 229,
+      "errorRatePercent": 0.91,
+      "responseTimeMs": 442.1
+    }
+  },
+  {
+    "eventId": "evt-amz-2026-06-120",
+    "timestamp": "2026-06-30T23:50:00Z",
+    "company": {
+      "companyName": "amazon"
+    },
+    "agent": {
+      "agentId": "staging-agent",
+      "hostname": "staging-agent.internal",
+      "ipAddress": "10.0.0.30"
+    },
+    "resource": {
+      "resourceType": "EC2",
+      "resourceId": "res-evt-amz-2026-06-120",
+      "environment": "PRODUCTION",
+      "region": "ap-south-1",
+      "availabilityZone": "ap-south-1a"
+    },
+    "compute": {
+      "cpuUsagePercent": 31.4,
+      "cpuCores": 16,
+      "loadAverage1m": 3.14,
+      "loadAverage5m": 2.62,
+      "loadAverage15m": 2.09
+    },
+    "memory": {
+      "totalMB": 32768,
+      "usedMB": 14805,
+      "freeMB": 17963,
+      "usagePercent": 45.2
+    },
+    "network": {
+      "networkInMB": 69.4,
+      "networkOutMB": 54.1,
+      "activeConnections": 27
+    },
+    "disk": {
+      "diskReadMB": 65.94,
+      "diskWriteMB": 40.82,
+      "diskUsagePercent": 55.0,
+      "storageUsedGB": 275.0
+    },
+    "database": {
+      "activeConnections": 33,
+      "queriesPerSecond": 266,
+      "averageQueryTimeMs": 6.2,
+      "cacheHitRatio": 0.92,
+      "databaseSizeGB": 110.0
+    },
+    "application": {
+      "requestsPerMinute": 842,
+      "errorRatePercent": 0.84,
+      "responseTimeMs": 290.4
+    }
+  }
+]
